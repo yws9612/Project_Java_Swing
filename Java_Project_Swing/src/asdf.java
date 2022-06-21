@@ -3,7 +3,7 @@ public class asdf {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("git kraken test");
+		System.out.println("git a test");
 	}
 
 }
