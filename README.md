@@ -2,8 +2,6 @@
 
 # 사용 언어
 
-___
-___
 ## 개발자(GIT 계정)
 서연운 ([yws9612](https://github.com/yws9612))  
 이송이 ([nonameleel](https://github.com/nonameleel))  
@@ -11,10 +9,10 @@ ___
 문종주 ([admoonistrator](https://github.com/admoonistrator))  
 최서영 ([seoyoung](https://github.com/seoyoung1029))  
 이윤경 ([yiyk7](https://github.com/yiyk7))  
-___
+
 # **데이터 테이블**
 
-___
+
 # **JavaSwingUI**
 
-___
+
