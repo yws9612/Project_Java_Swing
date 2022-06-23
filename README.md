@@ -11,7 +11,15 @@ Java, JavaSwing(JFrame), Oracle(Database)
 이윤경 ([yiyk7](https://github.com/yiyk7))  
 
 ## **데이터 테이블**
-
+### Member Table
+|순번|이름|구조|제약조건|
+|:--:|:--:|:--:|:--:|
+|1|회원번호|Number|Primary Key|
+|2|ID|Varchar2|Not null|
+|3|PW|varchar2|Not null|
+|4|이름|Varchar2|Not null|
+|5|E-mail|Varchar2|Not null|
+|6|점수|Number|
 
 ## **JavaSwingUI**
 
