@@ -27,7 +27,7 @@ Java, JavaSwing(JFrame), Oracle(Database)
 |1|회원번호|Number|**Primary Key**|
 |2|가입일|Date|
 |3|관리자 ID|varchar2|Not null, Unique|
-|4|관리자 PW|Varchar2|Not null, Unique|
+|4|관리자 PW|Varchar2|Not null|
 
 ### Score Table
 |순번|이름|구조|제약조건|
