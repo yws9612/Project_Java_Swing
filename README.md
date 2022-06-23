@@ -26,14 +26,14 @@ Java, JavaSwing(JFrame), Oracle(Database)
 |:--:|:--:|:--:|:--:|
 |1|회원번호|Number|**Primary Key**|
 |2|가입일|Date|
-|3|관리자 ID|varchar2|Not null, Unique|
-|4|관리자 PW|Varchar2|Not null|
+|3|최종 플레이 일|Date|
 
 ### Score Table
 |순번|이름|구조|제약조건|
 |:--:|:--:|:--:|:--:|
-|1|회원번호|Number|**Primary Key**|
+|1|회원번호|Number|Foreign Key|
 |2|점수|Number|
+|3|플레이 날짜|Date|
 
 ### 순우리말 단어 Table
 |순번|이름|구조|제약조건|
