@@ -19,7 +19,7 @@ Java, JavaSwing(JFrame), Oracle(Database)
 |3|PW|varchar2|Not null|
 |4|이름|Varchar2|Not null|
 |5|E-mail|Varchar2|Not null, Unique|
-|6|점수|Number|
+|6|관리자 권한|char|
 
 ### Manage Table
 |순번|이름|구조|제약조건|
