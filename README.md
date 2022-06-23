@@ -1,5 +1,5 @@
 # JAVA Mini Project(프로젝트 이름)
-
+## 프로젝트 개요
 ## 사용 언어
 Java, JavaSwing(JFrame), Oracle(Database)
 ## 개발자(GIT 계정)
