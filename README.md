@@ -39,15 +39,15 @@ Java, JavaSwing(JFrame), Oracle(Database)
 |순번|이름|구조|제약조건|
 |:--:|:--:|:--:|:--:|
 |1|단어번호|Number|**Primary Key**|
-|2|단어|Varchar2|
-|3|뜻|varchar2|
+|2|단어|Varchar2|Unique|
+|3|뜻|varchar2|Unieque|
 
 ### 순화어 단어 Table
 |순번|이름|구조|제약조건|
 |:--:|:--:|:--:|:--:|
 |1|단어번호|Number|**Primary Key**|
-|2|단어|Varchar2|
-|3|뜻|varchar2|
+|2|단어|Varchar2|Unique|
+|3|뜻|varchar2|Unique|
 
 ## **JavaSwingUI**
 
