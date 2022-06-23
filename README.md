@@ -1,4 +1,4 @@
-# Project_Java_Swing
+# JAVA Mini Project(프로젝트 이름)
 
 ## 사용 언어
 Java, JavaSwing(JFrame), Oracle(Database)
