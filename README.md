@@ -24,7 +24,7 @@ Java, JavaSwing(JFrame), Oracle(Database)
 ### Manage Table
 |순번|이름|구조|제약조건|
 |:--:|:--:|:--:|:--:|
-|1|회원번호|Number|**Primary Key**|
+|1|회원번호|Number|Foreign Key|
 |2|가입일|Date|
 |3|최종 플레이 일|Date|
 
