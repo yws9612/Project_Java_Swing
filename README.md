@@ -14,12 +14,40 @@ Java, JavaSwing(JFrame), Oracle(Database)
 ### Member Table
 |순번|이름|구조|제약조건|
 |:--:|:--:|:--:|:--:|
-|1|회원번호|Number|Primary Key|
+|1|회원번호|Number|**Primary Key**|
 |2|ID|Varchar2|Not null|
 |3|PW|varchar2|Not null|
 |4|이름|Varchar2|Not null|
 |5|E-mail|Varchar2|Not null|
 |6|점수|Number|
+
+### Manage Table
+|순번|이름|구조|제약조건|
+|:--:|:--:|:--:|:--:|
+|1|회원번호|Number|**Primary Key**|
+|2|가입일|Date|
+|3|관리자 ID|varchar2|Not null|
+|4|관리자 PW|Varchar2|Not null|
+
+### Score Table
+|순번|이름|구조|제약조건|
+|:--:|:--:|:--:|:--:|
+|1|회원번호|Number|**Primary Key**|
+|2|점수|Number|
+
+### 순우리말 단어 Table
+|순번|이름|구조|제약조건|
+|:--:|:--:|:--:|:--:|
+|1|단어번호|Number|**Primary Key**|
+|2|단어|Varchar2|
+|3|뜻|varchar2|
+
+### 순화어 단어 Table
+|순번|이름|구조|제약조건|
+|:--:|:--:|:--:|:--:|
+|1|단어번호|Number|**Primary Key**|
+|2|단어|Varchar2|
+|3|뜻|varchar2|
 
 ## **JavaSwingUI**
 
