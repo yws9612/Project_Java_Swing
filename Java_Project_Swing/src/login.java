@@ -63,7 +63,7 @@ public class login {
 		ResultSet rs=null; 
 		try {
 			String que="";
-			conn=connecttoDB.get(); 
+			conn=ConnecttoDB.get(); 
 			psmt=conn.prepareStatement(que); 
 			rs=psmt.executeQuery();
 			/*select -> executeQuery()
