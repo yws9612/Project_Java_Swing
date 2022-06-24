@@ -1,9 +1,7 @@
 # JAVA Mini Project(프로젝트 이름)
 ## 프로젝트 개요
 ## 사용 언어
-<img src="https://img.shields.io/badge/JAVA-FFCA28?style=flat-square&logo=JAVA&logoColor=white"/>
-<img src="https://img.shields.io/badge/JAVA Swing-424268?style=flat-square&logo=JAVA&logoColor=white"/>
-<img src="https://img.shields.io/badge/Oracle-FF9896?style=flat-square&logo=Oracle&logoColor=white"/>
+Java, JavaSwing(JFrame), Oracle(Database)
 
 ## 개발자(GIT 계정)
 서연운 ([yws9612](https://github.com/yws9612))  
