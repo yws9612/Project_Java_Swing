@@ -9,7 +9,8 @@ constraint u_email unique,
 ADMIN CHAR(1),
 constraint PK_M_NO PRIMARY KEY(M_NO));
 
-
+INSERT INTO MEMBER VALUES(99999,'admin','admin55','°ü¸®ÀÚ','admin@gmail.com','Y');
+SELECT * FROM MEMBER;
 
 
 
