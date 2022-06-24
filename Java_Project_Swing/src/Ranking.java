@@ -48,15 +48,22 @@ public class Ranking extends JPanel implements ActionListener{
 				
 			}
 		});
+	}
 		
 		private void connect() {
 			try {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				String url = "jdbc:oracle:this@localhost:1521:xepdb1";
 				
+				con = DriverManager.getConnection(url, "SYW", "dusdns12!");
+				System.out.println("立加 : " + con);
+			}catch(Exception e) {
+				System.out.println("DB立加 坷幅 : " + e);
 			}
 		}
 		
 		
-	}
+	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
