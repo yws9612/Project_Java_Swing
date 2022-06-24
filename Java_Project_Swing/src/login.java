@@ -30,10 +30,11 @@ class search_id {
 		String srch=name+email;
 		if(srch_id.containsKey(name)) {
 			if(email.equals(srch_id.get(name))) {
-				//�븘�씠�뵒瑜� 蹂댁뿬以띾땲�떎. -- �븘�씠�뵒 李얠쓣 諛⑸쾿�씠 �뾾�뒿�땲�떎.
+				//change key or 
+				//select id from Member where name=name and email=email 
 			}
 			else {
-				//�븘�씠�뵒媛� �뾾�뒿�땲�떎.
+				//no info
 			}
 		}
 	}
@@ -46,10 +47,10 @@ class search_pw {
 		id=tf_id.getText();
 		if(srch_pw.containsKey(id)) {
 			String pw=srch_pw.get(id);
-			//鍮꾨쾲瑜� 蹂댁뿬以띾땲�떎.
+			//print pw
 		}
 		else {
-			//�븘�씠�뵒媛� �뾾�뒿�땲�떎.
+			//wrong id
 		}
 	}
 }
@@ -57,20 +58,19 @@ class search_pw {
 public class login {
 
 	public static void main(String[] args) {
-		Connection conn=null; //DB�� �뿰寃고븯�뒗 �씤�꽣�럹�씠�뒪
-		PreparedStatement psmt=null; //sql臾� 媛앹껜
-		ResultSet rs=null; //sql�뿉 ���븳 諛섑솚(荑쇰━ �떎�뻾�뿉 ���븳 寃곌낵媛� ���옣)
+		Connection conn=null; 
+		PreparedStatement psmt=null; 
+		ResultSet rs=null; 
 		try {
-			String que="select * from emp1";
-			conn=A1.get(); //DB�뿰寃�
-			psmt=conn.prepareStatement(que); //sql�떎�뻾
+			String que="";
+			conn=connecttoDB.get(); 
+			psmt=conn.prepareStatement(que); 
 			rs=psmt.executeQuery();
 			/*select -> executeQuery()
 			DML(insert, update, delete) -> executeUpdate(); */
 			
 			/*
 			while(rs.next()) {
-				//DB�뿉 �엳�뒗 媛믪쓣 媛��졇�삩�떎.
 				String empno=rs.getString(1);
 				String ename=rs.getString(2);
 				String job=rs.getString(3);
@@ -87,7 +87,7 @@ public class login {
 		}
 		rs.close();
 		psmt.close();
-		conn.close();��
+		conn.close();
 		
 
 	}
