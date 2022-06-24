@@ -9,7 +9,7 @@ constraint u_email unique,
 ADMIN CHAR(1),
 constraint PK_M_NO PRIMARY KEY(M_NO));
 
-
+desc member;
 
 
 
