@@ -24,6 +24,3 @@ INSERT INTO MEMBER VALUES(10010,'dPtmf','dPtmf1','ÇÑ¿¹½½','dPtmf1@gmail.com','N'
 
 SELECT * FROM MEMBER;
 
-
-
-
