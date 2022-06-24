@@ -58,6 +58,8 @@ class search_pw {
 public class login {
 
 	public static void main(String[] args) {
+		
+		/* 참고용 DB에서 내용 추출 코드
 		Connection conn=null; 
 		PreparedStatement psmt=null; 
 		ResultSet rs=null; 
@@ -66,10 +68,9 @@ public class login {
 			conn=ConnecttoDB.get(); 
 			psmt=conn.prepareStatement(que); 
 			rs=psmt.executeQuery();
-			/*select -> executeQuery()
-			DML(insert, update, delete) -> executeUpdate(); */
+			/select -> executeQuery()
+			DML(insert, update, delete) -> executeUpdate(); /
 			
-			/*
 			while(rs.next()) {
 				String empno=rs.getString(1);
 				String ename=rs.getString(2);
@@ -80,7 +81,6 @@ public class login {
 				int comm=rs.getInt(7);
 				int deptno=rs.getInt(8);
 				System.out.println(empno+" "+ename+" "+hiredate);
-				*/
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -88,6 +88,7 @@ public class login {
 		rs.close();
 		psmt.close();
 		conn.close();
+		*/
 		
 
 	}
