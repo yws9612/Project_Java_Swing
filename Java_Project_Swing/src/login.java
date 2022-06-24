@@ -12,10 +12,10 @@ class log_in {
 		pw=tf_pw.getText();
 		if(log_in.containsKey(id)) {
 			if(pw.equals(log_in.get(id))) {
-				//메뉴화면으로 넘어갑니다
+				//korean break T.T success login
 			}
 			else {
-				//아이디 비번 확인하라는 라벨이 붙습니다.
+				//check id and pw
 			}
 		}
 	}
@@ -30,10 +30,10 @@ class search_id {
 		String srch=name+email;
 		if(srch_id.containsKey(name)) {
 			if(email.equals(srch_id.get(name))) {
-				//아이디를 보여줍니다. -- 아이디 찾을 방법이 없습니다.
+				//�븘�씠�뵒瑜� 蹂댁뿬以띾땲�떎. -- �븘�씠�뵒 李얠쓣 諛⑸쾿�씠 �뾾�뒿�땲�떎.
 			}
 			else {
-				//아이디가 없습니다.
+				//�븘�씠�뵒媛� �뾾�뒿�땲�떎.
 			}
 		}
 	}
@@ -46,10 +46,10 @@ class search_pw {
 		id=tf_id.getText();
 		if(srch_pw.containsKey(id)) {
 			String pw=srch_pw.get(id);
-			//비번를 보여줍니다.
+			//鍮꾨쾲瑜� 蹂댁뿬以띾땲�떎.
 		}
 		else {
-			//아이디가 없습니다.
+			//�븘�씠�뵒媛� �뾾�뒿�땲�떎.
 		}
 	}
 }
@@ -57,20 +57,20 @@ class search_pw {
 public class login {
 
 	public static void main(String[] args) {
-		Connection conn=null; //DB와 연결하는 인터페이스
-		PreparedStatement psmt=null; //sql문 객체
-		ResultSet rs=null; //sql에 대한 반환(쿼리 실행에 대한 결과값 저장)
+		Connection conn=null; //DB�� �뿰寃고븯�뒗 �씤�꽣�럹�씠�뒪
+		PreparedStatement psmt=null; //sql臾� 媛앹껜
+		ResultSet rs=null; //sql�뿉 ���븳 諛섑솚(荑쇰━ �떎�뻾�뿉 ���븳 寃곌낵媛� ���옣)
 		try {
 			String que="select * from emp1";
-			conn=A1.get(); //DB연결
-			psmt=conn.prepareStatement(que); //sql실행
+			conn=A1.get(); //DB�뿰寃�
+			psmt=conn.prepareStatement(que); //sql�떎�뻾
 			rs=psmt.executeQuery();
 			/*select -> executeQuery()
 			DML(insert, update, delete) -> executeUpdate(); */
 			
 			/*
 			while(rs.next()) {
-				//DB에 있는 값을 가져온다.
+				//DB�뿉 �엳�뒗 媛믪쓣 媛��졇�삩�떎.
 				String empno=rs.getString(1);
 				String ename=rs.getString(2);
 				String job=rs.getString(3);
@@ -87,7 +87,7 @@ public class login {
 		}
 		rs.close();
 		psmt.close();
-		conn.close();​
+		conn.close();��
 		
 
 	}
