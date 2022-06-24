@@ -1,9 +1,15 @@
 import java.awt.*;
+import java.awt.event.MouseListener;
+import java.sql.*;
 import java.util.HashSet;
 
 import javax.swing.*;
 
 class panel extends JPanel {
+	Connection conn=null; 
+	PreparedStatement psmt=null; 
+	ResultSet rs=null; 
+	
 	TextField id_field=new TextField();
 	TextField pw_field=new TextField();
 	TextField pw2_field=new TextField();
@@ -18,6 +24,30 @@ class panel extends JPanel {
 	JButton id_check=new JButton("중복확인");
 	JButton email_chech=new JButton("중복확인");
 	JButton complete=new JButton("가입완료");
+	
+	id_check.addMouseListener(new MouseListener() {
+		public void mouseClicked() {
+			try {
+				String que="select id from member";
+				conn=ConnecttoDB.get(); 
+				psmt=conn.prepareStatement(que); 
+				rs=psmt.executeQuery();
+				
+			} catch(Exception e) {
+				
+			}
+		}
+	});
+	email_check.addMouseListener(new MouseListener() {
+		public void mouseClicked() {
+			
+		}
+	});
+	complete.addMouseListener(new MouseListener() {
+		public void mouseClicked() {
+			
+		}
+	});
 	
 	JLabel id_label=new JLabel("아이디");
 	JLabel pw_label=new JLabel("비밀번호");
@@ -44,8 +74,10 @@ public class sign_up {
 
 	public static void main(String[] args) {
 		
-		HashSet<String> set_id=new HashSet<>();
-		HashSet<String> set_email=new HashSet<>();
+		HashSet<String> set_id=new HashSet<>(); //to oracle
+		HashSet<String> set_email=new HashSet<>(); //to oracle
+		
+		
 
 	}
 
