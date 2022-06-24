@@ -3,7 +3,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
-
+//main branch 건들지 마시고 branch 추가사항 있으면 말씀해주세요
 class log_in {
 	HashMap<String, String> log_in=new HashMap<String, String>();
 	String id, pw;
