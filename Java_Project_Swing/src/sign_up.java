@@ -1,53 +1,28 @@
 import java.awt.*;
-import java.awt.event.MouseListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.*;
-import java.util.HashSet;
 
-import javax.swing.*;
+import javax.swing.*;	
 
-class panel extends JPanel {
+public class sign_up extends JFrame {
 	Connection conn=null; 
-	PreparedStatement psmt=null; 
-	ResultSet rs=null; 
+	PreparedStatement psmt=null;
 	
-	TextField id_field=new TextField();
-	TextField pw_field=new TextField();
-	TextField pw2_field=new TextField();
-	TextField name_field=new TextField();
-	TextField email_field=new TextField();
-	String id=id_field.getText();
-	String pw=pw_field.getText();
-	String pw2=pw2_field.getText();
-	String name=name_field.getText();
-	String email=email_field.getText();
+	String id, pw, pw2, name, email;
+	
+	TextField id_field=new TextField(30);
+	TextField pw_field=new TextField(30);
+	TextField pw2_field=new TextField(30);
+	TextField name_field=new TextField(30);
+	TextField email_field=new TextField(30);	
 	
 	JButton id_check=new JButton("중복확인");
-	JButton email_chech=new JButton("중복확인");
+	JButton pw_check=new JButton("비밀번호확인");
+	JButton email_check=new JButton("중복확인");
 	JButton complete=new JButton("가입완료");
-	
-	id_check.addMouseListener(new MouseListener() {
-		public void mouseClicked() {
-			try {
-				String que="select id from member";
-				conn=ConnecttoDB.get(); 
-				psmt=conn.prepareStatement(que); 
-				rs=psmt.executeQuery();
-				
-			} catch(Exception e) {
-				
-			}
-		}
-	});
-	email_check.addMouseListener(new MouseListener() {
-		public void mouseClicked() {
-			
-		}
-	});
-	complete.addMouseListener(new MouseListener() {
-		public void mouseClicked() {
-			
-		}
-	});
 	
 	JLabel id_label=new JLabel("아이디");
 	JLabel pw_label=new JLabel("비밀번호");
@@ -56,29 +31,190 @@ class panel extends JPanel {
 	JLabel email_label=new JLabel("이메일");
 	JLabel id_checklabel=new JLabel();
 	JLabel pw_checklabel=new JLabel();
-	JLabel email_checklabel=new JLabel();	
+	JLabel email_checklabel=new JLabel();
+	JLabel last_checklabel=new JLabel();	
 	
-	panel() {
-		setLayout(null);
+	sign_up() {
+		setLayout(new GridLayout(6,6));
+		add(id_label);
 		add(id_field);
+		add(id_checklabel);
+		add(id_check);
+		add(pw_label);
 		add(pw_field);
+		add(pw2_label);
 		add(pw2_field);
+		add(pw_checklabel);
+		add(pw_check);
+		add(name_label);
 		add(name_field);
+		add(email_label);
 		add(email_field);
+		add(email_checklabel);
+		add(email_check);
+		add(complete);
+		add(last_checklabel);
+		
+		//비밀번호 확인(버튼, 엔터, 탭)
+		pw2_field.setFocusTraversalKeysEnabled(false);
+		pw_check.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pw=pw_field.getText();
+				pw2=pw2_field.getText();
+				if(pw.equals(pw2)) {
+					pw_checklabel.setText("확인");
+				}
+				else {
+					pw_checklabel.setText("비밀번호가 다릅니다.");
+				}
+			}
+		});		
+		pw2_field.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pw=pw_field.getText();
+				pw2=pw2_field.getText();
+				if(pw.equals(pw2)) {
+					pw_checklabel.setText("확인");
+				}
+				else {
+					pw_checklabel.setText("비밀번호가 다릅니다.");
+				}
+			}
+		});	
+		pw2_field.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode()==KeyEvent.VK_TAB) {
+					pw=pw_field.getText();
+					pw2=pw2_field.getText().replace("\t", "");
+					if(pw.equals(pw2)) {
+						pw_checklabel.setText("확인");
+						pw_check.requestFocus();
+						String re_input
+							=pw2.replace("\t", "");
+						pw2_field.setText(re_input);
+					}
+					else {
+						String re_input
+							=pw2.replace("\t", "");
+						pw2_field.setText(re_input);
+						pw_checklabel.setText("비밀번호가 다릅니다.");
+					}
+				}
+			}
+			public void keyReleased(KeyEvent e) {
+				if(e.getKeyCode()==KeyEvent.VK_TAB) {
+					String re_input
+						=pw2.replace("\t", "");
+					pw2_field.setText(re_input);
+				}
+			}
+			public void keyTyped(KeyEvent e) {
+				if(e.getKeyCode()==KeyEvent.VK_TAB) {
+					String re_input
+						=pw2.replace("\t", "");
+					pw2_field.setText(re_input);
+				}
+			}
+		});
+		
+		//아이디 중복확인
+		id_check.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String que="execute id_check";
+					psmt=conn.prepareStatement(que); //sql실행
+					boolean rs=psmt.execute();
+					if(rs) {
+						id_checklabel.setText
+							("이미 존재하는 아이디입니다.");
+					}
+					else {
+						id_checklabel.setText
+							("사용할 수 있는 아이디입니다.");
+					}
+				} catch (Exception e_id_check) {
+					
+				}
+			}
+		});
+		
+		//이메일 중복확인
+		email_check.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+				String que="execute email_check";
+				psmt=conn.prepareStatement(que); //sql실행
+				boolean rs=psmt.execute();
+				if(rs) {
+					email_checklabel.setText
+						("이미 존재하는 이메일입니다.");
+				}
+				else {
+					email_checklabel.setText
+						("사용할 수 있는 이메일입니다.");
+				}	
+				} catch (Exception e_email_check) {
+					
+				}
+			}
+		});
+		
+		complete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(id_checklabel.getText().equals("")) {
+					last_checklabel.setText
+						("아이디 중복검사가 필요합니다.");
+					id_field.requestFocus();
+				}
+				else if(pw_checklabel.getText()
+							.equals("비밀번호가 다릅니다.")) {
+					last_checklabel.setText
+						("비밀번호를 확인해 주세요.");
+					pw_field.requestFocus();
+				}
+				else if(pw_checklabel.getText().equals("")) {
+					last_checklabel.setText
+						("비밀번호를 확인해 주세요.");
+					pw_field.requestFocus();
+				}
+				else if(email_checklabel.getText().equals("")) {
+					last_checklabel.setText
+						("이메일 중복검사가 필요합니다.");
+					email_field.requestFocus();
+				}
+				else {
+					try {
+						id=id_field.getText();
+						pw=pw_field.getText();
+						pw2=pw2_field.getText();
+						name=name_field.getText();
+						email=email_field.getText();
+						String que
+							="insert into member values"
+									+ "(mem_sq.nextval,?,?,?,?,N)";
+						psmt=conn.prepareStatement(que);
+						psmt.setString(2,id);
+						psmt.setString(3,pw);
+						psmt.setString(4,name);
+						psmt.setString(5,email);
+					
+						dispose();
+						setDefaultCloseOperation
+							(JFrame.EXIT_ON_CLOSE);
+					} catch (Exception e_complete) {
+						System.out.println("fail");
+					}
+				}
+			}
+		});
+		
 		setSize(500, 500);
 		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-}
 
-public class sign_up {
-
-	public static void main(String[] args) {
-		
-		HashSet<String> set_id=new HashSet<>(); //to oracle
-		HashSet<String> set_email=new HashSet<>(); //to oracle
-		
-		
-
+	public static void main(String[] args) {		
+		new sign_up();
 	}
 
 }
