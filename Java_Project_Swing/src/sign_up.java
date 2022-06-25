@@ -13,11 +13,11 @@ public class sign_up extends JFrame {
 	
 	String id, pw, pw2, name, email;
 	
-	TextField id_field=new TextField();
-	TextField pw_field=new TextField();
-	TextField pw2_field=new TextField();
-	TextField name_field=new TextField();
-	TextField email_field=new TextField();	
+	JTextField id_field=new JTextField();
+	JPasswordField pw_field=new JPasswordField();
+	JPasswordField pw2_field=new JPasswordField();
+	JTextField name_field=new JTextField();
+	JTextField email_field=new JTextField();
 	
 	JButton id_check=new JButton("아이디 확인");
 	JButton pw_check=new JButton("비밀번호 확인");
@@ -174,12 +174,13 @@ public class sign_up extends JFrame {
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode()==KeyEvent.VK_TAB) {
 					pw=pw_field.getText();
-					pw2=pw2_field.getText().replace("\t", "");
+					pw2=pw2_field.getText();
 					if(pw.equals("")||pw2.equals("")) {
 						pw_checklabel.setText("비밀번호를 입력하세요.");
 					}
 					else if(pw.equals(pw2)) {
 						pw_checklabel.setText("확인");
+						pw_check.requestFocus();
 					}
 					else {
 						pw_checklabel.setText("비밀번호가 다릅니다.");
@@ -209,7 +210,7 @@ public class sign_up extends JFrame {
 								("사용할 수 있는 아이디입니다.");
 						}
 					} catch (Exception e_id_check) {
-					
+						System.out.println("id check fail");
 					}
 				}
 			}
@@ -237,7 +238,7 @@ public class sign_up extends JFrame {
 								("사용할 수 있는 이메일입니다.");
 						}	
 					} catch (Exception e_email_check) {
-							
+						System.out.println("email check fail");
 					}
 				}
 				
@@ -265,10 +266,10 @@ public class sign_up extends JFrame {
 					email_field.requestFocus();
 				}
 				else {
+					last_checklabel.setText("");
 					try {
 						id=id_field.getText();
 						pw=pw_field.getText();
-						pw2=pw2_field.getText();
 						name=name_field.getText();
 						email=email_field.getText();
 						String que
@@ -279,12 +280,12 @@ public class sign_up extends JFrame {
 						psmt.setString(3,name);
 						psmt.setString(4,email);
 						psmt=conn.prepareStatement(que);
-					
+						JOptionPane.showMessageDialog
+								(null, "가입이 완료되었습니다.", "", JOptionPane.PLAIN_MESSAGE);
 						dispose();
-						setDefaultCloseOperation
-							(JFrame.EXIT_ON_CLOSE);
+						setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);					
 					} catch (Exception e_complete) {
-						System.out.println("fail");
+						System.out.println("signup_fail");
 					}
 				}
 			}
