@@ -24,6 +24,7 @@ public class sign_up extends JFrame {
 	JButton email_check=new JButton("이메일 중복 확인");
 	JButton complete=new JButton("가입");
 	
+	JLabel title=new JLabel("회원가입");
 	JLabel id_label=new JLabel("아이디");
 	JLabel pw_label=new JLabel("비밀번호");
 	JLabel pw2_label=new JLabel("비밀번호 확인");
@@ -36,6 +37,7 @@ public class sign_up extends JFrame {
 	
 	sign_up() {
 		setLayout(new GridLayout(6,6));
+		add(title);
 		add(id_label);
 		add(id_field);
 		add(id_checklabel);
@@ -89,31 +91,12 @@ public class sign_up extends JFrame {
 					pw2=pw2_field.getText().replace("\t", "");
 					if(pw.equals(pw2)) {
 						pw_checklabel.setText("확인");
-						pw_check.requestFocus();
-						String re_input
-							=pw2.replace("\t", "");
-						pw2_field.setText(re_input);
+						e.consume();
 					}
 					else {
-						String re_input
-							=pw2.replace("\t", "");
-						pw2_field.setText(re_input);
+						e.consume();
 						pw_checklabel.setText("비밀번호가 다릅니다.");
 					}
-				}
-			}
-			public void keyReleased(KeyEvent e) {
-				if(e.getKeyCode()==KeyEvent.VK_TAB) {
-					String re_input
-						=pw2.replace("\t", "");
-					pw2_field.setText(re_input);
-				}
-			}
-			public void keyTyped(KeyEvent e) {
-				if(e.getKeyCode()==KeyEvent.VK_TAB) {
-					String re_input
-						=pw2.replace("\t", "");
-					pw2_field.setText(re_input);
 				}
 			}
 		});
