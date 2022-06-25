@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.swing.*;
+import java.awt.Font;
 
 public class find_pw extends JFrame {
 	Connection conn=null; 
@@ -28,17 +31,64 @@ public class find_pw extends JFrame {
 	JButton close=new JButton("닫기");
 	
 	find_pw() {
-		setLayout(new GridLayout(6,6));
-		add(title);
-		add(id_label);
-		add(id_field);
-		add(name_label);
-		add(name_field);
-		add(email_label);
-		add(email_field);
-		add(find);
-		add(result);
-		add(close);
+		Container c=getContentPane();
+		
+		c.setLayout(null);
+
+		title.setBackground(Color.ORANGE);
+		title.setOpaque(true);
+		title.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		title.setHorizontalAlignment(SwingConstants.CENTER);
+		title.setLocation(30, 25);
+		title.setSize(315, 40);		
+		c.add(title);
+
+		id_label.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		id_label.setLocation(30, 80);
+		id_label.setSize(60, 30);
+		c.add(id_label);
+
+		id_field.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		id_field.setLocation(90, 80);
+		id_field.setSize(180, 30);
+		c.add(id_field);
+
+		name_label.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		name_label.setLocation(30, 125);
+		name_label.setSize(60, 30);
+		c.add(name_label);
+
+		name_field.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		name_field.setLocation(90, 125);
+		name_field.setSize(180, 30);
+		c.add(name_field);
+
+		email_label.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		email_label.setLocation(30, 170);
+		email_label.setSize(60, 30);
+		c.add(email_label);
+
+		email_field.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		email_field.setLocation(90, 170);
+		email_field.setSize(180, 30);
+		c.add(email_field);
+
+		find.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		find.setLocation(280, 170);
+		find.setSize(65, 30);
+		c.add(find);
+
+		result.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		result.setHorizontalAlignment(SwingConstants.CENTER);
+		result.setLocation(30, 215);
+		result.setSize(315, 50);
+		c.add(result);
+
+		close.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		close.setLocation(280, 280);
+		close.setSize(65, 30);
+		c.add(close);
+		
 		
 		//찾기버튼
 		find.addActionListener(new ActionListener() {
@@ -47,7 +97,11 @@ public class find_pw extends JFrame {
 				name=name_field.getText();
 				email=email_field.getText();
 				if(id.equals("")||name.equals("")||email.equals("")) {
-					result.setText("아이디, 이름 또는 이메일을 입력해 주세요.");
+					String alert1="아이디, 이름 또는 이메일을";
+					String alert2="모두 입력해 주세요.";
+					result.setText
+						("<html><body><center>"+alert1
+								+"<br>"+alert2+"</body><html>");
 				}
 				else {
 					try {
@@ -64,11 +118,16 @@ public class find_pw extends JFrame {
 						
 					}
 					if(pw.equals("")) {
+						String alert1="아이디, 이름 또는 이메일을";
+						String alert2="다시 한 번 확인해 주세요.";
 						result.setText
-							("아이디, 이름 또는 이메일을 다시 한 번 확인해 주세요.");
+							("<html><body><center>"+alert1
+									+"<br>"+alert2+"</body><html>");
 					}
 					else {
-						result.setText("비밀번호 : "+pw);
+						result.setText
+							("<html><body><center>비밀번호 : "
+									+pw+"</body><html>");
 					}
 				}				
 			}
@@ -82,13 +141,12 @@ public class find_pw extends JFrame {
 			}
 		});
 		
-		setSize(500, 500);
+		setSize(390, 370);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		new find_pw();
 	}
 
