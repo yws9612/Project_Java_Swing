@@ -14,16 +14,23 @@ public class Ranking extends JFrame{
 	
 	JButton ranExit;
 	
-	JPanel Panel;
+	JPanel Panel, Panel1, rankPanel;
+	
+	JScrollPane jsp;
 	
 	
 	
 	
 	//랭킹 테이블 세팅
-	Object obj[][] = new Object[0][4];
+	String col [] = {"순위", "ID", "날짜", "점수"};//테스트값
+	Object obj[][] = {{"1","asdf","2012-11-11","800"},
+			          {"2","asdf1","2013-11-11","900"},
+			          {"3","asdf2","2014-11-11","1000"},
+			          {"4","asdf3","2015-11-11","1200"},
+			          {"5","asdf4","2016-11-11","1300"}};
 	DefaultTableModel model;
 	JTable rank;
-	String col [] = {"순위", "ID", "날짜", "점수"};//불러올 칼럼 이름
+	//불러올 칼럼 이름
 	//순위는 rownum으로 뽑아오고, id date score에서 각각 뽑아오면 될듯함
 	
 	
@@ -37,7 +44,6 @@ public class Ranking extends JFrame{
 	
 	public Ranking(){
 		setLayout(null);
-		Container c = getContentPane();
 	
 		
 		
@@ -52,28 +58,22 @@ public class Ranking extends JFrame{
 		
 		//JTable 중앙 배치
 		Panel = new JPanel();
+		Panel1 = new JPanel();
+		rankPanel = new JPanel();
 		
-		JPanel rankPanel = new JPanel();
-		
+		Panel.add(ranExit,BorderLayout.NORTH);
 		
 		model = new DefaultTableModel(obj,col); //1)데이터 저장[][], 2)칼럼 이름
 		rank = new JTable(model);
+		jsp = new JScrollPane(rank);
+		rankPanel.add(jsp, BorderLayout.CENTER);
 		
+		setBounds(250,250,300,300);	
 		//JTable은 기존 패널에 붙이는 방식과 다름. JScrollPane사용해서 붙여야 할듯함
-		
-		Panel.add(ranExit);
-		Panel.add(mRanking);
-		rankPanel.add(rank);
+		Panel1.add(mRanking, BorderLayout.EAST);
 		
 		
-		Panel.setBounds(50,50,50,50);
-		rankPanel.setBounds(250, 250, 250, 250);
-		
-		c.add(Panel);
-		c.add(rank);
-		rank.setBounds(500,500,500,500);
-		
-		
+	
 		
 		setVisible(true);
 		
