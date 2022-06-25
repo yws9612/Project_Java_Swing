@@ -1,5 +1,6 @@
 import java.awt.Panel;
 import java.awt.event.*;
+import java.io.Serializable;
 import java.sql.*;
 
 import javax.swing.*;
@@ -7,6 +8,7 @@ import javax.swing.table.*;
 
 
 public class Ranking extends JFrame{
+
 
 	JLabel mRanking;
 	
@@ -37,7 +39,7 @@ public class Ranking extends JFrame{
 	
 	
 	public Ranking(){
-		rankPanel.setLayout(null);
+		setLayout(null);
 		
 		ranExit = new JButton("종료");
 		
@@ -49,7 +51,7 @@ public class Ranking extends JFrame{
 		l4 = new JLabel("4");
 		l5 = new JLabel("5");
 		
-		rankPanel.add(jScroll)
+		rankPanel.add(jScroll);
 		
 		//JTable 중앙 배치
 		rankPanel = new JPanel();
