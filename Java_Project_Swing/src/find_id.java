@@ -1,4 +1,3 @@
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -7,7 +6,6 @@ import java.sql.ResultSet;
 
 import javax.swing.*;
 
-import javax.swing.*;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Container;
