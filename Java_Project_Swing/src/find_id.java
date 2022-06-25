@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 
 import javax.swing.*;
 
+import javax.swing.*;
 public class find_id extends JFrame {
 	Connection conn=null; 
 	PreparedStatement psmt=null;
