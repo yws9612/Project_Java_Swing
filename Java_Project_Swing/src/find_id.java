@@ -42,12 +42,12 @@ public class find_id extends JFrame {
 		c.add(title);
 		
 		name_label.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-		name_label.setLocation(30, 82);
+		name_label.setLocation(30, 80);
 		name_label.setSize(60, 30);
 		c.add(name_label);
 		
 		name_field.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-		name_field.setLocation(90, 82);
+		name_field.setLocation(90, 80);
 		name_field.setSize(180, 30);
 		c.add(name_field);
 		
@@ -56,6 +56,7 @@ public class find_id extends JFrame {
 		email_label.setSize(60, 30);
 		c.add(email_label);
 		
+		email_field.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 		email_field.setSize(180, 30);
 		email_field.setLocation(90, 125);
 		c.add(email_field);
@@ -81,7 +82,7 @@ public class find_id extends JFrame {
 				name=name_field.getText();
 				email=email_field.getText();
 				if(name.equals("")||email.equals("")) {
-					result.setText("이름과 이메일을 입력해 주세요.");
+					result.setText("이름과 이메일을 모두 입력해 주세요.");
 				}
 				else {
 					try {
