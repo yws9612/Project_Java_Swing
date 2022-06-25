@@ -1,3 +1,4 @@
+import java.awt.Panel;
 import java.awt.event.*;
 import java.sql.*;
 
@@ -5,9 +6,12 @@ import javax.swing.*;
 import javax.swing.table.*;
 
 
-public class Ranking extends JFrame implements ActionListener{
+public class Ranking extends JFrame{
 
 	JLabel mRanking;
+	
+	JLabel l1, l2, l3, l4, l5;
+	
 	JButton ranExit;
 	
 	JPanel rankPanel;
@@ -16,11 +20,15 @@ public class Ranking extends JFrame implements ActionListener{
 	
 	
 	//랭킹 테이블 세팅
-	Object obj[][] = new Object[0][3];
+	Object obj[][] = new Object[0][4];
 	DefaultTableModel model;
 	JTable rank;
 	JScrollPane jScroll;
-	String col [] = {"ID", "날짜", "점수"};//불러올 칼럼 이름
+	String col [] = {"순위", "ID", "날짜", "점수"};//불러올 칼럼 이름
+	//순위는 rownum으로 뽑아오고, id date score에서 각각 뽑아오면 될듯함
+	
+	
+	
 	
 	//DB연동
 	Connection con = null;
@@ -29,14 +37,32 @@ public class Ranking extends JFrame implements ActionListener{
 	
 	
 	public Ranking(){
+		rankPanel.setLayout(null);
 		
+		ranExit = new JButton("종료");
+		
+		mRanking = new JLabel("현재 순위");
+		
+		l1 = new JLabel("1");
+		l2 = new JLabel("2");
+		l3 = new JLabel("3");
+		l4 = new JLabel("4");
+		l5 = new JLabel("5");
+		
+		rankPanel.add(jScroll)
+		
+		//JTable 중앙 배치
 		rankPanel = new JPanel();
 		model = new DefaultTableModel(obj,col); //1)데이터 저장[][], 2)칼럼 이름
 		rank = new JTable(model);
-		jScroll = new JScrollPane(rank);
-		this.add(jScroll);
+	
 		setBounds(250,250,300,300);
 		setVisible(true);
+		
+		
+		
+		
+		
 		
 		//DB 접속 후 select 문장을 사용해 JTable에 보여주는 구문
 		connect();
@@ -46,7 +72,19 @@ public class Ranking extends JFrame implements ActionListener{
 			
 			@Override
 			public void windowClosing(WindowEvent e) {
-				
+				try {
+					if(rs!= null) {
+						rs.close();
+					}
+					if(pstmt != null) {
+						pstmt.close();
+					}
+					if(con != null) {
+						con.close();
+					}
+			}catch(Exception e1) {
+				System.exit(0);
+				}
 			}
 		});
 	}
@@ -68,7 +106,7 @@ public class Ranking extends JFrame implements ActionListener{
 		
 		public void select() {
 			try {
-				String sql = "select id, score, playdate from member natural join score";
+				String sql = "select num, id, score, playdate from member natural join score";
 				pstmt = con.prepareStatement(sql);
 				System.out.println("pstmt : " + pstmt);
 				rs = pstmt.executeQuery();
@@ -76,11 +114,17 @@ public class Ranking extends JFrame implements ActionListener{
 				
 				//테이블에서 값 불러오기
 				while(rs.next()) {
-					String id = rs.getString(1);
-					int score = rs.getInt(2);
-					java.sql.Date date = rs.getDate(3); 
+					int rank = rs.getInt(1);
+					String id = rs.getString(2);
+					int score = rs.getInt(3);
+					java.sql.Date date = rs.getDate(4); 
 					
+					Object data[] =  {rank, id, score, date};
+					model.addRow(data);
+					System.out.println(rank + " " + id + " " + score + " " + date);
 				}
+			}catch(Exception e) {
+				System.out.println("select() 실행 오류 : " + e);
 			}
 		}
 
@@ -88,11 +132,7 @@ public class Ranking extends JFrame implements ActionListener{
 
 
 		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+
 	
 	
 	public static void main(String[] args) {
