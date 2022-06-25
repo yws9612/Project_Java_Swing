@@ -173,11 +173,11 @@ public class sign_up extends JFrame {
 						String que
 							="insert into member values"
 									+ "(mem_sq.nextval,?,?,?,?,N)";
+						psmt.setString(1,id);
+						psmt.setString(2,pw);
+						psmt.setString(3,name);
+						psmt.setString(4,email);
 						psmt=conn.prepareStatement(que);
-						psmt.setString(2,id);
-						psmt.setString(3,pw);
-						psmt.setString(4,name);
-						psmt.setString(5,email);
 					
 						dispose();
 						setDefaultCloseOperation
