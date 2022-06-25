@@ -19,16 +19,16 @@ public class sign_up extends JFrame {
 	TextField name_field=new TextField(30);
 	TextField email_field=new TextField(30);	
 	
-	JButton id_check=new JButton("Áßº¹È®ÀÎ");
-	JButton pw_check=new JButton("ºñ¹Ğ¹øÈ£È®ÀÎ");
-	JButton email_check=new JButton("Áßº¹È®ÀÎ");
-	JButton complete=new JButton("°¡ÀÔ¿Ï·á");
+	JButton id_check=new JButton("ì•„ì´ë”” ì¤‘ë³µ í™•ì¸");
+	JButton pw_check=new JButton("ë¹„ë°€ë²ˆí˜¸ í™•ì¸");
+	JButton email_check=new JButton("ì´ë©”ì¼ ì¤‘ë³µ í™•ì¸");
+	JButton complete=new JButton("ê°€ì…");
 	
-	JLabel id_label=new JLabel("¾ÆÀÌµğ");
-	JLabel pw_label=new JLabel("ºñ¹Ğ¹øÈ£");
-	JLabel pw2_label=new JLabel("ºñ¹Ğ¹øÈ£ È®ÀÎ");
-	JLabel name_label=new JLabel("ÀÌ¸§");
-	JLabel email_label=new JLabel("ÀÌ¸ŞÀÏ");
+	JLabel id_label=new JLabel("ì•„ì´ë””");
+	JLabel pw_label=new JLabel("ë¹„ë°€ë²ˆí˜¸");
+	JLabel pw2_label=new JLabel("ë¹„ë°€ë²ˆí˜¸ í™•ì¸");
+	JLabel name_label=new JLabel("ì´ë¦„");
+	JLabel email_label=new JLabel("ì´ë©”ì¼");
 	JLabel id_checklabel=new JLabel();
 	JLabel pw_checklabel=new JLabel();
 	JLabel email_checklabel=new JLabel();
@@ -55,17 +55,18 @@ public class sign_up extends JFrame {
 		add(complete);
 		add(last_checklabel);
 		
-		//ºñ¹Ğ¹øÈ£ È®ÀÎ(¹öÆ°, ¿£ÅÍ, ÅÇ)
+		//ë¹„ë°€ë²ˆí˜¸ í™•ì¸ ìˆœì„œëŒ€ë¡œ í™•ì¸ ë²„íŠ¼, pw2_fieldì—ì„œ ì—”í„°, íƒ­
 		pw2_field.setFocusTraversalKeysEnabled(false);
+			//íƒ­ ëˆŒë €ì„ ë•Œ ì»¤ì„œ ì´ë™ì´ ì•„ë‹Œ íƒ­ì´ ì…ë ¥ë˜ê²Œ í•˜ëŠ” ëª…ë ¹ì–´
 		pw_check.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				pw=pw_field.getText();
 				pw2=pw2_field.getText();
 				if(pw.equals(pw2)) {
-					pw_checklabel.setText("È®ÀÎ");
+					pw_checklabel.setText("í™•ì¸");
 				}
 				else {
-					pw_checklabel.setText("ºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù.");
+					pw_checklabel.setText("ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤.");
 				}
 			}
 		});		
@@ -74,10 +75,10 @@ public class sign_up extends JFrame {
 				pw=pw_field.getText();
 				pw2=pw2_field.getText();
 				if(pw.equals(pw2)) {
-					pw_checklabel.setText("È®ÀÎ");
+					pw_checklabel.setText("í™•ì¸");
 				}
 				else {
-					pw_checklabel.setText("ºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù.");
+					pw_checklabel.setText("ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤.");
 				}
 			}
 		});	
@@ -87,7 +88,7 @@ public class sign_up extends JFrame {
 					pw=pw_field.getText();
 					pw2=pw2_field.getText().replace("\t", "");
 					if(pw.equals(pw2)) {
-						pw_checklabel.setText("È®ÀÎ");
+						pw_checklabel.setText("í™•ì¸");
 						pw_check.requestFocus();
 						String re_input
 							=pw2.replace("\t", "");
@@ -97,7 +98,7 @@ public class sign_up extends JFrame {
 						String re_input
 							=pw2.replace("\t", "");
 						pw2_field.setText(re_input);
-						pw_checklabel.setText("ºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù.");
+						pw_checklabel.setText("ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤.");
 					}
 				}
 			}
@@ -117,20 +118,20 @@ public class sign_up extends JFrame {
 			}
 		});
 		
-		//¾ÆÀÌµğ Áßº¹È®ÀÎ
+		//ì•„ì´ë”” ì¤‘ë³µ í™•ì¸
 		id_check.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					String que="execute id_check";
-					psmt=conn.prepareStatement(que); //sql½ÇÇà
+					psmt=conn.prepareStatement(que); //sqlì‹¤í–‰
 					boolean rs=psmt.execute();
 					if(rs) {
 						id_checklabel.setText
-							("ÀÌ¹Ì Á¸ÀçÇÏ´Â ¾ÆÀÌµğÀÔ´Ï´Ù.");
+							("ì´ë¯¸ ì‚¬ìš©í•˜ê³  ìˆëŠ” ì•„ì´ë””ì…ë‹ˆë‹¤.");
 					}
 					else {
 						id_checklabel.setText
-							("»ç¿ëÇÒ ¼ö ÀÖ´Â ¾ÆÀÌµğÀÔ´Ï´Ù.");
+							("ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ì•„ì´ë””ì…ë‹ˆë‹¤.");
 					}
 				} catch (Exception e_id_check) {
 					
@@ -138,20 +139,20 @@ public class sign_up extends JFrame {
 			}
 		});
 		
-		//ÀÌ¸ŞÀÏ Áßº¹È®ÀÎ
+		//ì´ë©”ì¼ ì¤‘ë³µ í™•ì¸
 		email_check.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 				String que="execute email_check";
-				psmt=conn.prepareStatement(que); //sql½ÇÇà
+				psmt=conn.prepareStatement(que); //sqlì‹¤í–‰
 				boolean rs=psmt.execute();
 				if(rs) {
 					email_checklabel.setText
-						("ÀÌ¹Ì Á¸ÀçÇÏ´Â ÀÌ¸ŞÀÏÀÔ´Ï´Ù.");
+						("ì´ë¯¸ ì‚¬ìš©í•˜ê³  ìˆëŠ” ì´ë©”ì¼ì…ë‹ˆë‹¤.");
 				}
 				else {
 					email_checklabel.setText
-						("»ç¿ëÇÒ ¼ö ÀÖ´Â ÀÌ¸ŞÀÏÀÔ´Ï´Ù.");
+						("ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ì´ë©”ì¼ì…ë‹ˆë‹¤.");
 				}	
 				} catch (Exception e_email_check) {
 					
@@ -159,27 +160,24 @@ public class sign_up extends JFrame {
 			}
 		});
 		
+		//ê°€ì…ì™„ë£Œ ë²„íŠ¼
 		complete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(id_checklabel.getText().equals("")) {
+				if(!id_checklabel.getText()
+						.equals("ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ì•„ì´ë””ì…ë‹ˆë‹¤.")) {
 					last_checklabel.setText
-						("¾ÆÀÌµğ Áßº¹°Ë»ç°¡ ÇÊ¿äÇÕ´Ï´Ù.");
+						("ì•„ì´ë””ë¥¼ í™•ì¸í•´ ì£¼ì„¸ìš”.");
 					id_field.requestFocus();
 				}
-				else if(pw_checklabel.getText()
-							.equals("ºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù.")) {
+				else if(!pw_checklabel.getText().equals("í™•ì¸")) {
 					last_checklabel.setText
-						("ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØ ÁÖ¼¼¿ä.");
+						("ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ ì£¼ì„¸ìš”.");
 					pw_field.requestFocus();
 				}
-				else if(pw_checklabel.getText().equals("")) {
+				else if(!email_checklabel.getText()
+							.equals("ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ì´ë©”ì¼ì…ë‹ˆë‹¤.")) {
 					last_checklabel.setText
-						("ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØ ÁÖ¼¼¿ä.");
-					pw_field.requestFocus();
-				}
-				else if(email_checklabel.getText().equals("")) {
-					last_checklabel.setText
-						("ÀÌ¸ŞÀÏ Áßº¹°Ë»ç°¡ ÇÊ¿äÇÕ´Ï´Ù.");
+						("ì´ë©”ì¼ì„ í™•ì¸í•´ ì£¼ì„¸ìš”.");
 					email_field.requestFocus();
 				}
 				else {
