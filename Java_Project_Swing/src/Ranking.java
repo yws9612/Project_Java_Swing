@@ -27,7 +27,7 @@ public class Ranking extends JFrame{
 			          {"2","asdf1","2013-11-11","900"},
 			          {"3","asdf2","2014-11-11","1000"},
 			          {"4","asdf3","2015-11-11","1200"},
-			          {"5","asdf4","2016-11-11","1300"}};
+			          {"5","asdf4","2016-11-11","1300"}};//new obj[0][29];
 	DefaultTableModel model;
 	JTable rank;
 	//불러올 칼럼 이름
@@ -44,15 +44,14 @@ public class Ranking extends JFrame{
 	
 	public Ranking(){
 		setLayout(null);
+		setSize(450,650);
 	
+		Container c = getContentPane();
 		
-		
-//		c.add(rankPanel);
-		
-		ranExit = new JButton("종료");
+		ranExit = new JButton("메인으로");
 		
 		mRanking = new JLabel("현재 순위");
-		
+		mRanking.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 		
 		
 		
@@ -61,25 +60,39 @@ public class Ranking extends JFrame{
 		Panel1 = new JPanel();
 		rankPanel = new JPanel();
 		
-		Panel.add(ranExit,BorderLayout.NORTH);
+		
 		
 		model = new DefaultTableModel(obj,col); //1)데이터 저장[][], 2)칼럼 이름
 		rank = new JTable(model);
 		jsp = new JScrollPane(rank);
-		rankPanel.add(jsp, BorderLayout.CENTER);
 		
-		setBounds(250,250,300,300);	
-		//JTable은 기존 패널에 붙이는 방식과 다름. JScrollPane사용해서 붙여야 할듯함
-		Panel1.add(mRanking, BorderLayout.EAST);
+		ranExit.setBackground(Color.gray);
+		
+		Panel.setBounds(10, 10, 65, 65);
+		Panel.add(ranExit);
+		
+		Panel1.setBounds(150, 10,100, 100);
+		Panel1.add(mRanking);
 		
 		
-	
+		jsp.setBounds(50,120,300,450);
+		
+		c.add(Panel);
+		c.add(Panel1);
+		c.add(jsp);
 		
 		setVisible(true);
 		
 		
 		
-		
+		ranExit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		
 		//DB 접속 후 select 문장을 사용해 JTable에 보여주는 구문
@@ -157,7 +170,4 @@ public class Ranking extends JFrame{
 		// TODO Auto-generated method stub
 		new Ranking();
 	}
-
-	
-
 }
