@@ -66,7 +66,7 @@ public class choice extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new RankingButton();
-                setVisible(false); // 창 안보이게 하기 
+                dispose(); // 창 안보이게 하기 
             }
         });
 	}
