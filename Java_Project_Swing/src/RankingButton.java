@@ -86,7 +86,7 @@ public class RankingButton extends JFrame {
 		bt_rk01.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new choice();
+                new Choice();
                 dispose(); // 창 안보이게 하기 
             }
         });

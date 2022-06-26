@@ -11,7 +11,7 @@ import javax.swing.border.EmptyBorder;
 
 
 
-public class choice extends JFrame {
+public class Choice extends JFrame {
 
 	private JPanel contentPane;
 	/**
@@ -21,7 +21,7 @@ public class choice extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					choice frame = new choice();
+					Choice frame = new Choice();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +32,7 @@ public class choice extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public choice() {
+	public Choice() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -69,5 +69,15 @@ public class choice extends JFrame {
                 dispose(); // 창 안보이게 하기 
             }
         });
+		
+		bt_ch04.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+//				new Main();
+				dispose();
+			}
+		});
 	}
 }
