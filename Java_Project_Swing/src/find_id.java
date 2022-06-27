@@ -27,7 +27,7 @@ public class find_id extends JFrame {
 	JButton find=new JButton("찾기");
 	JButton close=new JButton("닫기");
 	
-	find_id() {
+	public find_id() {
 		Container c=getContentPane();
 		c.setLayout(null);
 		

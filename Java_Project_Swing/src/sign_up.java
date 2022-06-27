@@ -35,7 +35,7 @@ public class sign_up extends JFrame {
 	JLabel email_checklabel=new JLabel();
 	JLabel last_checklabel=new JLabel();	
 	
-	sign_up() {
+	public sign_up() {
 		Container c=getContentPane();
 		c.setLayout(null);
 		
