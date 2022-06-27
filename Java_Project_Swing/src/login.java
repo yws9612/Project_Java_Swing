@@ -17,6 +17,9 @@ import javax.swing.UIManager;
 
 
 public class login extends JPanel {
+	Connection conn=null; 
+	PreparedStatement psmt=null;
+	ResultSet rs=null; 	
 
 	JLabel title = new JLabel("5dle,5dle");
 	JLabel id_label = new JLabel("ID");
@@ -89,9 +92,27 @@ public class login extends JPanel {
 				String pw = pw_field.getText();
 				
 				if(id.equals("")||pw.equals("")) {
-					alter.setText("id 혹은 비밀번호를 확인하세요");					
+					alter.setText("id 혹은 비밀번호를 확인하세요.");					
 				}
-				else
+				else {
+					try {
+						String que="select pw from member where id=?";
+						psmt=conn.prepareStatement(que);
+						psmt.setString(1, id);
+						rs=psmt.executeQuery();
+						String pw_db=rs.getString(1);
+						
+						if(pw.equals(pw_db)) {						
+							//선택화면
+							setVisible(false);							
+						}else {
+							alter.setText("id 혹은 비밀번호를 확인하세요.");
+						}
+						
+					} catch(Exception e_compare) {
+						System.out.println("e_compare_error");
+					}					
+				}
 			}
 		});
 		

@@ -10,6 +10,7 @@ import javax.swing.*;
 public class sign_up extends JFrame {
 	Connection conn=null; 
 	PreparedStatement psmt=null;
+	ResultSet rs=null; 
 	
 	String id, pw, pw2, name, email;
 	
