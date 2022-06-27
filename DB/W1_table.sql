@@ -10,11 +10,12 @@ constraint PK_W1_NO PRIMARY KEY(W1_NO));
 CREATE SEQUENCE W1_SQ
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 200
+MAXVALUE 99999
 MINVALUE 1
 NOCYCLE
 NOCACHE;
 
+drop sequence w1_sq;
 
 --W1 순우리말 DB 삽입
 INSERT INTO W1_table VALUES(W1_SQ.NEXTVAL,'가늠','목표나 기준에 맞고 안 맞음을 헤아리는 일, 헤아려 보는 대중. ');
@@ -171,5 +172,6 @@ INSERT INTO W1_table VALUES(W1_SQ.NEXTVAL,'훌림목','애교 띤 목소리. ');
 INSERT INTO W1_table VALUES(W1_SQ.NEXTVAL,'휘뚜루마뚜루','이것저것 가리지 않고 닥치는 대로 마구 해치우는 모양. ');
 INSERT INTO W1_table VALUES(W1_SQ.NEXTVAL,'희나리','[목재] 덜 마른 장작. ');
 
+select * from w1_table;
 
 
