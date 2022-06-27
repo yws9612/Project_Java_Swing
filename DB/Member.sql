@@ -35,4 +35,10 @@ INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'xogml','xogml1','김태희','xogml1@gmail
 INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'dPtmf','dPtmf1','한예슬','dPtmf1@gmail.com','N');
 INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'xogud','xogud1','김태형','xogud1@gmail.com','N');
 
+--MEMBER ADMIN DEFAULT값 재설정 및 테스트용 회원 추가
+ALTER TABLE MEMBER MODIFY ADMIN CHAR(1) DEFAULT 'N';
+DESC MEMBER;
+INSERT INTO MEMBER (M_NO,ID,PW,NAME,EMAIL) VALUES(MEM_SQ.NEXTVAL,'alstjr','alstjr1','김민석','alstjr1@gmail.com');
+INSERT INTO MEMBER (M_NO,ID,PW,NAME,EMAIL) VALUES(MEM_SQ.NEXTVAL,'tjgka','tjgka1','박서함','tjgka1@gmail.com');
+SELECT * FROM MEMBER;
 
