@@ -176,7 +176,7 @@ public class RankingButton extends JFrame {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String url = "jdbc:oracle:this@localhost:1521:xepdb1";
 			//접속하기 위한 메소드(접속 url, 계정명, 암호)
-			con = DriverManager.getConnection(url, "계정", "비번");
+			con = DriverManager.getConnection(url, "aaaa", "1234");
 			System.out.println("접속 : " + con);
 		}catch(Exception e) {
 			System.out.println("DB접속 오류 : " + e);
