@@ -56,15 +56,21 @@ end tg_in_manager;
 EXECUTE REG_PR('tpdms','tpdms1','윤세은','tpdms1@gmail.com');
 select * from manager;
 
---!!!!SCORE 테이블에 insert 되면 MANAGER 테이블에 LASTDATE 수정 되는 트리거
+--SCORE 테이블에 insert 되면 MANAGER 테이블에 LASTDATE 수정 되는 트리거
 create or replace trigger tg_lastdate
 after
 insert on SCORE
 for each row
+declare
+    v_date date;
 begin
-    update MANAGER set lastdate = :new.palydate where m_no = :new.m_no;
+    v_date := :new.playdate;
+    update MANAGER set lastdate = v_date where m_no = :new.m_no;
 end tg_lastdate;
 /
+--테스트용 스코어 추가
+execute insert_score(10000,200);
+select * from manager; --확인완료
 
 --함수 만들기 id_check / email_check 반환값 true / false로 나와야 함
 create or replace function id_check
