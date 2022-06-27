@@ -3,10 +3,13 @@
 create or replace trigger ch_score
 after 
 insert on score --score 테이블에 점수가 삽입됐을때
+for each row
 begin
-    update score --score 테이블의 점수를
-    set scores = (select max(scores) from score)--최고점수로 갱신
-    where m_no = (select m_no from score);--where 절에서 본인임을 확인하는 식이 와야됨.
+    if  :old.scores < :new.scores then
+        update score --score 테이블의 점수를
+        set scores = :new.scores--최고점수로 갱신
+        where m_no = (select m_no from member); --where 절에서 본인임을 확인하는 식이 와야됨.
+    end if;
 end ch_score;
 /
 
