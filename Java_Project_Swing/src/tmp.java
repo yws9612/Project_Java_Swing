@@ -1,3 +1,4 @@
+import java.sql.*;
 
 class thread extends Thread {
 	public void run() {
@@ -17,6 +18,10 @@ class thread extends Thread {
 public class tmp {
 
 	public static void main(String[] args) {
+
+		Connection conn=null; 
+		PreparedStatement psmt=null;
+		ResultSet rs=null; 
 		//게임 부분 구체적인 구현 전 생각나는 코드를 모두 작성합니다.(송이)
 		
 		//쓰레드실행
@@ -24,6 +29,24 @@ public class tmp {
 		t.start();
 		
 		//단어 가져와서 정답 비교를 위해 배열로 쪼개기
+		try {
+			int row1=rs.getRow();
+			int word1num=(int)(Math.random()*row1)+1;
+			
+			String que="select w1 from word1 where w_no=?";
+			conn=connecttoDB.get();
+			psmt=conn.prepareStatement(que);
+			psmt.setInt(1,word1num);
+			rs=psmt.executeQuery();
+			String getword1=rs.getString(1);
+			char [] word1=new char[getword1.length()];
+			for(int i=0; i<getword1.length(); i++) {
+				word1[i]=getword1.charAt(i);
+			}
+			
+		} catch(Exception e) {
+			
+		}
 		
 
 	}
