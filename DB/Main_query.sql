@@ -15,11 +15,12 @@ create or replace procedure reg_pr
     v_id in member.id % type,
     v_pw in member.pw % type,
     v_name in member.name % type,
-    v_email in member.email % type
+    v_email in member.email % type,
+    v_admin in member.admin % type
 )
 is
 begin
     insert into member (m_no, id, pw, name, email, admin)
-    values(v_m_no, v_id, v_pw, v_name, v_email, null);
+    values(v_m_no, v_id, v_pw, v_name, v_email, v_admin);--execute시 v_admin을 0으로 세팅하는 코드 필요
 end reg_pr;
 /
