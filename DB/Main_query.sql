@@ -49,12 +49,14 @@ after
 insert on MEMBER --member 테이블에 회원 추가될때
 for each row
 begin
-    insert into MANAGER (m_no,r_date) values (member.m_no,sysdate);
+    insert into MANAGER values (:new.m_no,sysdate,sysdate);
 end tg_in_manager;
 /
+--테스트용 회원 추가 -- 확인 완료
+EXECUTE REG_PR('tpdms','tpdms1','윤세은','tpdms1@gmail.com');
+select * from manager;
 
-
---SCORE 테이블에 insert 되면 MANAGER 테이블에 LASTDATE 수정 되는 트리거
+--!!!!SCORE 테이블에 insert 되면 MANAGER 테이블에 LASTDATE 수정 되는 트리거
 create or replace trigger tg_lastdate
 after
 insert on SCORE
@@ -64,6 +66,34 @@ begin
 end tg_lastdate;
 /
 
+--함수 만들기 id_check / email_check 반환값 true / false로 나와야 함
+create or replace function id_check
+(v_m_no in member.m_no%type)
+return varchar2
+is
+    cnt number;
+begin  
+    select count(*) into cnt from member where m_no = v_m_no;
+    if cnt = 0 then
+        return 'false'; --아이디 사용가능
+    else return 'true'; --아이디 이미 사용중
+    end if;
+end id_check;
+/
+
+create or replace function email_check
+(v_email in member.email%type)
+return varchar2
+is
+    cnt number;
+begin  
+    select count(*) into cnt from member where email = v_email;
+    if cnt = 0 then
+        return 'false'; --이메일 사용가능
+    else return 'true'; --이메일 이미 사용중
+    end if;
+end email_check;
+/
 
 
 
