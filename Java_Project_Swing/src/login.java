@@ -1,4 +1,3 @@
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -7,7 +6,6 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import javax.swing.UIManager;
 
 
 public class login extends JPanel {
@@ -22,23 +21,25 @@ public class login extends JPanel {
 	JLabel title = new JLabel("5dle,5dle");
 	JLabel id_label = new JLabel("ID");
 	JLabel pw_label = new JLabel("PW");
+	JLabel alter = new JLabel();
 	
-	JTextField textfield1 = new JTextField();
-	JTextField textfield2= new JTextField();
+	JTextField id_field = new JTextField();
+	JTextField pw_field= new JTextField();
 	
-	JButton button1 = new JButton("회원가입");
-	JButton button2 = new JButton("로그인");
-	JButton button3 = new JButton("아이디 찾기");
-	JButton button4 = new JButton("비밀번호 찾기");
+	JButton sign_up = new JButton("회원가입");
+	JButton log_in = new JButton("로그인");
+	JButton find_id = new JButton("아이디 찾기");
+	JButton find_pw = new JButton("비밀번호 찾기");
 	
 	
 	login() {
-		setBackground(Color.darkGray);
+		setBackground(Color.WHITE);
 		setLayout(null);
+		title.setForeground(UIManager.getColor("Button.focus"));
 		title.setFont(new Font("맑은 고딕", Font.PLAIN, 18));
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		title.setBackground(Color.GRAY);
-		title.setSize(331, 163);
+		title.setSize(331, 113);
 		title.setLocation(0, 0);
 			
 		add(title);
@@ -50,31 +51,59 @@ public class login extends JPanel {
 		pw_label.setLocation(10, 220);
 		pw_label.setSize(64, 40);
 		add(pw_label);
-		textfield1.setLocation(86, 171);
-		textfield1.setSize(225, 40);
+		id_field.setLocation(86, 171);
+		id_field.setSize(233, 40);
 		
-		add(textfield1);
-		textfield2.setLocation(86, 221);
-		textfield2.setSize(225, 40);
-		add(textfield2);
-		button1.setLocation(10, 270);
-		button1.setSize(150, 40);
+		add(id_field);
+		pw_field.setLocation(86, 221);
+		pw_field.setSize(233, 40);
+		add(pw_field);
+		sign_up.setBackground(Color.WHITE);
+		sign_up.setLocation(10, 270);
+		sign_up.setSize(150, 40);
 		
-		add(button1);
-		button2.setLocation(172, 271);
-		button2.setSize(150, 40);
-		add(button2);
-		button3.setLocation(10, 320);
-		button3.setSize(150, 40);
-		add(button3);
-		button4.setLocation(172, 320);
-		button4.setSize(150, 40);
-		add(button4);
-	
+		add(sign_up);
+		log_in.setLocation(172, 271);
+		log_in.setSize(150, 40);
+		add(log_in);
+		find_id.setLocation(10, 320);
+		find_id.setSize(150, 40);
+		add(find_id);
+		find_pw.setLocation(172, 320);
+		find_pw.setSize(150, 40);
+		add(find_pw);
 		
-		button1.addActionListener(new ActionListener() {
+		alter.setSize(283, 40);
+		alter.setLocation(36, 123);		
+		add(alter);
+			
+		sign_up.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new sign_up();
+			}
+		});
+		
+		log_in.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String id = id_field.getText();
+				String pw = pw_field.getText();
+				
+				if(id.equals("")||pw.equals("")) {
+					alter.setText("id 혹은 비밀번호를 확인하세요");					
+				}
+				else
+			}
+		});
+		
+		find_id.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new find_id();
+			}
+		});
+		
+		find_pw.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new find_pw();
 			}
 		});
 		
