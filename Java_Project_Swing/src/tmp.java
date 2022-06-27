@@ -28,14 +28,18 @@ public class tmp {
 		thread t=new thread();
 		t.start();
 		
-		//단어 가져와서 정답 비교를 위해 배열로 쪼개기
+		//랜덤으로 단어 가져와서 정답 비교를 위해 배열로 쪼개기
 		try {
+			conn=connecttoDB.get();
+			String que1="select * from word1";
+			psmt=conn.prepareStatement(que1);
+			rs=psmt.executeQuery();
+			rs.last();
 			int row1=rs.getRow();
 			int word1num=(int)(Math.random()*row1)+1;
 			
-			String que="select w1 from word1 where w_no=?";
-			conn=connecttoDB.get();
-			psmt=conn.prepareStatement(que);
+			String que2="select w1 from word1 where w_no=?";
+			psmt=conn.prepareStatement(que2);
 			psmt.setInt(1,word1num);
 			rs=psmt.executeQuery();
 			String getword1=rs.getString(1);
