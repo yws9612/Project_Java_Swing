@@ -5,8 +5,8 @@ after
 insert on score --score 테이블에 점수가 삽입됐을때
 begin
     update score --score 테이블의 점수를
-    set scores = max(scores)--최고점수로 갱신
-    where member.m_no = score.m_no;--where 절에서 본인임을 확인하는 식이 와야됨.
+    set scores = (select max(scores) from score)--최고점수로 갱신
+    where m_no = (select m_no from score);--where 절에서 본인임을 확인하는 식이 와야됨.
 end ch_score;
 /
 
