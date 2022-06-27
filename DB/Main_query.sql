@@ -15,16 +15,33 @@ end ch_score;
 
 create or replace procedure reg_pr
 (
-    v_m_no in member.m_no % type,
     v_id in member.id % type,
     v_pw in member.pw % type,
     v_name in member.name % type,
-    v_email in member.email % type,
-    v_admin in member.admin % type
+    v_email in member.email % type
 )
 is
 begin
-    insert into member (m_no, id, pw, name, email, admin)
-    values(v_m_no, v_id, v_pw, v_name, v_email, v_admin);--execute시 v_admin을 0으로 세팅하는 코드 필요
+    insert into member (m_no, id, pw, name, email)
+    values(MEM_SQ.nextval, v_id, v_pw, v_name, v_email);
 end reg_pr;
 /
+
+
+--게임 끝나고 score 테이블에 점수 저장
+create or replace procedure insert_score
+(v_m_no in score.m_no%type,
+v_score in score.score%type)
+is
+begin
+    insert into score values(v_m_no,v_score,sysdate);
+end;
+/
+
+
+
+
+
+
+
+
