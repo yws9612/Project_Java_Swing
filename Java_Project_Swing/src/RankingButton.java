@@ -35,14 +35,19 @@ public class RankingButton extends JFrame {
 		});
 	}
 	
-	Connection con = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
+	public static Connection con;
+	public static PreparedStatement pstmt;
+	public static ResultSet rs;
 
 	/**
 	 * Create the frame.
 	 */
 	public RankingButton() {
+//		connect();
+//		select();
+		
+		Link link = new Link();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -101,8 +106,7 @@ public class RankingButton extends JFrame {
 		
 		
 		//DB 접속 후 select 문장을 사용해 출력하는 구문
-		connect();
-		select();
+	
 		
 		this.addWindowListener(new WindowListener() {
 			
@@ -170,37 +174,22 @@ public class RankingButton extends JFrame {
 		setResizable(false);
 		setVisible(true);
 	}
-	private void connect() {
-		try {
-			//접속할 메모리 드라이버에 올림
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:this@localhost:1521:xepdb1";
-			//접속하기 위한 메소드(접속 url, 계정명, 암호)
-			con = DriverManager.getConnection(url, "aaaa", "1234");
-			System.out.println("접속 : " + con);
-		}catch(Exception e) {
-			System.out.println("DB접속 오류 : " + e);
-		}
-	}
+//	private void connect() {
+//		try {
+//			//접속할 메모리 드라이버에 올림
+//			Class.forName("oracle.jdbc.driver.OracleDriver");
+//			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+//			//접속하기 위한 메소드(접속 url, 계정명, 암호)
+//			con = DriverManager.getConnection(url, "BBBB", "1234");
+//			System.out.println("접속 : " + con);
+//		}catch(Exception e) {
+//			System.out.println("DB접속 오류 : " + e);
+//		}
+//	}
 	
-	public void select() {
-		try {
-			String sql = "select id, score from (select id, score from member natural join order by score desc) where rownum <=5";
-			pstmt = con.prepareStatement(sql);
-			System.out.println("pstmt : " + pstmt);
-			rs = pstmt.executeQuery();
-			System.out.println("rs : " + rs);
-			
-			//테이블에서 값 불러오기
-			while(rs.next()) {
-				String id = rs.getString(1);
-				int score = rs.getInt(2);
-				java.sql.Date date = rs.getDate(3); 
-				System.out.println(id + " " + score + " " + date);
-			}
-		}catch(Exception e) {
-			System.out.println("select() 실행 오류 : " + e);
-		}
-	}
+//	public void select() {
+//		  
+//		
+//	}
 }
 
