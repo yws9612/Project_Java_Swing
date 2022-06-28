@@ -10,7 +10,6 @@ import javax.swing.*;
 public class sign_up extends JFrame {
 	Connection conn=null; 
 	PreparedStatement psmt=null;
-	ResultSet rs=null; 
 	
 	String id, pw, pw2, name, email;
 	
@@ -281,15 +280,19 @@ public class sign_up extends JFrame {
 						String que
 							="insert into member values"
 									+ "(mem_sq.nextval,?,?,?,?,N)";
+						conn=Connect.get();
+						psmt=conn.prepareStatement(que);
 						psmt.setString(1,id);
 						psmt.setString(2,pw);
 						psmt.setString(3,name);
 						psmt.setString(4,email);
-						psmt=conn.prepareStatement(que);
-						JOptionPane.showMessageDialog
+						int success=psmt.executeUpdate();
+						if(success==0) {
+							JOptionPane.showMessageDialog
 								(null, "가입이 완료되었습니다.", "", JOptionPane.PLAIN_MESSAGE);
-						dispose();
-						setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);					
+							dispose();
+							setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+						}											
 					} catch (Exception e_complete) {
 						System.out.println("signup_fail");
 					}

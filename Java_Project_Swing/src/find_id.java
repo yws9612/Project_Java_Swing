@@ -87,6 +87,7 @@ public class find_id extends JFrame {
 						String que
 							="select id from member "
 								+"where name=? and email=?";
+						conn=Connect.get();
 						psmt.setString(1, name);
 						psmt.setString(2, email);
 						psmt=conn.prepareStatement(que);

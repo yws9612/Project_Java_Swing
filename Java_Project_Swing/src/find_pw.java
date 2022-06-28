@@ -107,6 +107,7 @@ public class find_pw extends JFrame {
 						String que
 							="select pw from member "
 								+"where name=? and email=? and id=?";
+						conn=Connect.get();
 						psmt.setString(1, name);
 						psmt.setString(2, email);
 						psmt.setString(3, id);
