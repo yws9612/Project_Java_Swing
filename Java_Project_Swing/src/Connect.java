@@ -10,7 +10,8 @@ public class Connect {
 			// 접속할 메모리 드라이버에 올림
 			String userId = "ADMIN";
 			String pwd = "5groupDatabase";
-			String url = "jdbc:oracle:thin:@db20220627204321_high?TNS_ADMIN=/Users/soldesk/Downloads/Wallet_DB20220627204321";//여기 파일경로는 바꿔야함
+			String url = "jdbc:oracle:thin:@db20220627204321_high?TNS_ADMIN=/Users/soldesk/Downloads/Wallet_DB20220627204321";
+			//여기 파일경로는 각자 파일위치에 맞게 바꿔야함
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			// 접속하기 위한 메소드(접속 url, 계정명, 암호)

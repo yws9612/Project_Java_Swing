@@ -142,23 +142,7 @@ public class RankingButton extends JFrame {
 		setResizable(false);
 		setVisible(true);
 	}
-//	private void connect() {
-//		try {
-//			//접속할 메모리 드라이버에 올림
-//			Class.forName("oracle.jdbc.driver.OracleDriver");
-//			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
-//			//접속하기 위한 메소드(접속 url, 계정명, 암호)
-//			con = DriverManager.getConnection(url, "BBBB", "1234");
-//			System.out.println("접속 : " + con);
-//		}catch(Exception e) {
-//			System.out.println("DB접속 오류 : " + e);
-//		}
-//	}
 
-//	public void select() {
-//		  
-//		
-//	}
 	public void select() {
 		Connection conn=null; //DB와 연결하는 인터페이스
 
@@ -168,7 +152,7 @@ public class RankingButton extends JFrame {
         
         
         try {
-			String sql = "select * from member";
+			String sql = "select id, scores from (select id, scores from member natural join score order by scores desc) where rownum <= 5";
 			
 			conn = Connect.get();
 			psmt = conn.prepareStatement(sql);
@@ -176,8 +160,9 @@ public class RankingButton extends JFrame {
 			
 			//테이블에서 값 불러오기
 			while(rs.next()) {
-				String ID = rs.getString(2);
-				System.out.println(ID);
+				String id = rs.getString(1);
+				int scores = rs.getInt(2);
+				System.out.println(id + " " + scores);
 			}
 		}catch(Exception e) {
 			System.out.println("select() 실행 오류 : " + e);
