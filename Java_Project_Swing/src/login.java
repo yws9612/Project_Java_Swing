@@ -1,6 +1,5 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -97,13 +96,14 @@ public class login extends JPanel {
 				else {
 					try {
 						String que="select pw from member where id=?";
+						conn=Connect.get();
 						psmt=conn.prepareStatement(que);
 						psmt.setString(1, id);
 						rs=psmt.executeQuery();
 						String pw_db=rs.getString(1);
 						
 						if(pw.equals(pw_db)) {						
-							//선택화면
+							new Choice();
 							setVisible(false);							
 						}else {
 							alter.setText("id 혹은 비밀번호를 확인하세요.");
