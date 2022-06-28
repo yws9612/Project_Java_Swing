@@ -200,7 +200,7 @@ public class sign_up extends JFrame {
 				else {
 					try {
 						String que="execute id_check(?)";
-						conn=ConnecttoDB.get(); 
+						conn=Connect.get(); 
 						psmt=conn.prepareStatement(que); //sql실행
 						psmt.setString(1, id);
 						boolean rs=psmt.execute();
@@ -230,7 +230,7 @@ public class sign_up extends JFrame {
 				else {
 					try {
 						String que="execute email_check(?)";
-						conn=ConnecttoDB.get(); 
+						conn=Connect.get(); 
 						psmt=conn.prepareStatement(que); //sql실행
 						psmt.setString(1, email);
 						boolean rs=psmt.execute();
@@ -277,7 +277,7 @@ public class sign_up extends JFrame {
 						pw=pw_field.getText();
 						name=name_field.getText();
 						email=email_field.getText();
-						conn=ConnecttoDB.get(); 
+						conn=Connect.get(); 
 						String que
 							="insert into member values"
 									+ "(mem_sq.nextval,?,?,?,?,N)";
