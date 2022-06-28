@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,36 +8,62 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.*;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 class thread extends Thread {
-	JLabel countdown=new JLabel(); 
-	thread(JLabel l) {
-		countdown=l;
+	JLabel circle_label=new JLabel();
+	JLabel countdown=new JLabel();
+	thread(JLabel l1, JLabel l2) {
+		countdown=l1;
+		circle_label=l2;
 	}
 	public void run() {
 		try {
 			sleep(1000);
+			countdown.setVisible(true);
+			circle_label.setVisible(true);
 			for(int i=3; i>0; i--) {
 				countdown.setText(Integer.toString(i));
 				sleep(1000); //1초
 			}
+			countdown.setText("게임 시작!");
+			sleep(1000);
 			countdown.setVisible(false);
+			circle_label.setVisible(false);
 		} catch(Exception e) {
 			System.out.println("fail");
 		}
 		
 	}
 	/* 프레임에 넣을 때
-	 	JLabel ll=new JLabel();
-		thread t=new thread(ll);
+	 	class f extends JFrame {
+	ImageIcon ii
+		=new ImageIcon("C:/Users/soldesk/Desktop/SY/circle.png");
+	JLabel l2=new JLabel();
+	f() {
+		//JPanel pp=new p();
+		Container c=getContentPane();
+		l2.setIcon(ii);
+		l2.setSize(300, 300);
+		JLabel ll=new JLabel();
+		thread t=new thread(ll,l2);
+		c.setLayout(null);
 		ll.setSize(300, 300);
 		ll.setHorizontalAlignment(JLabel.CENTER);
-		add(ll);
+		ll.setFont(new Font("맑은 고딕",Font.PLAIN, 30));
+		ll.setVisible(false);
+		l2.setVisible(false);
+		c.add(ll);
+		c.add(l2);
 		t.start();
-	*/
+		c.setBackground(Color.yellow);
+		setVisible(true);
+		setSize(600, 600);
+	}
+}*/
 }
 
 public class tmp {
