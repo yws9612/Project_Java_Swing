@@ -85,18 +85,26 @@ public class find_id extends JFrame {
 				else {
 					try {
 						String que
-							="select id from member "
-								+"where name=? and email=?";
+							= "select id from member"+ 
+						" where name in (?) and email in (?)";
 						conn=Connect.get();
+						psmt=conn.prepareStatement(que);
 						psmt.setString(1, name);
 						psmt.setString(2, email);
-						psmt=conn.prepareStatement(que);
 						rs=psmt.executeQuery();
-						id=rs.getString(1);						
+						boolean f=rs.next();
+						if(f) {
+							while(rs.next()) {
+								id=rs.getString(1);		
+							}
+						}
+						else {
+							result.setText("아이디가 존재하지 않습니다.");							
+						}
 					} catch(Exception exe) {
-						
+						exe.printStackTrace();
 					}
-					if(id.equals("")) {
+					if(id.equals(null)) {
 						result.setText("아이디가 존재하지 않습니다.");
 					}
 					else {

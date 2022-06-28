@@ -29,7 +29,7 @@ public class find_pw extends JFrame {
 	JButton find=new JButton("찾기");
 	JButton close=new JButton("닫기");
 	
-	public find_pw() {
+	public find_pw(){
 		Container c=getContentPane();
 		
 		c.setLayout(null);
@@ -108,14 +108,31 @@ public class find_pw extends JFrame {
 							="select pw from member "
 								+"where name=? and email=? and id=?";
 						conn=Connect.get();
+						psmt=conn.prepareStatement(que);
 						psmt.setString(1, name);
 						psmt.setString(2, email);
 						psmt.setString(3, id);
-						psmt=conn.prepareStatement(que);
 						rs=psmt.executeQuery();
-						pw=rs.getString(1);						
-					} catch(Exception exe) {
+						boolean f=rs.next();
+						if(f) {
+							while(rs.next()) {
+								pw=rs.getString(1);		
+							}
+						}
+						else {
+							String alert1="아이디, 이름 또는 이메일을";
+							String alert2="다시 한 번 확인해 주세요.";
+							result.setText
+								("<html><body><center>"+alert1
+										+"<br>"+alert2+"</body><html>");
+						}
 						
+					} catch(Exception exe) {
+						String alert1="아이디, 이름 또는 이메일을";
+						String alert2="다시 한 번 확인해 주세요.";
+						result.setText
+							("<html><body><center>"+alert1
+									+"<br>"+alert2+"</body><html>");
 					}
 					if(pw.equals("")) {
 						String alert1="아이디, 이름 또는 이메일을";
