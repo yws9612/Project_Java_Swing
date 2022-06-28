@@ -2,6 +2,7 @@
 ## 프로젝트 개요
 ## 사용 언어
 Java, JavaSwing(JFrame), Oracle(Database)
+
 ## 개발자(GIT 계정)
 서연운 ([yws9612](https://github.com/yws9612))  
 이송이 ([nonameleel](https://github.com/nonameleel))  
