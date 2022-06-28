@@ -79,7 +79,7 @@ public class tmp {
 		String getword1, hint1;
 		char [] word1;
 		try {
-			conn=connecttoDB.get();
+			conn = Connect.get();
 			String que1="select * from word1";
 			psmt=conn.prepareStatement(que1);
 			rs=psmt.executeQuery();
@@ -96,7 +96,7 @@ public class tmp {
 			word1=new char[getword1.length()];
 			for(int i=0; i<getword1.length(); i++) {
 				word1[i]=getword1.charAt(i);
-			}			
+			}
 		} catch(Exception e) {
 			
 		}
