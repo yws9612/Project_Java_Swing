@@ -11,18 +11,31 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 class thread extends Thread {
+	JLabel countdown=new JLabel(); 
+	thread(JLabel l) {
+		countdown=l;
+	}
 	public void run() {
 		try {
+			sleep(1000);
 			for(int i=3; i>0; i--) {
-				System.out.println(i);
-				//라벨 구현 후 settext로 바꿔주세요
+				countdown.setText(Integer.toString(i));
 				sleep(1000); //1초
 			}
+			countdown.setVisible(false);
 		} catch(Exception e) {
 			System.out.println("fail");
 		}
 		
 	}
+	/* 프레임에 넣을 때
+	 	JLabel ll=new JLabel();
+		thread t=new thread(ll);
+		ll.setSize(300, 300);
+		ll.setHorizontalAlignment(JLabel.CENTER);
+		add(ll);
+		t.start();
+	*/
 }
 
 public class tmp {
@@ -33,10 +46,6 @@ public class tmp {
 		PreparedStatement psmt=null;
 		ResultSet rs=null; 
 		//게임 부분 구체적인 구현 전 생각나는 코드를 모두 작성합니다.(송이)
-		
-		//쓰레드실행
-		thread t=new thread();
-		t.start();
 		
 		//랜덤으로 단어 가져와서 정답 비교를 위해 배열로 쪼개기
 		String getword1, hint1;
