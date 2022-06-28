@@ -10,6 +10,8 @@ import javax.swing.*;
 public class sign_up extends JFrame {
 	Connection conn=null; 
 	PreparedStatement psmt=null;
+	ResultSet rs = null;
+	CallableStatement cstmt = null;
 	
 	String id, pw, pw2, name, email;
 	
@@ -198,12 +200,14 @@ public class sign_up extends JFrame {
 				}
 				else {
 					try {
-						String que="execute id_check(?)";
+						String que="{ ? = fu_id_check(?)}";
 						conn=Connect.get(); 
-						psmt=conn.prepareStatement(que); //sql실행
-						psmt.setString(1, id);
-						boolean rs=psmt.execute();
-						if(rs) {
+						cstmt = conn.prepareCall(que);
+						cstmt.registerOutParameter(1, java.sql.Types.INTEGER);
+						cstmt.setString(2, id);
+						cstmt.execute();
+						int rsl = cstmt.getInt(1);
+						if(rsl!=0) {
 							id_checklabel.setText
 								("이미 사용하고 있는 아이디입니다.");
 						}
@@ -212,6 +216,7 @@ public class sign_up extends JFrame {
 								("사용할 수 있는 아이디입니다.");
 						}
 					} catch (Exception e_id_check) {
+						e_id_check.printStackTrace();
 						System.out.println("id check fail");
 					}
 				}
