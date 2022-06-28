@@ -21,11 +21,13 @@ public class Link {
 			
 			//테이블에서 값 불러오기
 			while(rs.next()) {
+				int m_no = rs.getInt(1);
 				String ID = rs.getString(2);
-				System.out.println(ID);
+				System.out.println(m_no + " " + ID);
 			}
 		}catch(Exception e) {
 			System.out.println("select() 실행 오류 : " + e);
+			e.printStackTrace();
 		}
         rs.close();
         psmt.close();
