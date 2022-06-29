@@ -28,6 +28,7 @@ public class game1 extends JPanel {
 	}
 	public void set_length(int w_length) {
 		this.w_length=w_length;
+		System.out.println(w_length);
 	}	
 	
 	game1() {
@@ -168,13 +169,13 @@ public class game1 extends JPanel {
 	}
 
 	public static void main(String[] args) {
-		
-		JFrame tmp=new JFrame();
-		JPanel tmp2=new game1();
+
 		game1 g1=new game1();
 		g1.set_length(5);
+		
+		JFrame tmp=new JFrame();
 		tmp.setLayout(new BorderLayout());
-		tmp.add(tmp2,BorderLayout.CENTER);
+		tmp.add(g1,BorderLayout.CENTER);
 		tmp.setSize(700, 700);
 		tmp.setVisible(true);
 		tmp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
