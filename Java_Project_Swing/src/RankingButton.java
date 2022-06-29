@@ -58,7 +58,7 @@ public class RankingButton extends JFrame {
 
 		JLabel lb_rk06 = new JLabel("\uC21C\uC704\uD45C");
 		lb_rk06.setHorizontalAlignment(SwingConstants.CENTER);
-		lb_rk06.setFont(new Font("留묒� 怨좊뵓", Font.PLAIN, 20));
+		lb_rk06.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
 		lb_rk06.setBounds(375, 53, 150, 35);
 		contentPane.add(lb_rk06);
 
@@ -172,11 +172,11 @@ public class RankingButton extends JFrame {
 	}
 
 	public void select() {
-		Connection conn=null; //DB占쏙옙 占쏙옙占쏙옙占싹댐옙 占쏙옙占쏙옙占쏙옙占싱쏙옙
+		Connection conn=null; 
 
-		PreparedStatement psmt=null; //sql占쏙옙 占쏙옙체
+		PreparedStatement psmt=null; 
 
-        ResultSet rs=null; //sql占쏙옙 占쏙옙占쏙옙 占쏙옙환(占쏙옙占쏙옙 占쏙옙占썅에 占쏙옙占쏙옙 占쏙옙占쏙옙占� 占쏙옙占쏙옙)
+        ResultSet rs=null; 
         
         
         try {
@@ -186,14 +186,14 @@ public class RankingButton extends JFrame {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			
-			//占쏙옙占싱븝옙占쏙옙 占쏙옙 占쌀뤄옙占쏙옙占쏙옙
+			
 			while(rs.next()) {
 				String id = rs.getString(1);
 				int scores = rs.getInt(2);
 				System.out.println(id + " " + scores);
 			}
 		}catch(Exception e) {
-			System.out.println("select() 占쏙옙占쏙옙 占쏙옙占쏙옙 : " + e);
+			System.out.println("select() : " + e);
 		}
 	}
 }
