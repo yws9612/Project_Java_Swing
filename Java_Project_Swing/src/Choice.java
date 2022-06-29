@@ -66,7 +66,7 @@ public class Choice extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new RankingButton();
-                dispose(); // Ã¢ ¾Èº¸ÀÌ°Ô ÇÏ±â 
+                dispose(); // Ã¢ ï¿½Èºï¿½ï¿½Ì°ï¿½ ï¿½Ï±ï¿½ 
             }
         });
 		
@@ -75,7 +75,7 @@ public class Choice extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-//				new Main();
+				new login();
 				dispose();
 			}
 		});

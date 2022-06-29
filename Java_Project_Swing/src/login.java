@@ -15,7 +15,19 @@ import java.awt.Font;
 import javax.swing.UIManager;
 
 
-public class login extends JPanel {
+class Getter{
+	private String result;
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+	
+}
+public class login extends JFrame {
 	Connection conn=null; 
 	PreparedStatement psmt=null;
 	ResultSet rs=null; 	
@@ -100,18 +112,22 @@ public class login extends JPanel {
 						psmt=conn.prepareStatement(que);
 						psmt.setString(1, id);
 						rs=psmt.executeQuery();
-						String pw_db=rs.getString(1);
+						Getter get = new Getter();
+						while(rs.next()) {
+							get.setResult(rs.getString(1));
+						}
 						
-						if(pw.equals(pw_db)) {						
+						if(pw.equals(get.getResult())) {						
 							new Choice();
-							setVisible(false);							
+							dispose();
 						}else {
 							alter.setText("id 혹은 비밀번호를 확인하세요.");
 						}
 						
 					} catch(Exception e_compare) {
 						System.out.println("e_compare_error");
-					}					
+					}
+					
 				}
 			}
 		});
@@ -128,8 +144,9 @@ public class login extends JPanel {
 			}
 		});
 		
-		setSize(331,363);
+		setSize(800,800);
 		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {
@@ -167,12 +184,7 @@ public class login extends JPanel {
 		
 		
 		//테스트용 임시프레임
-		JFrame tmp=new JFrame();
-		JPanel log_in=new login();
-		tmp.getContentPane().setLayout(new BorderLayout());
-		tmp.getContentPane().add(log_in,BorderLayout.CENTER);
-		tmp.setSize(800,800);
-		tmp.setVisible(true);
+		JFrame log_in=new login();
 		
 
 	}

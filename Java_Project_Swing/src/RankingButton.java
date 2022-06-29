@@ -24,39 +24,6 @@ public class RankingButton extends JFrame {
 	 */
 	public static void main(String[] args) throws SQLException {
 
-//		Connection conn = null; // DB¿Í ¿¬°áÇÏ´Â ÀÎÅÍÆäÀÌ½º
-//
-//		PreparedStatement psmt = null; // sql¹® °´Ã¼
-//
-//		ResultSet rs = null; // sql¿¡ ´ëÇÑ ¹İÈ¯(Äõ¸® ½ÇÇà¿¡ ´ëÇÑ °á°ú°ª ÀúÀå)
-//
-//		try {
-//			String que = "select * from member";
-//			conn = Connect.get(); // DB¿¬°á
-//			psmt = conn.prepareStatement(que);
-//			rs = psmt.executeQuery();
-//
-//			// select => executeQuery()
-//
-//			// DML(insert,update,delete) => executeUpdate();
-//			while (rs.next()) {
-//				String ID = rs.getString(2);
-//				System.out.println(ID);
-//				// DB¿¡ ÀÖ´Â °ªµéÀ» °¡Á®¿È
-//			}
-//
-//		}
-//
-//		catch (Exception e) {
-//
-//			e.printStackTrace();
-//
-//		}
-//
-//		rs.close();
-//		psmt.close();
-//		conn.close();
-
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -74,7 +41,6 @@ public class RankingButton extends JFrame {
 	 * Create the frame.
 	 */
 	public RankingButton() {
-//		connect();
 		select();
 
 		Link link = new Link();
@@ -92,37 +58,37 @@ public class RankingButton extends JFrame {
 
 		JLabel lb_rk06 = new JLabel("\uC21C\uC704\uD45C");
 		lb_rk06.setHorizontalAlignment(SwingConstants.CENTER);
-		lb_rk06.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
+		lb_rk06.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 20));
 		lb_rk06.setBounds(375, 53, 150, 35);
 		contentPane.add(lb_rk06);
 
 		JLabel lb_rk01 = new JLabel("1.");
 		lb_rk01.setHorizontalAlignment(SwingConstants.LEFT);
-		lb_rk01.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
+		lb_rk01.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 20));
 		lb_rk01.setBounds(300, 140, 300, 70);
 		contentPane.add(lb_rk01);
 
 		JLabel lb_rk02 = new JLabel("2.");
 		lb_rk02.setHorizontalAlignment(SwingConstants.LEFT);
-		lb_rk02.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
+		lb_rk02.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 20));
 		lb_rk02.setBounds(300, 210, 300, 70);
 		contentPane.add(lb_rk02);
 
 		JLabel lb_rk03 = new JLabel("3.");
 		lb_rk03.setHorizontalAlignment(SwingConstants.LEFT);
-		lb_rk03.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
+		lb_rk03.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 20));
 		lb_rk03.setBounds(300, 280, 300, 70);
 		contentPane.add(lb_rk03);
 
 		JLabel lb_rk04 = new JLabel("4.");
 		lb_rk04.setHorizontalAlignment(SwingConstants.LEFT);
-		lb_rk04.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
+		lb_rk04.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 20));
 		lb_rk04.setBounds(300, 350, 300, 70);
 		contentPane.add(lb_rk04);
 
 		JLabel lb_rk05 = new JLabel("5.");
 		lb_rk05.setHorizontalAlignment(SwingConstants.LEFT);
-		lb_rk05.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
+		lb_rk05.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 20));
 		lb_rk05.setBounds(300, 420, 300, 70);
 		contentPane.add(lb_rk05);
 
@@ -130,11 +96,11 @@ public class RankingButton extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new Choice();
-				dispose(); // Ã¢ ¾Èº¸ÀÌ°Ô ÇÏ±â
+				dispose();
 			}
 		});
 
-		// DB Á¢¼Ó ÈÄ select ¹®ÀåÀ» »ç¿ëÇØ Ãâ·ÂÇÏ´Â ±¸¹®
+		
 
 		setSize(900, 640);
 		setLocationRelativeTo(null);
@@ -144,11 +110,11 @@ public class RankingButton extends JFrame {
 	}
 
 	public void select() {
-		Connection conn=null; //DB¿Í ¿¬°áÇÏ´Â ÀÎÅÍÆäÀÌ½º
+		Connection conn=null; //DBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½
 
-		PreparedStatement psmt=null; //sql¹® °´Ã¼
+		PreparedStatement psmt=null; //sqlï¿½ï¿½ ï¿½ï¿½Ã¼
 
-        ResultSet rs=null; //sql¿¡ ´ëÇÑ ¹İÈ¯(Äõ¸® ½ÇÇà¿¡ ´ëÇÑ °á°ú°ª ÀúÀå)
+        ResultSet rs=null; //sqlï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½à¿¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
         
         
         try {
@@ -158,14 +124,14 @@ public class RankingButton extends JFrame {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			
-			//Å×ÀÌºí¿¡¼­ °ª ºÒ·¯¿À±â
+			//ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
 			while(rs.next()) {
 				String id = rs.getString(1);
 				int scores = rs.getInt(2);
 				System.out.println(id + " " + scores);
 			}
 		}catch(Exception e) {
-			System.out.println("select() ½ÇÇà ¿À·ù : " + e);
+			System.out.println("select() ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : " + e);
 		}
 	}
 }

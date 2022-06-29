@@ -292,7 +292,7 @@ public class sign_up extends JFrame {
 
 		setSize(510, 460);
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {
