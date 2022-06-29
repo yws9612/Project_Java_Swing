@@ -3,7 +3,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
-
+//main branch 건들지 마시고 branch 추가사항 있으면 말씀해주세요
 class log_in {
 	HashMap<String, String> log_in=new HashMap<String, String>();
 	String id, pw;
@@ -12,10 +12,10 @@ class log_in {
 		pw=tf_pw.getText();
 		if(log_in.containsKey(id)) {
 			if(pw.equals(log_in.get(id))) {
-				//메뉴화면으로 넘어갑니다
+				//korean break T.T success login
 			}
 			else {
-				//아이디 비번 확인하라는 라벨이 붙습니다.
+				//check id and pw
 			}
 		}
 	}
@@ -30,10 +30,11 @@ class search_id {
 		String srch=name+email;
 		if(srch_id.containsKey(name)) {
 			if(email.equals(srch_id.get(name))) {
-				//아이디를 보여줍니다. -- 아이디 찾을 방법이 없습니다.
+				//change key or 
+				//select id from Member where name=name and email=email 
 			}
 			else {
-				//아이디가 없습니다.
+				//no info
 			}
 		}
 	}
@@ -46,10 +47,10 @@ class search_pw {
 		id=tf_id.getText();
 		if(srch_pw.containsKey(id)) {
 			String pw=srch_pw.get(id);
-			//비번를 보여줍니다.
+			//print pw
 		}
 		else {
-			//아이디가 없습니다.
+			//wrong id
 		}
 	}
 }
@@ -57,20 +58,20 @@ class search_pw {
 public class login {
 
 	public static void main(String[] args) {
-		Connection conn=null; //DB와 연결하는 인터페이스
-		PreparedStatement psmt=null; //sql문 객체
-		ResultSet rs=null; //sql에 대한 반환(쿼리 실행에 대한 결과값 저장)
+		
+		/* 참고용 DB에서 내용 추출 코드
+		Connection conn=null; 
+		PreparedStatement psmt=null; 
+		ResultSet rs=null; 
 		try {
-			String que="select * from emp1";
-			conn=A1.get(); //DB연결
-			psmt=conn.prepareStatement(que); //sql실행
+			String que="";
+			conn=ConnecttoDB.get(); 
+			psmt=conn.prepareStatement(que); 
 			rs=psmt.executeQuery();
-			/*select -> executeQuery()
-			DML(insert, update, delete) -> executeUpdate(); */
+			/select -> executeQuery()
+			DML(insert, update, delete) -> executeUpdate(); /
 			
-			/*
 			while(rs.next()) {
-				//DB에 있는 값을 가져온다.
 				String empno=rs.getString(1);
 				String ename=rs.getString(2);
 				String job=rs.getString(3);
@@ -80,14 +81,14 @@ public class login {
 				int comm=rs.getInt(7);
 				int deptno=rs.getInt(8);
 				System.out.println(empno+" "+ename+" "+hiredate);
-				*/
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		rs.close();
 		psmt.close();
-		conn.close();​
+		conn.close();
+		*/
 		
 
 	}
