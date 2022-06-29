@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,24 +26,46 @@ public class game1 extends JPanel {
 		for(int i=0; i<w_length; i++) {
 			grading[i]=boo[i];
 		}
-	}
-	public void set_length(int w_length) {
-		this.w_length=w_length;
-		System.out.println(w_length);
 	}	
 	
-	game1() {
-		setLayout(new GridLayout(w_length,5));		
+	game1(int a) {
+		System.out.println(a);
+		w_length=a;
+		setLayout(new GridLayout(5,w_length));		
 		
 		input=new char[w_length];
 		grading=new boolean[w_length];
+		
+		for(int i=0;i<6;i++) {
+			input_field[i] = new JTextField();				
+		}
+		
+		for (int i = 0; i < w_length; i++) {
+			add(input_field[i]);
+		}
+		for (int i = 0; i < w_length; i++) {
+			b[i] = new JLabel();
+			add(b[i]);
+		}
+		for (int i = 0; i < w_length; i++) {
+			c[i] = new JLabel();
+			c[i].setText("1111");
+			add(c[i]);
+		}
+		for (int i = 0; i < w_length; i++) {
+			d[i] = new JLabel();
+			add(d[i]);
+		}
+		for (int i = 0; i < w_length; i++) {
+			e[i] = new JLabel();
+			add(e[i]);
+		}
 
 		// textfield 글자수 제한+자동포커스 이동
-		/*
 		input_field[0].addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent ke) {
 				JTextField src = (JTextField) ke.getSource();
-				if (src.getText().length() > 1) {
+				if (src.getText().length() >= 1) {
 					ke.consume();
 					input_field[1].requestFocus();
 				}
@@ -51,7 +74,7 @@ public class game1 extends JPanel {
 		input_field[1].addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent ke) {
 				JTextField src = (JTextField) ke.getSource();
-				if (src.getText().length() > 1) {
+				if (src.getText().length() >= 1) {
 					ke.consume();
 					input_field[2].requestFocus();
 				}
@@ -60,7 +83,7 @@ public class game1 extends JPanel {
 		input_field[2].addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent ke) {
 				JTextField src = (JTextField) ke.getSource();
-				if (src.getText().length() > 1) {
+				if (src.getText().length() >= 1) {
 					ke.consume();
 					input_field[3].requestFocus();
 				}
@@ -69,7 +92,7 @@ public class game1 extends JPanel {
 		input_field[3].addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent ke) {
 				JTextField src = (JTextField) ke.getSource();
-				if (src.getText().length() > 1) {
+				if (src.getText().length() >= 1) {
 					ke.consume();
 					input_field[4].requestFocus();
 				}
@@ -78,7 +101,7 @@ public class game1 extends JPanel {
 		input_field[4].addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent ke) {
 				JTextField src = (JTextField) ke.getSource();
-				if (src.getText().length() > 1) {
+				if (src.getText().length() >= 1) {
 					ke.consume();
 					input_field[5].requestFocus();
 				}
@@ -87,7 +110,7 @@ public class game1 extends JPanel {
 		input_field[5].addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent ke) {
 				JTextField src = (JTextField) ke.getSource();
-				if (src.getText().length() > 1) {
+				if (src.getText().length() >= 1) {
 					ke.consume();
 					//채점 들어가야 함 
 				}
@@ -151,30 +174,24 @@ public class game1 extends JPanel {
 				}
 			}
 		});
-		*/
 		
+
 		
-		
-		for(int i=0; i<w_length; i++) {
-			input_field[i]=new JTextField();
-			add(input_field[i]);
-			add(b[i]);
-			add(c[i]);
-			add(d[i]);
-			add(e[i]);
-		}
-		
-		setSize(w_length*30, (30*5)+(10*4));
+
+		setSize((w_length * 30)+(10*(w_length-1)), (30 * 5) + (10 * 4));
 		setVisible(true);
+		
+		
 	}
 
 	public static void main(String[] args) {
 
-		game1 g1=new game1();
-		g1.set_length(5);
+		game1 g1=new game1(4);
+		//JPanel tmp2=g1;
 		
 		JFrame tmp=new JFrame();
 		tmp.setLayout(new BorderLayout());
+		tmp.add(new JLabel("abc"),BorderLayout.NORTH);
 		tmp.add(g1,BorderLayout.CENTER);
 		tmp.setSize(700, 700);
 		tmp.setVisible(true);
