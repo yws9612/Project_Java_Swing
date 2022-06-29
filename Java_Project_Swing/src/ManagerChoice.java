@@ -14,8 +14,8 @@ public class ManagerChoice extends JFrame{
 	
 	ManagerChoice(){
 		Container c = getContentPane();
+		
 		mem.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -57,7 +57,7 @@ public class ManagerChoice extends JFrame{
 			}
 			
 		});
-	
+		setVisible(true);
 		setLayout(null);
 		
 		
