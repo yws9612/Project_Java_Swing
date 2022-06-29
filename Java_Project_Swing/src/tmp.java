@@ -65,6 +65,27 @@ class thread extends Thread {
 	}
 }*/
 }
+class Getters{
+	private String word1,hint1;
+
+	public String getWord1() {
+		return word1;
+	}
+
+	public void setWord1(String word1) {
+		this.word1 = word1;
+	}
+
+	public String getHint1() {
+		return hint1;
+	}
+
+	public void setHint1(String hint1) {
+		this.hint1 = hint1;
+	}
+
+	
+}
 
 public class tmp {
 
@@ -76,60 +97,57 @@ public class tmp {
 		//게임 부분 구체적인 구현 전 생각나는 코드를 모두 작성합니다.(송이)
 		
 		//랜덤으로 단어 가져와서 정답 비교를 위해 배열로 쪼개기
-		String getword1, hint1;
 		char [] word1;
+		Getters get = new Getters();
 		try {
-			conn = Connect.get();
-			String que1="select * from word1";
-			psmt=conn.prepareStatement(que1);
-			rs=psmt.executeQuery();
-			rs.last();
-			int row1=rs.getRow();
-			int word1num=(int)(Math.random()*row1)+1;
-			
-			String que2="select w1, hint from word1 where w_no=?";
+			conn = Connect.get();		
+			String que2="select w1_no, w1, w1_h from w1_table where w1_no = "+"(select trunc(dbms_random.value(1,150)) from dual)";
 			psmt=conn.prepareStatement(que2);
-			psmt.setInt(1,word1num);
 			rs=psmt.executeQuery();
-			getword1=rs.getString(1);
-			hint1=rs.getString(2);
-			word1=new char[getword1.length()];
-			for(int i=0; i<getword1.length(); i++) {
-				word1[i]=getword1.charAt(i);
+			while(rs.next()) {
+				get.setWord1(rs.getString(2));
+				get.setHint1(rs.getString(3));
+				
+			}
+			
+			word1=new char[get.getWord1().length()];
+			for(int i=0; i<get.getWord1().length(); i++) {
+				word1[i]=get.getWord1().charAt(i);
+				System.out.print(word1[i]);
 			}
 		} catch(Exception e) {
-			
+			e.printStackTrace();
 		}
 		
 		//게임부분 라벨/인풋칸 생성
-		int w_length=getword1.length();
-		
-		JFrame tmp=new JFrame();
-		tmp.setLayout(new GridLayout(w_length,5));
-		
-		JLabel [] a=new JLabel[w_length];
-		JLabel [] b=new JLabel[w_length];
-		JLabel [] c=new JLabel[w_length];
-		JLabel [] d=new JLabel[w_length];
-		JLabel [] e=new JLabel[w_length];
-		JTextField [] input_field=new JTextField[w_length];
-		char [] input=new char[w_length];
-		boolean [] grading=new boolean[w_length];
+//		int w_length=get.getWord1().length();
+//		
+//		JFrame tmp=new JFrame();
+//		tmp.setLayout(new GridLayout(w_length,5));
+//		
+//		JLabel [] a=new JLabel[w_length];
+//		JLabel [] b=new JLabel[w_length];
+//		JLabel [] c=new JLabel[w_length];
+//		JLabel [] d=new JLabel[w_length];
+//		JLabel [] e=new JLabel[w_length];
+//		JTextField [] input_field=new JTextField[w_length];
+//		char [] input=new char[w_length];
+//		boolean [] grading=new boolean[w_length];
 		
 		//textfield 글자수 제한+자동포커스 이동
-		for(int i=0; i<w_length; i++) {
-			input_field[i].addKeyListener(new KeyAdapter() {
-				public void keyTyped(KeyEvent ke) {
-					JTextField src=(JTextField)ke.getSource();
-					if(src.getText().length()>1) {
-						ke.consume();
-						if(i<w_length) {
-							input_field[i+1].requestFocus();
-						}
-					}
-				}
-			});
-		}//포문으로 하면 안됨;; 
+//		for(int i=0; i<w_length; i++) {
+//			input_field[i].addKeyListener(new KeyAdapter() {
+//				public void keyTyped(KeyEvent ke) {
+//					JTextField src=(JTextField)ke.getSource();
+//					if(src.getText().length()>1) {
+//						ke.consume();
+//						if(i<w_length) {
+//							input_field[i+1].requestFocus();
+//						}
+//					}
+//				}
+//			});
+//		}//포문으로 하면 안됨;; 
 		//필드마다 따로 설정 넣어야 하고 키어뎁터를 클래스로 빼서 각각 깔끔하게 짜기
 		
 		input_field[w_length].addActionListener(new ActionListener() {

@@ -15,6 +15,22 @@ import java.sql.*;
 
 import javax.swing.SwingConstants;
 
+class Setter{
+	private String ID;
+	private int scores;
+	public String getID() {
+		return ID;
+	}
+	public void setID(String iD) {
+		ID = iD;
+	}
+	public int getScores() {
+		return scores;
+	}
+	public void setScores(int scores) {
+		this.scores = scores;
+	}
+}
 public class RankingButton extends JFrame {
 
 	private JPanel contentPane;
@@ -142,7 +158,7 @@ public class RankingButton extends JFrame {
 		lb_rk05.setBounds(300, 420, 100, 70);
 		contentPane.add(lb_rk05);
 		
-		JLabel lb_rk15 = new JLabel("id5");
+		JLabel lb_rk15 = new JLabel();
 		lb_rk15.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_rk15.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
 		lb_rk15.setBounds(400, 420, 100, 70);
@@ -153,6 +169,8 @@ public class RankingButton extends JFrame {
 		lb_rk25.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
 		lb_rk25.setBounds(500, 420, 100, 70);
 		contentPane.add(lb_rk25);
+		
+		
 
 		bt_rk01.addActionListener(new ActionListener() {
 			@Override
@@ -177,8 +195,7 @@ public class RankingButton extends JFrame {
 		PreparedStatement psmt=null; 
 
         ResultSet rs=null; 
-        
-        
+        Setter set = new Setter();        
         try {
 			String sql = "select id, scores from (select id, scores from member natural join score order by scores desc) where rownum <= 5";
 			
@@ -189,9 +206,11 @@ public class RankingButton extends JFrame {
 			
 			while(rs.next()) {
 				String id = rs.getString(1);
-				int scores = rs.getInt(2);
-				System.out.println(id + " " + scores);
+				int scores = rs.getInt(2);	
+				set.setID(id);
+				set.setScores(scores);
 			}
+			
 		}catch(Exception e) {
 			System.out.println("select() : " + e);
 		}
