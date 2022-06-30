@@ -38,8 +38,7 @@ class Delete extends JFrame{
 				while(rs.next()) {
 					gs.setD_no(rs.getInt(1));
 				}
-				String quer = "delete * from member where m_no = ?";
-				pstmt.setInt(1,gs.getD_no());
+				String quer = "update member set enable = 'N' where m_no = ?";
 				pstmt.executeUpdate(quer);
 			} catch (Exception e) {
 				System.out.println("삭제 쿼리문 오류" + e);
@@ -77,7 +76,7 @@ public class ManageMember extends JFrame {
 
 		// sql
 		try {
-			String query1 = "select * from member natural join manager order by m_no";
+			String query1 = "select * from member natural join manager where enable ='Y' order by m_no";
 			pstmt = conne.prepareStatement(query1);
 			rs = pstmt.executeQuery();
 
@@ -95,8 +94,8 @@ public class ManageMember extends JFrame {
 				String s_pw = rs.getString(3);
 				String s_name = rs.getString(4);
 				String s_email = rs.getString(5);
-				java.sql.Date r_date = rs.getDate(7);
-				java.sql.Date l_date = rs.getDate(8);
+				java.sql.Date r_date = rs.getDate(8);
+				java.sql.Date l_date = rs.getDate(9);
 
 				Object data[] = { false, s_no, s_id, s_pw, s_name, s_email, r_date, l_date };
 				model.addRow(data);
