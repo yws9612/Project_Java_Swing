@@ -39,13 +39,9 @@ class Setter{
 public class RankingButton extends JFrame {
 
 	private JPanel contentPane;
-	Image image=new ImageIcon(
-		"C:/Users/soldesk/Desktop/SY/image/ranking.png")
+	Image image=new ImageIcon("image/ranking.png")			
 			.getImage();
 	
-	public void paint(Graphics g) {
-		g.drawImage(image, 8, 40, null);
-	}
 
 	/**
 	 * Launch the application.
@@ -214,6 +210,10 @@ public class RankingButton extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setVisible(true);
+	}
+	
+	public void paint(Graphics g) {
+		g.drawImage(image, 8, 40, null);
 	}
 
 	public void select() {
