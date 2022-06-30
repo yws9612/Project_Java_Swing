@@ -29,7 +29,6 @@ public class game1 extends JPanel {
 	}	
 	
 	game1(int a) {
-		System.out.println(a);
 		w_length=a;
 		setLayout(new GridLayout(5,w_length));		
 		
@@ -49,7 +48,6 @@ public class game1 extends JPanel {
 		}
 		for (int i = 0; i < w_length; i++) {
 			c[i] = new JLabel();
-			c[i].setText("1111");
 			add(c[i]);
 		}
 		for (int i = 0; i < w_length; i++) {
@@ -174,15 +172,9 @@ public class game1 extends JPanel {
 					//채점+다음 시도로 넘기기
 				}
 			}
-		});
-		
+		});		
 
-		
-
-		setSize((w_length * 30)+(10*(w_length-1)), (30 * 5) + (10 * 4));
-		setVisible(true);
-		
-		
+		setVisible(true);		
 	}
 
 	public static void main(String[] args) {
