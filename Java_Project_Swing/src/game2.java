@@ -3,14 +3,14 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-public class game1 extends JPanel {
+public class game2 extends JPanel {
 	JLabel [] a=new JLabel[6];
 	JLabel [] b=new JLabel[6];
 	JLabel [] c=new JLabel[6];
 	JLabel [] d=new JLabel[6];
 	JLabel [] e=new JLabel[6];;
 	JTextField [] input_field=new JTextField[6];
-	public char [] input1;
+	public char [] input2;
 	boolean [] grading;
 	int w_length;
 	
@@ -18,25 +18,26 @@ public class game1 extends JPanel {
 		for(int i=0; i<w_length; i++) {
 			grading[i]=boo[i];
 		}
-	}
-		
-	public game1(int a) {
-		w_length=a;
+	}	
+	
+	public game2(int length, char g1[]) {
+		this.w_length=length;
 		setLayout(new GridLayout(5,w_length));		
 		
-		input1=new char[w_length];
+		input2=new char[w_length];
 		grading=new boolean[w_length];
 		
 		for(int i=0;i<6;i++) {
 			input_field[i] = new JTextField();				
 		}
-		
+				
 		for (int i = 0; i < w_length; i++) {
-			add(input_field[i]);
+			a[i] = new JLabel();
+			a[i].setText(Character.toString(g1[i]));
+			add(a[i]);
 		}
 		for (int i = 0; i < w_length; i++) {
-			b[i] = new JLabel();
-			add(b[i]);
+			add(input_field[i]);
 		}
 		for (int i = 0; i < w_length; i++) {
 			c[i] = new JLabel();
@@ -132,7 +133,7 @@ public class game1 extends JPanel {
 				if (src.getText().length() >= 1) {
 					ke.consume();
 					for(int i=0; i<6; i++) {
-						input1[i]=input_field[i].getText().charAt(0);
+						input2[i]=input_field[i].getText().charAt(0);
 					}					
 					//채점+다음 시도로 넘기기
 				}
@@ -144,7 +145,7 @@ public class game1 extends JPanel {
 		input_field[w_length-1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for(int i=0; i<w_length; i++) {
-					input1[i]=input_field[i].getText().charAt(0);
+					input2[i]=input_field[i].getText().charAt(0);
 				}
 				//채점+다음 시도로 넘기기				
 			}
@@ -156,7 +157,7 @@ public class game1 extends JPanel {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_TAB) {
 					for(int i=0; i<6; i++) {
-						input1[i]=input_field[i].getText().charAt(0);
+						input2[i]=input_field[i].getText().charAt(0);
 					}
 					//채점+다음 시도로 넘기기
 				}
@@ -165,20 +166,8 @@ public class game1 extends JPanel {
 
 		setVisible(true);		
 	}
-
 	public static void main(String[] args) {
 
-		game1 g1=new game1(4);
-		//JPanel tmp2=g1;
-		
-		JFrame tmp=new JFrame();
-		tmp.setLayout(new BorderLayout());
-		tmp.add(new JLabel("abc"),BorderLayout.NORTH);
-		tmp.add(g1,BorderLayout.CENTER);
-		tmp.setSize(700, 700);
-		tmp.setVisible(true);
-		tmp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 	}
 
 }

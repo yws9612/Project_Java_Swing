@@ -3,52 +3,56 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-public class game1 extends JPanel {
-	JLabel [] a=new JLabel[6];
-	JLabel [] b=new JLabel[6];
-	JLabel [] c=new JLabel[6];
-	JLabel [] d=new JLabel[6];
-	JLabel [] e=new JLabel[6];;
-	JTextField [] input_field=new JTextField[6];
-	public char [] input1;
-	boolean [] grading;
+public class game5 extends JPanel {
+	JLabel[] a = new JLabel[6];
+	JLabel[] b = new JLabel[6];
+	JLabel[] c = new JLabel[6];
+	JLabel[] d = new JLabel[6];
+	JLabel[] e = new JLabel[6];;
+	JTextField[] input_field = new JTextField[6];
+	public char[] input5;
+	boolean[] grading;
 	int w_length;
-	
-	public void set_grading(boolean [] boo) {
-		for(int i=0; i<w_length; i++) {
-			grading[i]=boo[i];
+
+	public void set_grading(boolean[] boo) {
+		for (int i = 0; i < w_length; i++) {
+			grading[i] = boo[i];
 		}
 	}
-		
-	public game1(int a) {
-		w_length=a;
-		setLayout(new GridLayout(5,w_length));		
-		
-		input1=new char[w_length];
-		grading=new boolean[w_length];
-		
-		for(int i=0;i<6;i++) {
-			input_field[i] = new JTextField();				
+
+	public game5(int length, char g1[], char g2[], char g3[], char g4[]) {
+		this.w_length = length;
+		setLayout(new GridLayout(5, w_length));
+
+		input5 = new char[w_length];
+		grading = new boolean[w_length];
+
+		for (int i = 0; i < 6; i++) {
+			input_field[i] = new JTextField();
 		}
-		
+
 		for (int i = 0; i < w_length; i++) {
-			add(input_field[i]);
+			a[i] = new JLabel();
+			a[i].setText(Character.toString(g1[i]));
+			add(a[i]);
 		}
 		for (int i = 0; i < w_length; i++) {
 			b[i] = new JLabel();
+			b[i].setText(Character.toString(g2[i]));
 			add(b[i]);
 		}
 		for (int i = 0; i < w_length; i++) {
 			c[i] = new JLabel();
+			c[i].setText(Character.toString(g3[i]));
 			add(c[i]);
 		}
 		for (int i = 0; i < w_length; i++) {
 			d[i] = new JLabel();
+			d[i].setText(Character.toString(g4[i]));
 			add(d[i]);
 		}
 		for (int i = 0; i < w_length; i++) {
-			e[i] = new JLabel();
-			add(e[i]);
+			add(input_field[i]);
 		}
 
 		// textfield 글자수 제한+자동포커스 이동
@@ -97,8 +101,8 @@ public class game1 extends JPanel {
 				}
 			}
 		});
-		
-		//엔터쳤을 때 액션
+
+		// 엔터쳤을 때 액션
 		input_field[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				input_field[1].requestFocus();
@@ -124,61 +128,49 @@ public class game1 extends JPanel {
 				input_field[5].requestFocus();
 			}
 		});
-		
-		
-		input_field[w_length-1].addKeyListener(new KeyAdapter() {
+
+		input_field[w_length - 1].addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent ke) {
 				JTextField src = (JTextField) ke.getSource();
 				if (src.getText().length() >= 1) {
 					ke.consume();
-					for(int i=0; i<6; i++) {
-						input1[i]=input_field[i].getText().charAt(0);
-					}					
-					//채점+다음 시도로 넘기기
+					for (int i = 0; i < 6; i++) {
+						input5[i] = input_field[i].getText().charAt(0);
+					}
+					// 채점+다음 시도로 넘기기
 				}
 			}
 		});
-		
-		
-		//단어 끝칸_엔터
-		input_field[w_length-1].addActionListener(new ActionListener() {
+
+		// 단어 끝칸_엔터
+		input_field[w_length - 1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for(int i=0; i<w_length; i++) {
-					input1[i]=input_field[i].getText().charAt(0);
+				for (int i = 0; i < w_length; i++) {
+					input5[i] = input_field[i].getText().charAt(0);
 				}
-				//채점+다음 시도로 넘기기				
+				// 채점+다음 시도로 넘기기
 			}
 		});
-		
-		//단어 끝칸_탭
-		input_field[w_length-1].setFocusTraversalKeysEnabled(false);
-		input_field[w_length-1].addKeyListener(new KeyAdapter() {
+
+		// 단어 끝칸_탭
+		input_field[w_length - 1].setFocusTraversalKeysEnabled(false);
+		input_field[w_length - 1].addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_TAB) {
-					for(int i=0; i<6; i++) {
-						input1[i]=input_field[i].getText().charAt(0);
+					for (int i = 0; i < 6; i++) {
+						input5[i] = input_field[i].getText().charAt(0);
 					}
-					//채점+다음 시도로 넘기기
+					// 채점+다음 시도로 넘기기
 				}
 			}
-		});		
+		});
 
-		setVisible(true);		
+		setVisible(true);
 	}
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 
-		game1 g1=new game1(4);
-		//JPanel tmp2=g1;
-		
-		JFrame tmp=new JFrame();
-		tmp.setLayout(new BorderLayout());
-		tmp.add(new JLabel("abc"),BorderLayout.NORTH);
-		tmp.add(g1,BorderLayout.CENTER);
-		tmp.setSize(700, 700);
-		tmp.setVisible(true);
-		tmp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 	}
 
 }
