@@ -31,6 +31,8 @@ public class game_frame extends JFrame{
 				g1=new game1(word_l);
 			} else {
 				g2 = new game2(word_l, g1.input1, return_grade1);
+				c.add(g2);
+				c.remove(g1);
 				boolean[] return_grade2 = new boolean[word_l];
 				return_grade2 = grade.grade_panel(g2.input2);
 				if (grade.grade_case()) {
