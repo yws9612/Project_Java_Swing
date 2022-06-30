@@ -14,7 +14,7 @@ public class ManageW1 extends JFrame{
 	DefaultTableModel model;
 	JScrollPane js;
 	String column[] = {"선택", "회원번호", "ID", "PW", "이름", "이메일", "가입일", "최근접속일"};
-	
+	JButton del;
 	Connection conne = null;
 	PreparedStatement pstmt= null;
 	ResultSet rs = null;
@@ -41,19 +41,36 @@ public class ManageW1 extends JFrame{
 			pstmt=conne.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
-				int m_no = rs.getInt(1);
-				String s_id = rs.getString(2); //s_id = sql_id
-				String s_pw = rs.getString(3);
-				String s_name = rs.getString(4);
-				String s_email = rs.getString(5);
-				java.sql.Date r_date = rs.getDate(7);
-				java.sql.Date l_date = rs.getDate(8);
-				
-				Object data[] = {false, m_no, s_id, s_pw, s_name, s_email, r_date, l_date};
-				model.addRow(data);
-				System.out.println(m_no + " " + s_id + " " + s_pw + " " + s_name + " " + s_email + " " + r_date + " " + l_date);
-			}
+			jtb.getColumn("선택").setCellRenderer(dtcr);
+			JCheckBox c_box = new JCheckBox();
+			jtb.getColumn("선택").setCellEditor(new DefaultCellEditor(c_box));
+			jtb.getColumn("선택").setPreferredWidth(40);
+			c_box.setHorizontalAlignment(JLabel.CENTER);
+			
+//			while(rs.next()) {
+//				int m_no = rs.getInt(1);
+//				String s_id = rs.getString(2); //s_id = sql_id
+//				String s_pw = rs.getString(3);
+//				String s_name = rs.getString(4);
+//				String s_email = rs.getString(5);
+//				java.sql.Date r_date = rs.getDate(7);
+//				java.sql.Date l_date = rs.getDate(8);
+//				
+//				Object data[] = {false, m_no, s_id, s_pw, s_name, s_email, r_date, l_date};
+//				model.addRow(data);
+//				System.out.println(m_no + " " + s_id + " " + s_pw + " " + s_name + " " + s_email + " " + r_date + " " + l_date);
+//				if(c_box.isSelected()) {
+//					del.addActionListener(new ActionListener() {
+//
+//						@Override
+//						public void actionPerformed(ActionEvent arg0) {
+//							// TODO Auto-generated method stub
+//							
+//						}
+//						
+//					});
+//				}
+//			}
 		}catch(Exception e_sql) {
 			System.out.println("Select Error" + e_sql);
 		}
@@ -77,11 +94,6 @@ public class ManageW1 extends JFrame{
 				}
 			});
 		
-		jtb.getColumn("선택").setCellRenderer(dtcr);
-		JCheckBox c_box = new JCheckBox();
-		jtb.getColumn("선택").setCellEditor(new DefaultCellEditor(c_box));
-		jtb.getColumn("선택").setPreferredWidth(40);
-		c_box.setHorizontalAlignment(JLabel.CENTER);
 		
 		c.add(js);
 		
@@ -92,6 +104,12 @@ public class ManageW1 extends JFrame{
 		// TODO Auto-generated method stub
 		new ManageW1();			
 	}
+	
+//		int answer = JOptioinPane.showConfirmDialog(this,"삭제하시겠습니까?","confirm",JOptionPane.YES_NO_OPTION);
+//		if(answer==JOptionPane.YES_OPTION) {
+//			System.out.println("가 삭제되었습니다.");
+//		}
+//	}
 	DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer() {
 		public Component getTableCellRendererComponent
 		(JTable table, Object value, boolean hasFocus, boolean isSelected, int row, int column) {
