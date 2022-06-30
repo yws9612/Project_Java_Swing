@@ -20,7 +20,8 @@ public class game5 extends JPanel {
 		}
 	}
 
-	public game5(int length, char g1[], char g2[], char g3[], char g4[]) {
+	public game5(int length, char g1[], char g2[], char g3[], char g4[],
+			boolean [] g1_b, boolean [] g2_b, boolean [] g3_b, boolean [] g4_b) {
 		this.w_length = length;
 		setLayout(new GridLayout(5, w_length));
 
@@ -34,21 +35,49 @@ public class game5 extends JPanel {
 		for (int i = 0; i < w_length; i++) {
 			a[i] = new JLabel();
 			a[i].setText(Character.toString(g1[i]));
+			a[i].setText(Character.toString(g1[i]));
+			if(g1_b[i]) {
+				a[i].setBackground(Color.green);
+			}
+			else {
+				a[i].setBackground(Color.pink);
+			}
 			add(a[i]);
 		}
 		for (int i = 0; i < w_length; i++) {
 			b[i] = new JLabel();
 			b[i].setText(Character.toString(g2[i]));
+			a[i].setText(Character.toString(g1[i]));
+			if(g2_b[i]) {
+				a[i].setBackground(Color.green);
+			}
+			else {
+				a[i].setBackground(Color.pink);
+			}
 			add(b[i]);
 		}
 		for (int i = 0; i < w_length; i++) {
 			c[i] = new JLabel();
 			c[i].setText(Character.toString(g3[i]));
+			a[i].setText(Character.toString(g1[i]));
+			if(g3_b[i]) {
+				a[i].setBackground(Color.green);
+			}
+			else {
+				a[i].setBackground(Color.pink);
+			}
 			add(c[i]);
 		}
 		for (int i = 0; i < w_length; i++) {
 			d[i] = new JLabel();
 			d[i].setText(Character.toString(g4[i]));
+			a[i].setText(Character.toString(g1[i]));
+			if(g4_b[i]) {
+				a[i].setBackground(Color.green);
+			}
+			else {
+				a[i].setBackground(Color.pink);
+			}
 			add(d[i]);
 		}
 		for (int i = 0; i < w_length; i++) {

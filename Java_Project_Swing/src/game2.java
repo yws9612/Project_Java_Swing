@@ -20,7 +20,7 @@ public class game2 extends JPanel {
 		}
 	}	
 	
-	public game2(int length, char g1[]) {
+	public game2(int length, char g1[], boolean g1_b[]) {
 		this.w_length=length;
 		setLayout(new GridLayout(5,w_length));		
 		
@@ -34,6 +34,12 @@ public class game2 extends JPanel {
 		for (int i = 0; i < w_length; i++) {
 			a[i] = new JLabel();
 			a[i].setText(Character.toString(g1[i]));
+			if(g1_b[i]) {
+				a[i].setBackground(Color.green);
+			}
+			else {
+				a[i].setBackground(Color.pink);
+			}			
 			add(a[i]);
 		}
 		for (int i = 0; i < w_length; i++) {
