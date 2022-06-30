@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -17,6 +18,7 @@ import javax.swing.UIManager;
 
 class Getter{
 	private String result;
+	private String admin;
 
 	public String getResult() {
 		return result;
@@ -26,6 +28,13 @@ class Getter{
 		this.result = result;
 	}
 	
+	public String getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(String admin) {
+		this.admin = admin;
+	}
 }
 public class login extends JFrame {
 	Connection conn=null; 
@@ -38,7 +47,7 @@ public class login extends JFrame {
 	JLabel alter = new JLabel();
 	
 	JTextField id_field = new JTextField();
-	JTextField pw_field= new JTextField();
+	JPasswordField pw_field= new JPasswordField();
 	
 	JButton sign_up = new JButton("회원가입");
 	JButton log_in = new JButton("로그인");
@@ -107,7 +116,7 @@ public class login extends JFrame {
 				}
 				else {
 					try {
-						String que="select pw from member where id=?";
+						String que="select pw, admin from member where id=?";
 						conn=Connect.get();
 						psmt=conn.prepareStatement(que);
 						psmt.setString(1, id);
@@ -115,11 +124,17 @@ public class login extends JFrame {
 						Getter get = new Getter();
 						while(rs.next()) {
 							get.setResult(rs.getString(1));
+							get.setAdmin(rs.getString(2));
 						}
 						
-						if(pw.equals(get.getResult())) {						
-							new Choice();
-							dispose();
+						if(pw.equals(get.getResult())) {
+							if(get.getAdmin().equals("Y")) {
+//								new ManagerChoice();
+								dispose();
+							}else {
+								new Choice();
+								dispose();
+							}
 						}else {
 							alter.setText("id 혹은 비밀번호를 확인하세요.");
 						}
