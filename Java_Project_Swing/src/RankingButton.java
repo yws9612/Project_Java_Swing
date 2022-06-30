@@ -36,12 +36,16 @@ class Setter{
 		this.scores = scores;
 	}
 }
+class backimage extends JPanel{
+	Image image=new ImageIcon("image/ranking.png").getImage();
+	
+	public void paint(Graphics g) {
+		g.drawImage(image, 0, 0, null);		
+	}
+}
 public class RankingButton extends JFrame {
 
 	private JPanel contentPane;
-	Image image=new ImageIcon("image/ranking.png")			
-			.getImage();
-	
 
 	/**
 	 * Launch the application.
@@ -85,7 +89,7 @@ public class RankingButton extends JFrame {
 		lb_rk06.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
 		lb_rk06.setForeground(Color.white);
 		lb_rk06.setBounds(375, 53, 150, 35);
-		contentPane.add(lb_rk06);
+		//contentPane.add(lb_rk06);
 
 		JLabel lb_rk01 = new JLabel("1.");
 		lb_rk01.setHorizontalAlignment(SwingConstants.LEFT);
@@ -193,7 +197,10 @@ public class RankingButton extends JFrame {
 		lb_rk25.setForeground(Color.white);
 		lb_rk25.setBounds(500, 420, 100, 70);
 		contentPane.add(lb_rk25);		
-		
+
+		JPanel background=new backimage();
+		background.setSize(900, 640);
+		contentPane.add(background);
 
 		bt_rk01.addActionListener(new ActionListener() {
 			@Override
@@ -212,9 +219,6 @@ public class RankingButton extends JFrame {
 		setVisible(true);
 	}
 	
-	public void paint(Graphics g) {
-		g.drawImage(image, 8, 40, null);
-	}
 
 	public void select() {
 		Connection conn=null; 
