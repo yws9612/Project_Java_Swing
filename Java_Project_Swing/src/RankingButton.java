@@ -1,12 +1,17 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
+import javax.swing.AbstractButton;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -34,6 +39,13 @@ class Setter{
 public class RankingButton extends JFrame {
 
 	private JPanel contentPane;
+	Image image=new ImageIcon(
+		"C:/Users/soldesk/Desktop/SY/image/ranking.png")
+			.getImage();
+	
+	public void paint(Graphics g) {
+		g.drawImage(image, 8, 40, null);
+	}
 
 	/**
 	 * Launch the application.
@@ -75,42 +87,49 @@ public class RankingButton extends JFrame {
 		JLabel lb_rk06 = new JLabel("\uC21C\uC704\uD45C");
 		lb_rk06.setHorizontalAlignment(SwingConstants.CENTER);
 		lb_rk06.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		lb_rk06.setForeground(Color.white);
 		lb_rk06.setBounds(375, 53, 150, 35);
 		contentPane.add(lb_rk06);
 
 		JLabel lb_rk01 = new JLabel("1.");
 		lb_rk01.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_rk01.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		lb_rk01.setForeground(Color.white);
 		lb_rk01.setBounds(300, 140, 100, 70);
 		contentPane.add(lb_rk01);
 		
 		JLabel lb_rk11 = new JLabel("id1");
 		lb_rk11.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_rk11.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		lb_rk11.setForeground(Color.white);
 		lb_rk11.setBounds(400, 140, 100, 70);
 		contentPane.add(lb_rk11);
 		
 		JLabel lb_rk21 = new JLabel("scores1");
 		lb_rk21.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_rk21.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		lb_rk21.setForeground(Color.white);
 		lb_rk21.setBounds(500, 140, 100, 70);
 		contentPane.add(lb_rk21);
 
 		JLabel lb_rk02 = new JLabel("2.");
 		lb_rk02.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_rk02.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		lb_rk02.setForeground(Color.white);
 		lb_rk02.setBounds(300, 210, 100, 70);
 		contentPane.add(lb_rk02);
 		
 		JLabel lb_rk12 = new JLabel("id2");
 		lb_rk12.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_rk12.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		lb_rk12.setForeground(Color.white);
 		lb_rk12.setBounds(400, 210, 100, 70);
 		contentPane.add(lb_rk12);
 		
 		JLabel lb_rk22 = new JLabel("scores2");
 		lb_rk22.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_rk22.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		lb_rk22.setForeground(Color.white);
 		lb_rk22.setBounds(500, 210, 100, 70);
 		contentPane.add(lb_rk22);
 		
@@ -119,57 +138,65 @@ public class RankingButton extends JFrame {
 		JLabel lb_rk03 = new JLabel("3.");
 		lb_rk03.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_rk03.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		lb_rk03.setForeground(Color.white);
 		lb_rk03.setBounds(300, 280, 100, 70);
 		contentPane.add(lb_rk03);
 		
 		JLabel lb_rk13 = new JLabel("id3");
 		lb_rk13.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_rk13.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		lb_rk13.setForeground(Color.white);
 		lb_rk13.setBounds(400, 280, 100, 70);
 		contentPane.add(lb_rk13);
 		
 		JLabel lb_rk23 = new JLabel("scores3");
 		lb_rk23.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_rk23.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		lb_rk23.setForeground(Color.white);
 		lb_rk23.setBounds(500, 280, 100, 70);
 		contentPane.add(lb_rk23);
 
 		JLabel lb_rk04 = new JLabel("4.");
 		lb_rk04.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_rk04.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		lb_rk04.setForeground(Color.white);
 		lb_rk04.setBounds(300, 350, 100, 70);
 		contentPane.add(lb_rk04);
 		
 		JLabel lb_rk14 = new JLabel("id4");
 		lb_rk14.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_rk14.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		lb_rk14.setForeground(Color.white);
 		lb_rk14.setBounds(400, 350, 100, 70);
 		contentPane.add(lb_rk14);
 		
 		JLabel lb_rk24 = new JLabel("scores4");
 		lb_rk24.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_rk24.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		lb_rk24.setForeground(Color.white);
 		lb_rk24.setBounds(500, 350, 100, 70);
 		contentPane.add(lb_rk24);
 
 		JLabel lb_rk05 = new JLabel("5.");
 		lb_rk05.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_rk05.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		lb_rk05.setForeground(Color.white);
 		lb_rk05.setBounds(300, 420, 100, 70);
 		contentPane.add(lb_rk05);
 		
 		JLabel lb_rk15 = new JLabel();
 		lb_rk15.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_rk15.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		lb_rk15.setForeground(Color.white);
 		lb_rk15.setBounds(400, 420, 100, 70);
 		contentPane.add(lb_rk15);
 		
 		JLabel lb_rk25 = new JLabel("scores5");
 		lb_rk25.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_rk25.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		lb_rk25.setForeground(Color.white);
 		lb_rk25.setBounds(500, 420, 100, 70);
-		contentPane.add(lb_rk25);
-		
+		contentPane.add(lb_rk25);		
 		
 
 		bt_rk01.addActionListener(new ActionListener() {
