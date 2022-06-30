@@ -18,39 +18,6 @@ class Gs {
 
 }
 
-class Delete extends JFrame{
-	Connection conne = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	Connect conn = new Connect();
-//	ManageMember mm = new ManageMember();
-	Delete(){
-		conne = conn.get();
-		
-		Gs gs = new Gs();
-		int answer = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION);
-		if (answer == JOptionPane.YES_OPTION) {
-			try {
-				String query2 = "select m_no from member order by m_no";
-				pstmt = conne.prepareStatement(query2);
-				rs = pstmt.executeQuery();
-				
-				while(rs.next()) {
-					gs.setD_no(rs.getInt(1));
-				}
-				String quer = "update member set enable = 'N' where m_no = ?";
-				pstmt.executeUpdate(quer);
-			} catch (Exception e) {
-				System.out.println("삭제 쿼리문 오류" + e);
-				e.printStackTrace();
-			}
-			System.out.println("회원이 삭제되었습니다.");
-		} else {
-			System.out.println("삭제를 취소하였습니다.");
-		}
-	}
-}
-
 public class ManageMember extends JFrame {
 
 	Connect conn = new Connect();
@@ -99,19 +66,35 @@ public class ManageMember extends JFrame {
 
 				Object data[] = { false, s_no, s_id, s_pw, s_name, s_email, r_date, l_date };
 				model.addRow(data);
-				System.out.println(s_no +" " + s_id + " " + s_pw + " " + s_name + " " + s_email + " " + r_date
-						+ " " + l_date);
+				System.out.println(
+						s_no + " " + s_id + " " + s_pw + " " + s_name + " " + s_email + " " + r_date + " " + l_date);
 
 			}
-			
-			
+
 			del.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
 					if (c_box.isSelected()) {
-						Delete delete = new Delete();
+						int answer = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION);
+						int row = jtb.getSelectedRow();
+						for (int i = 0; i < jtb.getColumnCount(); i++) {
+							System.out.println(jtb.getModel().getValueAt(row, i));
+						}
+						if (answer == JOptionPane.YES_OPTION) {
+							try {
+								String quer = "update member set enable = 'N' where m_no = ?";
+								pstmt = conne.prepareStatement(quer);
+								int index = jtb.getSelectedRow();
+								int mem_no = (int)jtb.getModel().getValueAt(index, 1);
+								pstmt.setInt(1,  mem_no);
+								int n = pstmt.executeUpdate();
+								System.out.println(n > 0 ? "성공" : "실패");
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
 					}
 				}
 
