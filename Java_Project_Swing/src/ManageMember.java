@@ -27,12 +27,17 @@ public class ManageMember extends JFrame {
 	JScrollPane js;
 	String column[] = { "선택", "회원번호", "ID", "PW", "이름", "이메일", "가입일", "최근접속일" };
 	JButton del = new JButton("삭제");
+	JButton exit = new JButton("닫기");
+	JButton allsel = new JButton("전체 선택");
+	JButton alldis = new JButton("전체 해제");
+	
 	Connection conne = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 
 	ManageMember() {
 		setLayout(null);
+		setBounds(500, 100, 450, 300);
 
 		Container c = getContentPane();
 		model = new DefaultTableModel(obj, column);
@@ -68,6 +73,31 @@ public class ManageMember extends JFrame {
 				model.addRow(data);
 				System.out.println(
 						s_no + " " + s_id + " " + s_pw + " " + s_name + " " + s_email + " " + r_date + " " + l_date);
+				
+				allsel.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						for(int i = 0; i < jtb.getRowCount(); i++) {
+							jtb.setValueAt(true, 0, i);
+						}
+						
+					}
+					
+				});
+				
+				alldis.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						for(int i = 0; i < jtb.getRowCount(); i++) {
+							jtb.setValueAt(false, 0, i);
+						}
+					}
+					
+				});
 
 			}
 
@@ -99,6 +129,19 @@ public class ManageMember extends JFrame {
 				}
 
 			});
+			
+			exit.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					new ManagerChoice();
+					dispose();
+				}
+				
+			});
+			
+			
 
 		} catch (Exception e_sql) {
 			System.out.println("Select Error" + e_sql);
@@ -124,12 +167,20 @@ public class ManageMember extends JFrame {
 				}
 			}
 		});
-		js.setBounds(250, 250, 700, 500);
-		del.setBounds(50, 50, 100, 100);
+		js.setBounds(60, 100, 700, 500);
+		del.setBounds(590, 620, 75, 45);
+		exit.setBounds(680, 620, 75, 45);
+		allsel.setBounds(60, 20, 75, 30);
+		alldis.setBounds(150, 20, 75, 30);
 
+		setSize(850,750);
+		c.add(alldis);
 		c.add(js);
 		c.add(del);
+		c.add(exit);
+		c.add(allsel);
 
+		setResizable(false);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
