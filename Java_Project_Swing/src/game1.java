@@ -112,7 +112,7 @@ public class game1 extends JPanel {
 				JTextField src = (JTextField) ke.getSource();
 				if (src.getText().length() >= 1) {
 					ke.consume();
-					//채점 들어가야 함 
+					//채점+다음 시도로 넘기기
 				}
 			}
 		});
@@ -145,7 +145,7 @@ public class game1 extends JPanel {
 		});
 		input_field[5].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//채점으로 넘어가야 한다.
+				//채점+다음 시도로 넘기기
 			}
 		});
 		
@@ -153,10 +153,11 @@ public class game1 extends JPanel {
 		input_field[5].addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_TAB) {
-					//채점으로 넘어가야 한다.
+					//채점+다음 시도로 넘기기
 				}
 			}
 		});
+		
 		
 		//단어 끝칸_엔터
 		input_field[w_length-1].addActionListener(new ActionListener() {
@@ -170,7 +171,7 @@ public class game1 extends JPanel {
 		input_field[w_length-1].addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_TAB) {
-					//채점 기준으로 넘어가야 한다.
+					//채점+다음 시도로 넘기기
 				}
 			}
 		});
