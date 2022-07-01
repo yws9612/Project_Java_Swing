@@ -117,8 +117,9 @@ public class ManageMember extends JFrame {
 							try {
 								String quer = "update member set enable = 'N' where m_no = ?";
 								pstmt = conne.prepareStatement(quer);
-								int index[] = new int[jtb.getSelectedRow()];
-								for (int i = 0; i < jtb.getColumnCount(); i++) {
+								int index[] = new int[jtb.getColumnCount()];
+								for (int i = 0; i < index.length; i++) {
+									index[i] = jtb.getSelectedRow();
 									int mem_no = (int) jtb.getModel().getValueAt(index[i], 1);
 									pstmt.setInt(1, mem_no);
 									int n = pstmt.executeUpdate();
