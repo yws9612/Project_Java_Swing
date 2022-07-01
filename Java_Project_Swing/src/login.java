@@ -160,43 +160,13 @@ public class login extends JFrame {
 			}
 		});
 		
-		setSize(800,800);
+		setLocationRelativeTo(null);
+		setSize(600,500);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {
-		
-		/* 참고용 DB에서 내용 추출 코드
-		Connection conn=null; 
-		PreparedStatement psmt=null; 
-		ResultSet rs=null; 
-		try {
-			String que="";
-			conn=ConnecttoDB.get(); 
-			psmt=conn.prepareStatement(que); 
-			rs=psmt.executeQuery();
-			/select -> executeQuery()
-			DML(insert, update, delete) -> executeUpdate(); /
-			
-			while(rs.next()) {
-				String empno=rs.getString(1);
-				String ename=rs.getString(2);
-				String job=rs.getString(3);
-				int mgr=rs.getInt(4);
-				java.sql.Date hiredate=rs.getDate(5);
-				int sal=rs.getInt(6);
-				int comm=rs.getInt(7);
-				int deptno=rs.getInt(8);
-				System.out.println(empno+" "+ename+" "+hiredate);
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		rs.close();
-		psmt.close();
-		conn.close();
-		*/
 		
 		
 		//테스트용 임시프레임
