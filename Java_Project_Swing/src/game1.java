@@ -46,18 +46,22 @@ public class game1 extends JPanel {
 		}
 		for (int i = 0; i < w_length; i++) {
 			b[i] = new JLabel();
+			input_field[i].setFont(new Font("DungGeunMo",Font.PLAIN,20));
 			add(b[i]);
 		}
 		for (int i = 0; i < w_length; i++) {
 			c[i] = new JLabel();
+			input_field[i].setFont(new Font("DungGeunMo",Font.PLAIN,20));
 			add(c[i]);
 		}
 		for (int i = 0; i < w_length; i++) {
 			d[i] = new JLabel();
+			input_field[i].setFont(new Font("DungGeunMo",Font.PLAIN,20));
 			add(d[i]);
 		}
 		for (int i = 0; i < w_length; i++) {
 			e[i] = new JLabel();
+			input_field[i].setFont(new Font("DungGeunMo",Font.PLAIN,20));
 			add(e[i]);
 		}
 

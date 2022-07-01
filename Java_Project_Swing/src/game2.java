@@ -42,6 +42,7 @@ public class game2 extends JPanel {
 				
 		for (int i = 0; i < w_length; i++) {
 			a[i] = new JLabel();
+			input_field[i].setFont(new Font("DungGeunMo",Font.PLAIN,20));
 			a[i].setText(Character.toString(g1[i]));
 			if(g1_b[i]) {
 				a[i].setBackground(Color.green);
@@ -53,17 +54,21 @@ public class game2 extends JPanel {
 		}
 		for (int i = 0; i < w_length; i++) {
 			add(input_field[i]);
+			input_field[i].setFont(new Font("DungGeunMo",Font.PLAIN,20));
 		}
 		for (int i = 0; i < w_length; i++) {
 			c[i] = new JLabel();
+			input_field[i].setFont(new Font("DungGeunMo",Font.PLAIN,20));
 			add(c[i]);
 		}
 		for (int i = 0; i < w_length; i++) {
 			d[i] = new JLabel();
+			input_field[i].setFont(new Font("DungGeunMo",Font.PLAIN,20));
 			add(d[i]);
 		}
 		for (int i = 0; i < w_length; i++) {
 			e[i] = new JLabel();
+			input_field[i].setFont(new Font("DungGeunMo",Font.PLAIN,20));
 			add(e[i]);
 		}
 
