@@ -20,7 +20,7 @@ class Gs {
 
 }
 
-public class ManageMember extends JFrame{
+public class ManageMember extends JFrame {
 
 	Connect conn = new Connect();
 	JTable jtb;
@@ -32,7 +32,7 @@ public class ManageMember extends JFrame{
 	JButton exit = new JButton("닫기");
 	JButton allsel = new JButton("전체 선택");
 	JButton alldis = new JButton("전체 해제");
-	
+
 	Connection conne = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -75,32 +75,32 @@ public class ManageMember extends JFrame{
 				model.addRow(data);
 				System.out.println(
 						s_no + " " + s_id + " " + s_pw + " " + s_name + " " + s_email + " " + r_date + " " + l_date);
-				
+
 				allsel.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
-						for(int i = 0; i < jtb.getRowCount(); i++) {
+						for (int i = 0; i < jtb.getRowCount(); i++) {
 							jtb.setValueAt(true, 0, i);
 							c_box.setSelected(true);
 						}
-						
+
 					}
-					
+
 				});
-				
+
 				alldis.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
-						for(int i = 0; i < jtb.getRowCount(); i++) {
+						for (int i = 0; i < jtb.getRowCount(); i++) {
 							jtb.setValueAt(false, 0, i);
 							c_box.setSelected(false);
 						}
 					}
-					
+
 				});
 
 			}
@@ -111,25 +111,29 @@ public class ManageMember extends JFrame{
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
 					if (c_box.isSelected()) {
-						int answer = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION);						
+						int answer = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION);
 						if (answer == JOptionPane.YES_OPTION) {
+
 							try {
 								String quer = "update member set enable = 'N' where m_no = ?";
 								pstmt = conne.prepareStatement(quer);
-								int index = jtb.getSelectedRow();
-								int mem_no = (int)jtb.getModel().getValueAt(index, 1);
-								pstmt.setInt(1,  mem_no);
-								int n = pstmt.executeUpdate();
-								System.out.println(n > 0 ? "성공" : "실패");
+								int index[] = new int[jtb.getSelectedRow()];
+								for (int i = 0; i < jtb.getColumnCount(); i++) {
+									int mem_no = (int) jtb.getModel().getValueAt(index[i], 1);
+									pstmt.setInt(1, mem_no);
+									int n = pstmt.executeUpdate();
+									System.out.println(n > 0 ? "성공" : "실패");
+								}
 							} catch (Exception e) {
-								
+								e.printStackTrace();
 							}
+
 						}
 					}
 				}
 
 			});
-			
+
 			exit.addActionListener(new ActionListener() {
 
 				@Override
@@ -138,10 +142,8 @@ public class ManageMember extends JFrame{
 					new ManagerChoice();
 					dispose();
 				}
-				
+
 			});
-			
-			
 
 		} catch (Exception e_sql) {
 			System.out.println("Select Error" + e_sql);
@@ -173,7 +175,7 @@ public class ManageMember extends JFrame{
 		allsel.setBounds(60, 20, 75, 30);
 		alldis.setBounds(150, 20, 75, 30);
 
-		setSize(850,750);
+		setSize(850, 750);
 		c.add(alldis);
 		c.add(js);
 		c.add(del);
