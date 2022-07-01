@@ -39,7 +39,8 @@ class Getter{
 public class login extends JFrame {
 	Connection conn=null; 
 	PreparedStatement psmt=null;
-	ResultSet rs=null; 	
+	ResultSet rs=null;
+	static String id,pw;
 
 	JLabel title = new JLabel("5dle,5dle");
 	JLabel id_label = new JLabel("ID");
@@ -108,8 +109,8 @@ public class login extends JFrame {
 		
 		log_in.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String id = id_field.getText();
-				String pw = pw_field.getText();
+				id = id_field.getText();
+				pw = pw_field.getText();
 				
 				if(id.equals("")||pw.equals("")) {
 					alter.setText("id 혹은 비밀번호를 확인하세요.");					
