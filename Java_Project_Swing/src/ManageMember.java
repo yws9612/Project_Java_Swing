@@ -20,7 +20,7 @@ class Gs {
 
 }
 
-public class ManageMember extends JFrame {
+public class ManageMember extends JFrame{
 
 	Connect conn = new Connect();
 	JTable jtb;
@@ -111,11 +111,7 @@ public class ManageMember extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
 					if (c_box.isSelected()) {
-						int answer = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION);
-						int row = jtb.getSelectedRow();
-						for (int i = 0; i < jtb.getColumnCount(); i++) {
-							System.out.println(jtb.getModel().getValueAt(row, i));
-						}
+						int answer = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION);						
 						if (answer == JOptionPane.YES_OPTION) {
 							try {
 								String quer = "update member set enable = 'N' where m_no = ?";
@@ -126,7 +122,7 @@ public class ManageMember extends JFrame {
 								int n = pstmt.executeUpdate();
 								System.out.println(n > 0 ? "성공" : "실패");
 							} catch (Exception e) {
-								e.printStackTrace();
+								
 							}
 						}
 					}
