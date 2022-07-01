@@ -41,6 +41,7 @@ public class game1 extends JPanel {
 		}
 		
 		for (int i = 0; i < w_length; i++) {
+			input_field[i].setFont(new Font("DungGeunMo",Font.PLAIN,20));
 			add(input_field[i]);
 		}
 		for (int i = 0; i < w_length; i++) {

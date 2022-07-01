@@ -82,6 +82,7 @@ public class RankingButton extends JFrame {
 
 		JButton bt_rk01 = new JButton("\uBA54\uC778\uC73C\uB85C");
 		bt_rk01.setBounds(25, 20, 150, 35);
+		bt_rk01.setFont(new Font("DungGeunMo",Font.PLAIN,15));
 		contentPane.add(bt_rk01);
 
 		JLabel lb_rk06 = new JLabel("\uC21C\uC704\uD45C");

@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +12,9 @@ public class game_frame extends JFrame{
 	
 	int frame_w=600;
 	int frame_h=600;
+	
+	JLabel countdown1=new JLabel();
+	JLabel countdown2=new JLabel();
 	
 	JLabel hint=new JLabel();
 	String hint_t;
@@ -30,6 +35,7 @@ public class game_frame extends JFrame{
 	game3 g3;
 	game4 g4;
 	game5 g5;
+	int g_width;
 	
 	public void input_playlog(int scr) {
 		Connection conn=null;
@@ -57,7 +63,18 @@ public class game_frame extends JFrame{
 		
 		c.add(hint);
 		c.add(g1);
+		
 		c.add(score_label);
+		
+		pause.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+
+		setSize(frame_w, frame_h);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		while (true) {
 			boolean[] return_grade1 = new boolean[word_l];
@@ -108,21 +125,24 @@ public class game_frame extends JFrame{
 				}
 			}
 			if(life==0) {
-				int retry=0;
-				if(retry==0) {//dialog-retry
+				this.input_playlog(score);
+				
+				int retry=JOptionPane.showConfirmDialog
+						(null, 
+						"다시 도전 할까요? \n(단, 점수는 다시 0점부터 시작해요!)",
+						"게임 오버!",
+						JOptionPane.YES_NO_OPTION);
+				if(retry==JOptionPane.YES_OPTION) {
 					life=5;
+					score=0;
 					continue;
 				}
 				else {
-					this.input_playlog(score);
 					break;
 				}
 			}
 		}//while문 끝
 		
-		setSize(frame_w, frame_h);
-		setVisible(true);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 	}//생성자 끝
 

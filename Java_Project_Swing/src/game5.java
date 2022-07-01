@@ -44,7 +44,6 @@ public class game5 extends JPanel {
 		for (int i = 0; i < w_length; i++) {
 			a[i] = new JLabel();
 			a[i].setText(Character.toString(g1[i]));
-			a[i].setText(Character.toString(g1[i]));
 			if(g1_b[i]) {
 				a[i].setBackground(Color.green);
 			}
@@ -56,7 +55,6 @@ public class game5 extends JPanel {
 		for (int i = 0; i < w_length; i++) {
 			b[i] = new JLabel();
 			b[i].setText(Character.toString(g2[i]));
-			a[i].setText(Character.toString(g1[i]));
 			if(g2_b[i]) {
 				a[i].setBackground(Color.green);
 			}
@@ -68,7 +66,6 @@ public class game5 extends JPanel {
 		for (int i = 0; i < w_length; i++) {
 			c[i] = new JLabel();
 			c[i].setText(Character.toString(g3[i]));
-			a[i].setText(Character.toString(g1[i]));
 			if(g3_b[i]) {
 				a[i].setBackground(Color.green);
 			}
@@ -80,7 +77,6 @@ public class game5 extends JPanel {
 		for (int i = 0; i < w_length; i++) {
 			d[i] = new JLabel();
 			d[i].setText(Character.toString(g4[i]));
-			a[i].setText(Character.toString(g1[i]));
 			if(g4_b[i]) {
 				a[i].setBackground(Color.green);
 			}
