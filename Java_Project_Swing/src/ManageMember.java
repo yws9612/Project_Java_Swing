@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -81,7 +83,7 @@ public class ManageMember extends JFrame {
 						// TODO Auto-generated method stub
 						for(int i = 0; i < jtb.getRowCount(); i++) {
 							jtb.setValueAt(true, 0, i);
-							//세팅만 true로되고 값은 안넘어감 다시봐야할것같아요..
+							c_box.setSelected(true);
 						}
 						
 					}
@@ -95,6 +97,7 @@ public class ManageMember extends JFrame {
 						// TODO Auto-generated method stub
 						for(int i = 0; i < jtb.getRowCount(); i++) {
 							jtb.setValueAt(false, 0, i);
+							c_box.setSelected(false);
 						}
 					}
 					
