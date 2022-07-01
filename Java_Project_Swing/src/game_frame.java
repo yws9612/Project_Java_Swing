@@ -7,6 +7,10 @@ import java.sql.ResultSet;
 import javax.swing.*;
 
 public class game_frame extends JFrame{
+	
+	int frame_w=600;
+	int frame_h=600;
+	
 	JLabel hint=new JLabel();
 	String hint_t;
 	
@@ -104,8 +108,8 @@ public class game_frame extends JFrame{
 				}
 			}
 			if(life==0) {
-				//dialog
-				if() {//dialog-retry
+				int retry=0;
+				if(retry==0) {//dialog-retry
 					life=5;
 					continue;
 				}
@@ -115,6 +119,10 @@ public class game_frame extends JFrame{
 				}
 			}
 		}//while문 끝
+		
+		setSize(frame_w, frame_h);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 	}//생성자 끝
 
