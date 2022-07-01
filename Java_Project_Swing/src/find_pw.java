@@ -154,13 +154,13 @@ public class find_pw extends JFrame {
 		close.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		});
 		
 		setSize(390, 370);
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {

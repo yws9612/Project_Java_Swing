@@ -160,8 +160,9 @@ public class login extends JFrame {
 			}
 		});
 		
+		
+		setSize(400,500);
 		setLocationRelativeTo(null);
-		setSize(600,500);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

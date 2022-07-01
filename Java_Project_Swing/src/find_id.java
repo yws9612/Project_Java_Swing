@@ -124,7 +124,7 @@ public class find_id extends JFrame {
 		
 		setSize(390, 275);
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
 
