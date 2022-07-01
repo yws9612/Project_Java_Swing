@@ -13,6 +13,7 @@ public class game4 extends JPanel {
 	public char[] input4;
 	boolean[] grading;
 	int w_length;
+	Thread t=new Thread();
 
 	public void set_grading(boolean[] boo) {
 		for (int i = 0; i < w_length; i++) {
@@ -22,6 +23,14 @@ public class game4 extends JPanel {
 
 	public game4(int length, char g1[], char g2[], char g3[],
 			boolean [] g1_b, boolean [] g2_b, boolean [] g3_b) {
+		t.start();
+		try {
+			t.join();
+		} catch(Exception e) {
+			System.out.println("게임1 join");
+			e.printStackTrace();
+		}
+		
 		this.w_length = length;
 		setLayout(new GridLayout(5, w_length));
 
@@ -150,38 +159,44 @@ public class game4 extends JPanel {
 			}
 		});
 
-		input_field[w_length - 1].addKeyListener(new KeyAdapter() {
+		
+		//단어 끝칸_글자수제한
+		input_field[w_length-1].addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent ke) {
 				JTextField src = (JTextField) ke.getSource();
 				if (src.getText().length() >= 1) {
 					ke.consume();
-					for (int i = 0; i < 6; i++) {
-						input4[i] = input_field[i].getText().charAt(0);
-					}
-					// 채점+다음 시도로 넘기기
+					for(int i=0; i<6; i++) {
+						input4[i]=input_field[i].getText().charAt(0);
+					}					
+					//채점+다음 시도로 넘기기
+					t.interrupt();
 				}
 			}
 		});
-
-		// 단어 끝칸_엔터
-		input_field[w_length - 1].addActionListener(new ActionListener() {
+		
+		
+		//단어 끝칸_엔터
+		input_field[w_length-1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for (int i = 0; i < w_length; i++) {
-					input4[i] = input_field[i].getText().charAt(0);
+				for(int i=0; i<w_length; i++) {
+					input4[i]=input_field[i].getText().charAt(0);
 				}
-				// 채점+다음 시도로 넘기기
+				//채점+다음 시도로 넘기기
+				t.interrupt();				
 			}
 		});
-
-		// 단어 끝칸_탭
-		input_field[w_length - 1].setFocusTraversalKeysEnabled(false);
-		input_field[w_length - 1].addKeyListener(new KeyAdapter() {
+		
+		//단어 끝칸_탭
+		input_field[w_length-1].setFocusTraversalKeysEnabled(false);
+		input_field[w_length-1].addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_TAB) {
-					for (int i = 0; i < 6; i++) {
-						input4[i] = input_field[i].getText().charAt(0);
+					for(int i=0; i<6; i++) {
+						input4[i]=input_field[i].getText().charAt(0);
 					}
-					// 채점+다음 시도로 넘기기
+					//채점+다음 시도로 넘기기
+					t.interrupt();
 				}
 			}
 		});

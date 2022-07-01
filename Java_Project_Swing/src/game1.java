@@ -13,6 +13,7 @@ public class game1 extends JPanel {
 	public char [] input1;
 	boolean [] grading;
 	int w_length;
+	Thread t=new Thread();
 	
 	public void set_grading(boolean [] boo) {
 		for(int i=0; i<w_length; i++) {
@@ -21,6 +22,14 @@ public class game1 extends JPanel {
 	}
 		
 	public game1(int a) {
+		t.start();
+		try {
+			t.join();
+		} catch(Exception e) {
+			System.out.println("게임1 join");
+			e.printStackTrace();
+		}
+		
 		w_length=a;
 		setLayout(new GridLayout(5,w_length));		
 		
@@ -126,6 +135,7 @@ public class game1 extends JPanel {
 		});
 		
 		
+		//단어 끝칸_글자수제한
 		input_field[w_length-1].addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent ke) {
 				JTextField src = (JTextField) ke.getSource();
@@ -135,6 +145,7 @@ public class game1 extends JPanel {
 						input1[i]=input_field[i].getText().charAt(0);
 					}					
 					//채점+다음 시도로 넘기기
+					t.interrupt();
 				}
 			}
 		});
@@ -146,7 +157,8 @@ public class game1 extends JPanel {
 				for(int i=0; i<w_length; i++) {
 					input1[i]=input_field[i].getText().charAt(0);
 				}
-				//채점+다음 시도로 넘기기				
+				//채점+다음 시도로 넘기기
+				t.interrupt();				
 			}
 		});
 		
@@ -159,6 +171,7 @@ public class game1 extends JPanel {
 						input1[i]=input_field[i].getText().charAt(0);
 					}
 					//채점+다음 시도로 넘기기
+					t.interrupt();
 				}
 			}
 		});		
