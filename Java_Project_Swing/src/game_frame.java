@@ -54,58 +54,83 @@ public class game_frame extends JFrame{
 		
 	}
 	
-	game_frame(){
-		Container c=getContentPane();
-		
-		//단어, 힌트 가져오기를 포함한 쓰레드 불러오기
-		
+	game_frame() {
+		Container c = getContentPane();
+
+		// 단어, 힌트 가져오기를 포함한 쓰레드 불러오기
+
 		hint.setText(hint_t);
-		
+
 		c.add(hint);
 		c.add(g1);
-		
+
 		c.add(score_label);
-		
+
 		pause.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Thread t = new Thread();
+				t.start();
+				try {
+					t.join();
+				} catch (Exception e_pause) {
+					System.out.println("pause dialog");
+					e_pause.printStackTrace();
+				}
+				int pause_i = JOptionPane.showConfirmDialog(null, "정말 종료하시나요ㅠㅠ?", "일시정지", JOptionPane.YES_NO_OPTION);
+				if (pause_i == JOptionPane.YES_OPTION) {
+					t.interrupt();
+					JFrame frame = (JFrame) e.getSource();
+					frame.dispose();
+					new Choice();
+				} else {
+					t.interrupt();
+				}
+			}
+		});
+
+		next.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				life--;
+				JFrame frame = (JFrame) e.getSource();
+				new game_frame(life);
+				frame.dispose();
 			}
 		});
 
 		setSize(frame_w, frame_h);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		
+
 		while (true) {
 			boolean[] return_grade1 = new boolean[word_l];
 			return_grade1 = grade.grade_panel(g1.input1);
 			if (grade.grade_case()) {
-				score+=10;
+				score += 10;
 				score_label.setText(String.format("%06d", score));
-				//단어, 힌트 새로 가져오기
-				g1=new game1(word_l);
+				// 단어, 힌트 새로 가져오기
+				g1 = new game1(word_l);
 			} else {
 				g2 = new game2(word_l, g1.input1, return_grade1);
 				c.add(g2);
 				c.remove(g1);
 				boolean[] return_grade2 = new boolean[word_l];
 				return_grade2 = grade.grade_panel(g2.input2);
-				
+
 				if (grade.grade_case()) {
 
 				} else {
 					g3 = new game3(word_l, g1.input1, g2.input2, return_grade1, return_grade2);
 					boolean[] return_grade3 = new boolean[word_l];
 					return_grade3 = grade.grade_panel(g3.input3);
-					
-					if (grade.grade_case()) {
 
+					if (grade.grade_case()) {
+						
 					} else {
 						g4 = new game4(word_l, g1.input1, g2.input2, g3.input3, return_grade1, return_grade2,
 								return_grade3);
 						boolean[] return_grade4 = new boolean[word_l];
 						return_grade4 = grade.grade_panel(g4.input4);
-						
+
 						if (grade.grade_case()) {
 
 						} else {
@@ -113,38 +138,146 @@ public class game_frame extends JFrame{
 									return_grade2, return_grade3, return_grade4);
 							boolean[] return_grade5 = new boolean[word_l];
 							return_grade5 = grade.grade_panel(g5.input5);
-							
+
 							if (grade.grade_case()) {
 
 							} else {
-								// 하트 깍임
 								life--;
+								new game_frame(life);
 							}
 						}
 					}
 				}
 			}
-			if(life==0) {
+			if (life == 0) {
 				this.input_playlog(score);
-				
-				int retry=JOptionPane.showConfirmDialog
-						(null, 
-						"다시 도전 할까요? \n(단, 점수는 다시 0점부터 시작해요!)",
-						"게임 오버!",
+
+				int retry = JOptionPane.showConfirmDialog(null, "다시 도전 할까요? \n(단, 점수는 다시 0점부터 시작해요!)", "게임 오버!",
 						JOptionPane.YES_NO_OPTION);
-				if(retry==JOptionPane.YES_OPTION) {
-					life=5;
-					score=0;
+				if (retry == JOptionPane.YES_OPTION) {
+					life = 5;
+					score = 0;
 					continue;
-				}
-				else {
+				} else {
 					break;
 				}
 			}
-		}//while문 끝
-		
-		
-	}//생성자 끝
+		} // while문 끝
+
+	}// 생성자 끝
+
+	// 중간시작 생성자
+	game_frame(int a) {
+		Container c = getContentPane();
+
+		life = a;
+
+		// 단어, 힌트 가져오기를 포함한 쓰레드 불러오기
+
+		hint.setText(hint_t);
+
+		c.add(hint);
+		c.add(g1);
+
+		c.add(score_label);
+
+		pause.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Thread t = new Thread();
+				t.start();
+				try {
+					t.join();
+				} catch (Exception e_pause) {
+					System.out.println("pause dialog");
+					e_pause.printStackTrace();
+				}
+				int pause_i = JOptionPane.showConfirmDialog(null, "정말 종료하시나요ㅠㅠ?", "일시정지", JOptionPane.YES_NO_OPTION);
+				if (pause_i == JOptionPane.YES_OPTION) {
+					t.interrupt();
+					JFrame frame = (JFrame) e.getSource();
+					frame.dispose();
+					new Choice();
+				} else {
+					t.interrupt();
+				}
+			}
+		});
+
+		next.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				life--;
+				new game_frame(life);
+			}
+		});
+
+		setSize(frame_w, frame_h);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+		while (true) {
+			boolean[] return_grade1 = new boolean[word_l];
+			return_grade1 = grade.grade_panel(g1.input1);
+			if (grade.grade_case()) {
+				score += 10;
+				score_label.setText(String.format("%06d", score));
+				// 단어, 힌트 새로 가져오기
+				g1 = new game1(word_l);
+			} else {
+				g2 = new game2(word_l, g1.input1, return_grade1);
+				c.add(g2);
+				c.remove(g1);
+				boolean[] return_grade2 = new boolean[word_l];
+				return_grade2 = grade.grade_panel(g2.input2);
+
+				if (grade.grade_case()) {
+
+				} else {
+					g3 = new game3(word_l, g1.input1, g2.input2, return_grade1, return_grade2);
+					boolean[] return_grade3 = new boolean[word_l];
+					return_grade3 = grade.grade_panel(g3.input3);
+
+					if (grade.grade_case()) {
+
+					} else {
+						g4 = new game4(word_l, g1.input1, g2.input2, g3.input3, return_grade1, return_grade2,
+								return_grade3);
+						boolean[] return_grade4 = new boolean[word_l];
+						return_grade4 = grade.grade_panel(g4.input4);
+
+						if (grade.grade_case()) {
+
+						} else {
+							g5 = new game5(word_l, g1.input1, g2.input2, g3.input3, g4.input4, return_grade1,
+									return_grade2, return_grade3, return_grade4);
+							boolean[] return_grade5 = new boolean[word_l];
+							return_grade5 = grade.grade_panel(g5.input5);
+
+							if (grade.grade_case()) {
+
+							} else {
+								life--;
+								new game_frame(life);
+							}
+						}
+					}
+				}
+			}
+			if (life == 0) {
+				this.input_playlog(score);
+
+				int retry = JOptionPane.showConfirmDialog(null, "다시 도전 할까요? \n(단, 점수는 다시 0점부터 시작해요!)", "게임 오버!",
+						JOptionPane.YES_NO_OPTION);
+				if (retry == JOptionPane.YES_OPTION) {
+					life = 5;
+					score = 0;
+					continue;
+				} else {
+					break;
+				}
+			}
+		} // while문 끝
+
+	}//생성자_중간시작 끝
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
