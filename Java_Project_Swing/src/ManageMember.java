@@ -73,36 +73,7 @@ public class ManageMember extends JFrame {
 
 				Object data[] = { false, s_no, s_id, s_pw, s_name, s_email, r_date, l_date };
 				model.addRow(data);
-				System.out.println(
-						s_no + " " + s_id + " " + s_pw + " " + s_name + " " + s_email + " " + r_date + " " + l_date);
-
-				allsel.addActionListener(new ActionListener() {
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-						for (int i = 0; i < jtb.getRowCount(); i++) {
-							jtb.setValueAt(true, 0, i);
-							c_box.setSelected(true);
-						}
-
-					}
-
-				});
-
-				alldis.addActionListener(new ActionListener() {
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-						for (int i = 0; i < jtb.getRowCount(); i++) {
-							jtb.setValueAt(false, 0, i);
-							c_box.setSelected(false);
-						}
-					}
-
-				});
-
+				System.out.println(s_no + " " + s_id + " " + s_pw + " " + s_name + " " + s_email + " " + r_date + " " + l_date);
 			}
 
 			del.addActionListener(new ActionListener() {
@@ -113,18 +84,15 @@ public class ManageMember extends JFrame {
 					if (c_box.isSelected()) {
 						int answer = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION);
 						if (answer == JOptionPane.YES_OPTION) {
-
 							try {
 								String quer = "update member set enable = 'N' where m_no = ?";
 								pstmt = conne.prepareStatement(quer);
-								int index[] = new int[jtb.getColumnCount()];
-								for (int i = 0; i < index.length; i++) {
-									index[i] = jtb.getSelectedRow();
-									int mem_no = (int) jtb.getModel().getValueAt(index[i], 1);
-									pstmt.setInt(1, mem_no);
-									int n = pstmt.executeUpdate();
-									System.out.println(n > 0 ? "성공" : "실패");
-								}
+								int index = jtb.getSelectedRow();
+								int mem_no = (int) jtb.getModel().getValueAt(index, 1);
+								pstmt.setInt(1, mem_no);
+								int n = pstmt.executeUpdate();
+								System.out.println(n > 0 ? "성공" : "실패");
+
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
@@ -177,11 +145,11 @@ public class ManageMember extends JFrame {
 		alldis.setBounds(150, 20, 75, 30);
 
 		setSize(850, 750);
-		c.add(alldis);
+		
 		c.add(js);
 		c.add(del);
 		c.add(exit);
-		c.add(allsel);
+		
 
 		setResizable(false);
 		setVisible(true);

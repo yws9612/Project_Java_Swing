@@ -81,11 +81,7 @@ public class ManageW1 extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
 					if (c_box.isSelected()) {
-						int answer = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION);
-						int row = jtb.getSelectedRow();
-						for (int i = 0; i < jtb.getColumnCount(); i++) {
-							System.out.println(jtb.getModel().getValueAt(row, i));
-						}
+						int answer = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION);						
 						if (answer == JOptionPane.YES_OPTION) {
 							try {
 								String quer = "delete w1_table where w1_no = ?";
