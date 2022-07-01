@@ -9,7 +9,7 @@ constraint u_email unique,
 ADMIN CHAR(1),
 constraint PK_M_NO PRIMARY KEY(M_NO));
 
---MEMBER ½ÃÄö½º »ý¼º
+--MEMBER ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 CREATE SEQUENCE MEM_SQ
 INCREMENT BY 1
 START WITH 10000
@@ -18,27 +18,27 @@ MINVALUE 10000
 NOCYCLE
 NOCACHE;
 
---°ü¸®ÀÚ ID »ðÀÔ
-INSERT INTO MEMBER VALUES(99999,'admin','admin55','°ü¸®ÀÚ','admin@gmail.com','Y');
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ID ï¿½ï¿½ï¿½ï¿½
+INSERT INTO MEMBER VALUES(99999,'admin','admin55','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','admin@gmail.com','Y');
 
---È¸¿ø ID »ðÀÔ
-INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'wlxo','wlxo1','À¯ÁöÅÂ','wlxo1@gmail.com','N');
-INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'dmsdn','dmsdn1','Â÷Àº¿ì','dmsdn1@gmail.com','N');
-INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'xodus','xodus1','±èÅÂ¿¬','xodus1@gmail.com','N');
-INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'dnjsdud','dnjsdud1','Àå¿ø¿µ','dnjsdud1@gmail.com','N');
-INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'wldms','wldms1','ÀÌÁöÀº','wldms1@gmail.com','N');
-INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'ehddnjs','ehddnjs1','°­µ¿¿ø','ehddnjs1@gmail.com','N');
-INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'bin','bin1','¿øºó','bin1@gmail.com','N');
-INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'dusdns','dusdns1','¼­¿¬¿î','dusdns1@gmail.com','N');
-INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'dlsrnr','dlsrnr1','¼­ÀÎ±¹','dlsrnr1@gmail.com','N');
-INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'xogml','xogml1','±èÅÂÈñ','xogml1@gmail.com','N');
-INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'dPtmf','dPtmf1','ÇÑ¿¹½½','dPtmf1@gmail.com','N');
-INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'xogud','xogud1','±èÅÂÇü','xogud1@gmail.com','N');
+--È¸ï¿½ï¿½ ID ï¿½ï¿½ï¿½ï¿½
+INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'wlxo','wlxo1','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','wlxo1@gmail.com','N');
+INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'dmsdn','dmsdn1','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','dmsdn1@gmail.com','N');
+INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'xodus','xodus1','ï¿½ï¿½ï¿½Â¿ï¿½','xodus1@gmail.com','N');
+INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'dnjsdud','dnjsdud1','ï¿½ï¿½ï¿½ï¿½ï¿½','dnjsdud1@gmail.com','N');
+INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'wldms','wldms1','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','wldms1@gmail.com','N');
+INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'ehddnjs','ehddnjs1','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ehddnjs1@gmail.com','N');
+INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'bin','bin1','ï¿½ï¿½ï¿½ï¿½','bin1@gmail.com','N');
+INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'dusdns','dusdns1','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','dusdns1@gmail.com','N');
+INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'dlsrnr','dlsrnr1','ï¿½ï¿½ï¿½Î±ï¿½','dlsrnr1@gmail.com','N');
+INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'xogml','xogml1','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','xogml1@gmail.com','N');
+INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'dPtmf','dPtmf1','ï¿½Ñ¿ï¿½ï¿½ï¿½','dPtmf1@gmail.com','N');
+INSERT INTO MEMBER VALUES(MEM_SQ.NEXTVAL,'xogud','xogud1','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','xogud1@gmail.com','N');
 
---MEMBER ADMIN DEFAULT°ª Àç¼³Á¤ ¹× Å×½ºÆ®¿ë È¸¿ø Ãß°¡
+--MEMBER ADMIN DEFAULTï¿½ï¿½ ï¿½ç¼³ï¿½ï¿½ ï¿½ï¿½ ï¿½×½ï¿½Æ®ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ß°ï¿½
 ALTER TABLE MEMBER MODIFY ADMIN CHAR(1) DEFAULT 'N';
 DESC MEMBER;
-INSERT INTO MEMBER (M_NO,ID,PW,NAME,EMAIL) VALUES(MEM_SQ.NEXTVAL,'alstjr','alstjr1','±è¹Î¼®','alstjr1@gmail.com');
-INSERT INTO MEMBER (M_NO,ID,PW,NAME,EMAIL) VALUES(MEM_SQ.NEXTVAL,'tjgka','tjgka1','¹Ú¼­ÇÔ','tjgka1@gmail.com');
+INSERT INTO MEMBER (M_NO,ID,PW,NAME,EMAIL) VALUES(MEM_SQ.NEXTVAL,'alstjr','alstjr1','ï¿½ï¿½Î¼ï¿½','alstjr1@gmail.com');
+INSERT INTO MEMBER (M_NO,ID,PW,NAME,EMAIL) VALUES(MEM_SQ.NEXTVAL,'tjgka','tjgka1','ï¿½Ú¼ï¿½ï¿½ï¿½','tjgka1@gmail.com');
 SELECT * FROM MEMBER;
 
