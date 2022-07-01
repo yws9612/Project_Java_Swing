@@ -98,6 +98,16 @@ public class ManageW1 extends JFrame {
 					}
 				}
 			});
+			close.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					new ManagerChoice();
+					dispose();
+				}
+				
+			});
 			
 			addButton.addActionListener(new ActionListener() {
 
@@ -154,13 +164,15 @@ public class ManageW1 extends JFrame {
 		jf_w1.setBounds(150,610,150,30);
 		jl_w1_h.setBounds(310,610,30,30);
 		jf_w1_h.setBounds(350,610,200,30);
-		addButton.setBounds(600, 610, 70, 30);
-		del.setBounds(680, 610, 70, 30);
+		addButton.setBounds(560, 610, 70, 30);
+		del.setBounds(640, 610, 70, 30);
+		close.setBounds(720,610,70,30);
 		
 		
 
 		c.add(js);
 		c.add(del);
+		c.add(close);
 		c.add(addButton);
 		c.add(jl_w1);
 		c.add(jf_w1);
