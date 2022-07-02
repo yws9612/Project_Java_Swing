@@ -5,6 +5,7 @@ public class grading {
 	char word_arr[]=new char[word_length];
 	boolean grading[]=new boolean[word_length];
 	
+	
 	public boolean[] grade_panel(char input[]) {
 		for (int i = 0; i < word_length; i++) {
 			if (input[i] == word_arr[i]) {

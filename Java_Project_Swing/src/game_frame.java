@@ -13,8 +13,8 @@ public class game_frame extends JFrame{
 	int frame_w=600;
 	int frame_h=600;
 	
-	JLabel countdown1=new JLabel();
-	JLabel countdown2=new JLabel();
+	JLabel countdown=new JLabel();
+	JLabel countdown_image=new JLabel();
 	
 	JLabel hint=new JLabel();
 	String hint_t;
@@ -57,7 +57,10 @@ public class game_frame extends JFrame{
 	game_frame() {
 		Container c = getContentPane();
 
-		// 단어, 힌트 가져오기를 포함한 쓰레드 불러오기
+		thread_word new_word=new thread_word(countdown, countdown_image);
+		new_word.start();
+		
+		hint_t=new_word.getHint();
 
 		hint.setText(hint_t);
 
@@ -110,15 +113,17 @@ public class game_frame extends JFrame{
 				// 단어, 힌트 새로 가져오기
 				g1 = new game1(word_l);
 			} else {
-				g2 = new game2(word_l, g1.input1, return_grade1);
 				c.add(g2);
 				c.remove(g1);
 				boolean[] return_grade2 = new boolean[word_l];
+				g2 = new game2(word_l, g1.input1, return_grade1);
 				return_grade2 = grade.grade_panel(g2.input2);
 
 				if (grade.grade_case()) {
 
 				} else {
+					c.add(g3);
+					c.remove(g2);
 					g3 = new game3(word_l, g1.input1, g2.input2, return_grade1, return_grade2);
 					boolean[] return_grade3 = new boolean[word_l];
 					return_grade3 = grade.grade_panel(g3.input3);
@@ -126,6 +131,8 @@ public class game_frame extends JFrame{
 					if (grade.grade_case()) {
 						
 					} else {
+						c.add(g4);
+						c.remove(g3);
 						g4 = new game4(word_l, g1.input1, g2.input2, g3.input3, return_grade1, return_grade2,
 								return_grade3);
 						boolean[] return_grade4 = new boolean[word_l];
@@ -134,6 +141,8 @@ public class game_frame extends JFrame{
 						if (grade.grade_case()) {
 
 						} else {
+							c.add(g5);
+							c.remove(g4);
 							g5 = new game5(word_l, g1.input1, g2.input2, g3.input3, g4.input4, return_grade1,
 									return_grade2, return_grade3, return_grade4);
 							boolean[] return_grade5 = new boolean[word_l];

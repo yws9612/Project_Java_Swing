@@ -65,25 +65,25 @@ class thread extends Thread {
 	}
 }*/
 }
-class Getters{
-	private String word1,hint1;
 
-	public String getWord1() {
-		return word1;
-	}
+/*class Getters{
+private String word1,hint1;
 
-	public void setWord1(String word1) {
-		this.word1 = word1;
-	}
+public String getWord1() {
+	return word1;
+}
 
-	public String getHint1() {
-		return hint1;
-	}
+public void setWord1(String word1) {
+	this.word1 = word1;
+}
 
-	public void setHint1(String hint1) {
-		this.hint1 = hint1;
-	}
+public String getHint1() {
+	return hint1;
+}
 
+public void setHint1(String hint1) {
+	this.hint1 = hint1;
+}*/
 	
 }
 
@@ -106,8 +106,7 @@ public class tmp {
 			rs=psmt.executeQuery();
 			while(rs.next()) {
 				get.setWord1(rs.getString(2));
-				get.setHint1(rs.getString(3));
-				
+				get.setHint1(rs.getString(3));				
 			}
 			
 			word1=new char[get.getWord1().length()];
