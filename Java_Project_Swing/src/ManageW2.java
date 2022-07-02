@@ -33,7 +33,7 @@ public class ManageW2 extends JFrame {
 		}
 	};
 	
-	JLabel jl_title = new JLabel("순화어 관리");
+	JLabel title = new JLabel("순화어 관리");
 	
 
 	ManageW2() {
@@ -176,6 +176,10 @@ public class ManageW2 extends JFrame {
 		addButton.setFont(new Font("DungGeunMo",Font.PLAIN,12));
 		del.setFont(new Font("DungGeunMo",Font.PLAIN,12));
 		close.setFont(new Font("DungGeunMo",Font.PLAIN,12));
+		title.setBounds(300,30,300,50);
+		title.setFont(new Font("DungGeunMo",Font.PLAIN,40));
+		title.setHorizontalAlignment(SwingConstants.CENTER);
+		c.add(title);
 		
 		
 

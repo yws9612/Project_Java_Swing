@@ -7,7 +7,7 @@ import java.util.*;
 
 public class ManagerChoice extends JFrame{
 
-	
+	JLabel title = new JLabel("관리자 페이지");
 	JButton m_page = new JButton("관리자 페이지");
 	JButton mem = new JButton("회원 관리");
 	JButton mw1 = new JButton("순우리말 관리");
@@ -31,9 +31,15 @@ public class ManagerChoice extends JFrame{
 		setContentPane(c);
 		c.setLayout(null);
 		
-		m_page.setBounds(300, 30, 300, 50);
-		m_page.setFont(new Font("DungGeunMo",Font.PLAIN,15));
-		c.add(m_page);
+//		m_page.setBounds(300, 30, 300, 50);
+//		m_page.setFont(new Font("DungGeunMo",Font.PLAIN,15));
+//		c.add(m_page);
+		
+		
+		title.setBounds(300,30,300,50);
+		title.setFont(new Font("DungGeunMo",Font.PLAIN,40));
+		title.setHorizontalAlignment(SwingConstants.CENTER);
+		c.add(title);
 		
 		mem.setBounds(300, 140, 300, 70);
 		mem.setFont(new Font("DungGeunMo",Font.PLAIN,15));
@@ -51,11 +57,14 @@ public class ManagerChoice extends JFrame{
 		log_out.setFont(new Font("DungGeunMo",Font.PLAIN,15));
 		c.add(log_out);
 		
+		
 		setSize(900,640);
 		
 		background.setLayout(null);
 		background.setBounds(0, 0, 900, 640);
 		add(background);
+		
+
 		
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

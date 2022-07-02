@@ -24,6 +24,7 @@ public class ManageW1 extends JFrame {
 	Connection conne = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
+	
 	JPanel background = new JPanel() {
 		Image back = new ImageIcon("image/background.png").getImage();
 
@@ -31,7 +32,7 @@ public class ManageW1 extends JFrame {
 			g.drawImage(back, 0, 0, null);
 		}
 	};
-	JLabel jl_title = new JLabel("순우리말 관리");
+	JLabel title = new JLabel("순우리말 관리");
 	
 	
 
@@ -171,7 +172,10 @@ public class ManageW1 extends JFrame {
 		addButton.setFont(new Font("DungGeunMo",Font.PLAIN,12));
 		del.setFont(new Font("DungGeunMo",Font.PLAIN,12));
 		close.setFont(new Font("DungGeunMo",Font.PLAIN,12));
-		
+		title.setBounds(300,30,300,50);
+		title.setFont(new Font("DungGeunMo",Font.PLAIN,40));
+		title.setHorizontalAlignment(SwingConstants.CENTER);
+		c.add(title);
 		
 
 		c.add(js);

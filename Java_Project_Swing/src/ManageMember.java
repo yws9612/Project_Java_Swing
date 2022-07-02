@@ -39,6 +39,7 @@ public class ManageMember extends JFrame {
 			g.drawImage(background, 0, 0, null);
 		}
 	};
+	JLabel title = new JLabel("회원 관리");
 
 
 	Connection conne = null;
@@ -146,11 +147,17 @@ public class ManageMember extends JFrame {
 				}
 			}
 		});
-		js.setBounds(100, 80, 700, 400);
+		js.setBounds(100, 100, 700, 400);
 		del.setBounds(650, 510, 70, 30);
 		exit.setBounds(730,510,70,30);
 		allsel.setBounds(40, 10, 75, 30);
 		alldis.setBounds(130, 10, 75, 30);
+		del.setFont(new Font("DungGeunMo",Font.PLAIN,12));
+		exit.setFont(new Font("DungGeunMo",Font.PLAIN,12));
+		title.setBounds(300,30,300,50);
+		title.setFont(new Font("DungGeunMo",Font.PLAIN,40));
+		title.setHorizontalAlignment(SwingConstants.CENTER);
+		c.add(title);
 
 		setSize(900, 640);
 		setLocationRelativeTo(null);
