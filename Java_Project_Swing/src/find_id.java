@@ -14,7 +14,7 @@ import java.awt.Color;
 import java.awt.Container;
 
 class FindUser {
-	String id, name, email;
+	private String id, name, email, pw;
 
 	public String getId() {
 		return id;
@@ -39,6 +39,16 @@ class FindUser {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public String getPw() {
+		return pw;
+	}
+
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+
+
 	
 }
 

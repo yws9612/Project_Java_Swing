@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import java.awt.Font;
@@ -102,9 +103,13 @@ public class find_pw extends JFrame {
 		//찾기버튼
 		find.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				conn=Connect.get();
 				id=id_field.getText();
 				name=name_field.getText();
 				email=email_field.getText();
+				
+				ArrayList<FindUser> listpw = new ArrayList<>();
+				
 				if(id.equals("")||name.equals("")||email.equals("")) {
 					String alert1="아이디, 이름 또는 이메일을";
 					String alert2="모두 입력해 주세요.";
@@ -113,28 +118,37 @@ public class find_pw extends JFrame {
 								+"<br>"+alert2+"</body><html>");
 				}
 				else {
-					try {	//NullPointerException 오류 뜸 확인 필요! 
+					try {	
 						String que
-							="select pw from member "
-								+"where name=? and email=? and id=?";
-						conn=Connect.get();
+							="select id, pw, name, email from member";
 						psmt=conn.prepareStatement(que);
-						psmt.setString(1, name);
-						psmt.setString(2, email);
-						psmt.setString(3, id);
 						rs=psmt.executeQuery();
-						boolean f=rs.next();
-						if(f) {
-							while(rs.next()) {
-								pw=rs.getString(1);		
-							}
+
+						while(rs.next()) {
+							FindUser findpw = new FindUser();
+							findpw.setId(rs.getString("id"));
+							findpw.setName(rs.getString("name"));
+							findpw.setEmail(rs.getString("email"));
+							findpw.setPw(rs.getString("pw"));
+							listpw.add(findpw);
 						}
-						else {
-							String alert1="아이디, 이름 또는 이메일을";
-							String alert2="다시 한 번 확인해 주세요.";
-							result.setText
-								("<html><body><center>"+alert1
-										+"<br>"+alert2+"</body><html>");
+						
+						for(int i=0;i<listpw.size();i++) {
+							String getname = listpw.get(i).getName();
+							String getemail = listpw.get(i).getEmail();
+							String getid = listpw.get(i).getId();
+							String getpw = listpw.get(i).getPw();
+							if(name.equals(getname) && email.equals(getemail) && id.equals(getid)) {
+								System.out.println(getpw);
+								result.setText("비밀번호 : "+getpw);
+								break;
+							} else if(!name.equals(getname) || !email.equals(getemail) || !id.equals(getid)) {
+								String alert1="아이디, 이름 또는 이메일을";
+								String alert2="다시 한 번 확인해 주세요.";
+								result.setText
+									("<html><body><center>"+alert1
+											+"<br>"+alert2+"</body><html>");
+							}
 						}
 						
 					} catch(Exception exe) {
@@ -143,18 +157,6 @@ public class find_pw extends JFrame {
 						result.setText
 							("<html><body><center>"+alert1
 									+"<br>"+alert2+"</body><html>");
-					}
-					if(pw.equals("")) {
-						String alert1="아이디, 이름 또는 이메일을";
-						String alert2="다시 한 번 확인해 주세요.";
-						result.setText
-							("<html><body><center>"+alert1
-									+"<br>"+alert2+"</body><html>");
-					}
-					else {
-						result.setText
-							("<html><body><center>비밀번호 : "
-									+pw+"</body><html>");
 					}
 				}				
 			}
