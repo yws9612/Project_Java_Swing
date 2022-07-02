@@ -20,7 +20,7 @@ public class Choice extends JFrame {
 	private JPanel contentPane;
 	
 	JPanel background = new JPanel() {
-		Image back = new ImageIcon("image/background.png").getImage();
+		Image back = new ImageIcon("image/background-choice.png").getImage();
 
 		public void paint(Graphics g) {
 			g.drawImage(back, 0, 0, null);
