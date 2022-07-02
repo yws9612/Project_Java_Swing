@@ -10,6 +10,7 @@ public class game_frame extends JFrame{
 	
 	JLabel countdown=new JLabel();
 	JLabel countdown_image=new JLabel();
+	ImageIcon cd_image; //크기랑 색 확정해서 원 이미지 넣기
 	
 	JLabel hint=new JLabel();
 	String word_string, hint_t;
@@ -35,7 +36,7 @@ public class game_frame extends JFrame{
 	game5 g5;
 	int g_width;
 	
-	public void input_playlog(int scr) {
+	void input_playlog(int scr) {
 		Connection conn=null;
 		CallableStatement cstmt = null;
 		
@@ -48,19 +49,25 @@ public class game_frame extends JFrame{
 			cstmt.execute();
 		} catch (Exception e) {
 			System.out.println("error input_score");
-		}
-		
+		}		
 	}
 	
 	game_frame() {
 		Container c = getContentPane();
-
+		
+		c.add(countdown);
+		c.add(countdown_image);
+		//크기 설정, 폰트설정(countdown)
+		countdown_image.setIcon(cd_image);
+		countdown.setVisible(false);
+		countdown_image.setVisible(false);
+		
 		new_word=new thread_word(countdown, countdown_image);
 		new_word.start();
 		try {
 			new_word.join();
 		} catch (Exception e) {
-			System.out.println("프레임 생성자 시작부분");
+			System.out.println("생성자 시작부분");
 			e.printStackTrace();
 		}
 		

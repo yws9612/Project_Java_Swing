@@ -66,7 +66,7 @@ public class thread_word extends Thread {
 			countdown.setVisible(false);
 			circle_label.setVisible(false);
 		} catch (Exception e) {
-			System.out.println("fail");
+			System.out.println("thread_word fail");
 		}
 	}
 

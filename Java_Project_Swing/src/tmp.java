@@ -44,7 +44,7 @@ class thread extends Thread {
 		=new ImageIcon("C:/Users/soldesk/Desktop/SY/circle.png");
 	JLabel l2=new JLabel();
 	f() {
-		//JPanel pp=new p();
+		
 		Container c=getContentPane();
 		l2.setIcon(ii);
 		l2.setSize(300, 300);
@@ -52,8 +52,8 @@ class thread extends Thread {
 		thread t=new thread(ll,l2);
 		c.setLayout(null);
 		ll.setSize(300, 300);
-		ll.setHorizontalAlignment(JLabel.CENTER);
-		ll.setFont(new Font("맑은 고딕",Font.PLAIN, 30));
+		/ll.setHorizontalAlignment(JLabel.CENTER);
+		/ll.setFont(new Font("맑은 고딕",Font.PLAIN, 30));
 		ll.setVisible(false);
 		l2.setVisible(false);
 		c.add(ll);
