@@ -1,10 +1,5 @@
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
+import java.sql.*;
 import javax.swing.*;
-
-
 
 public class thread_word extends Thread {
 	JLabel circle_label = new JLabel();
@@ -23,11 +18,14 @@ public class thread_word extends Thread {
 		circle_label = l2;
 	}
 	
-	public char[] getWord() {
+	public char[] getWord_arr() {
 		return word1_arr;
 	}
 	public String getHint() {
 		return hint1;
+	}
+	public String getWord_string() {
+		return word1_string;
 	}
 
 	public void run() {
