@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import javax.swing.*;
 
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Color;
 import java.awt.Container;
 public class find_id extends JFrame {
@@ -27,49 +29,57 @@ public class find_id extends JFrame {
 	JButton find=new JButton("찾기");
 	JButton close=new JButton("닫기");
 	
+	JPanel background = new JPanel() {
+		Image back = new ImageIcon("image/background.png").getImage();
+
+		public void paint(Graphics g) {
+			g.drawImage(back, 0, 0, null);
+		}
+	};	
+	
 	public find_id() {
 		Container c=getContentPane();
 		c.setLayout(null);
 		
 		title.setBackground(Color.ORANGE);
 		title.setOpaque(true);
-		title.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		title.setFont(new Font("DungGeunMo",Font.PLAIN,16));
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		title.setLocation(30, 25);
 		title.setSize(315, 40);
 		c.add(title);
 		
-		name_label.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		name_label.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		name_label.setLocation(30, 80);
 		name_label.setSize(60, 30);
 		c.add(name_label);
 		
-		name_field.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		name_field.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		name_field.setLocation(90, 80);
 		name_field.setSize(180, 30);
 		c.add(name_field);
 		
-		email_label.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		email_label.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		email_label.setLocation(30, 125);
 		email_label.setSize(60, 30);
 		c.add(email_label);
 		
-		email_field.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		email_field.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		email_field.setSize(180, 30);
 		email_field.setLocation(90, 125);
 		c.add(email_field);
 		
-		find.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		find.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		find.setSize(65, 30);
 		find.setLocation(280, 125);
 		c.add(find);
 		
-		result.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		result.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		result.setLocation(30, 170);
 		result.setSize(240, 30);
 		c.add(result);
 		
-		close.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		close.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		close.setLocation(280, 170);
 		close.setSize(65, 30);
 		c.add(close);
@@ -123,6 +133,11 @@ public class find_id extends JFrame {
 		});
 		
 		setSize(390, 275);
+		
+		background.setLayout(null);
+		background.setBounds(0, 0, 390, 275);
+		add(background);
+		
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}

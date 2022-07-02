@@ -36,6 +36,14 @@ public class sign_up extends JFrame {
 	JLabel pw_checklabel = new JLabel();
 	JLabel email_checklabel = new JLabel();
 	JLabel last_checklabel = new JLabel();
+	
+	JPanel background = new JPanel() {
+		Image back = new ImageIcon("image/background.png").getImage();
+
+		public void paint(Graphics g) {
+			g.drawImage(back, 0, 0, null);
+		}
+	};
 
 	public sign_up() {
 		Container c = getContentPane();
@@ -43,101 +51,103 @@ public class sign_up extends JFrame {
 
 		title.setBackground(Color.ORANGE);
 		title.setOpaque(true);
-		title.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		title.setFont(new Font("DungGeunMo",Font.PLAIN,16));
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		title.setLocation(30, 25);
 		title.setSize(435, 40);
 		c.add(title);
 
-		id_label.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		id_label.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		id_label.setLocation(30, 80);
 		id_label.setSize(100, 30);
 		c.add(id_label);
 
-		id_field.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		id_field.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		id_field.setLocation(140, 80);
 		id_field.setSize(180, 30);
 		c.add(id_field);
 
-		id_checklabel.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		id_checklabel.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		id_checklabel.setLocation(140, 110);
-		id_checklabel.setSize(180, 30);
+		id_checklabel.setSize(250, 30);
 		c.add(id_checklabel);
 
-		id_check.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		id_check.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		id_check.setSize(125, 30);
 		id_check.setLocation(340, 80);
 		c.add(id_check);
 
-		pw_label.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		pw_label.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		pw_label.setLocation(30, 150);
 		pw_label.setSize(100, 30);
 		c.add(pw_label);
 
-		pw_field.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		pw_field.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		pw_field.setLocation(140, 150);
 		pw_field.setSize(180, 30);
 		c.add(pw_field);
 
-		pw2_label.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		pw2_label.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		pw2_label.setLocation(30, 185);
 		pw2_label.setSize(100, 30);
 		c.add(pw2_label);
 
-		pw2_field.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		pw2_field.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		pw2_field.setLocation(140, 185);
 		pw2_field.setSize(180, 30);
 		c.add(pw2_field);
 
-		pw_checklabel.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		pw_checklabel.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		pw_checklabel.setLocation(140, 215);
-		pw_checklabel.setSize(180, 30);
+		pw_checklabel.setSize(250, 30);
 		c.add(pw_checklabel);
 
-		pw_check.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		pw_check.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		pw_check.setSize(125, 30);
 		pw_check.setLocation(340, 185);
 		c.add(pw_check);
 
-		name_label.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		name_label.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		name_label.setLocation(30, 255);
 		name_label.setSize(100, 30);
 		c.add(name_label);
 
-		name_field.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		name_field.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		name_field.setLocation(140, 255);
 		name_field.setSize(180, 30);
 		c.add(name_field);
 
-		email_label.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		email_label.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		email_label.setLocation(30, 295);
 		email_label.setSize(100, 30);
 		c.add(email_label);
 
-		email_field.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		email_field.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		email_field.setLocation(140, 295);
 		email_field.setSize(180, 30);
 		c.add(email_field);
 
-		email_checklabel.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		email_checklabel.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		email_checklabel.setLocation(140, 325);
-		email_checklabel.setSize(180, 30);
+		email_checklabel.setSize(250, 30);
 		c.add(email_checklabel);
 
-		email_check.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		email_check.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		email_check.setSize(125, 30);
 		email_check.setLocation(340, 295);
 		c.add(email_check);
 
-		complete.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		complete.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		complete.setSize(65, 30);
 		complete.setLocation(400, 365);
 		c.add(complete);
 
-		last_checklabel.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		last_checklabel.setFont(new Font("DungGeunMo",Font.PLAIN,13));
 		last_checklabel.setLocation(30, 365);
 		last_checklabel.setSize(350, 30);
 		c.add(last_checklabel);
+		
+		
 
 		// 비밀번호 확인 순서대로 확인 버튼, pw2_field에서 엔터, 탭
 		pw2_field.setFocusTraversalKeysEnabled(false);
@@ -291,6 +301,11 @@ public class sign_up extends JFrame {
 		});
 
 		setSize(510, 460);
+		
+		background.setLayout(null);
+		background.setBounds(0, 0, 510, 460);
+		add(background);
+		
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}

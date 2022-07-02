@@ -64,25 +64,34 @@ public class login extends JFrame {
 		getContentPane().setLayout(null);
 
 		id_label.setHorizontalAlignment(SwingConstants.CENTER);
-		pw_label.setBounds(39, 223, 64, 40);
+		pw_label.setBounds(39, 203, 64, 40);
+		pw_label.setFont(new Font("DungGeunMo",Font.PLAIN,15));
 		getContentPane().add(pw_label);
 		pw_label.setHorizontalAlignment(SwingConstants.CENTER);
-		id_field.setBounds(115, 174, 233, 40);
+		id_field.setBounds(115, 154, 233, 40);
+		id_field.setFont(new Font("DungGeunMo",Font.PLAIN,15));
 		getContentPane().add(id_field);
-		pw_field.setBounds(115, 224, 233, 40);
+		pw_field.setBounds(115, 204, 233, 40);
+		pw_field.setFont(new Font("DungGeunMo",Font.PLAIN,15));
 		getContentPane().add(pw_field);
-		sign_up.setBounds(39, 273, 150, 40);
+		sign_up.setBounds(39, 253, 150, 40);
+		sign_up.setFont(new Font("DungGeunMo",Font.PLAIN,15));
 		getContentPane().add(sign_up);
 		sign_up.setBackground(Color.WHITE);
-		log_in.setBounds(201, 274, 150, 40);
+		log_in.setBounds(201, 254, 150, 40);
+		log_in.setFont(new Font("DungGeunMo",Font.PLAIN,15));
 		getContentPane().add(log_in);
-		find_id.setBounds(39, 323, 150, 40);
+		find_id.setBounds(39, 303, 150, 40);
+		find_id.setFont(new Font("DungGeunMo",Font.PLAIN,15));
 		getContentPane().add(find_id);
-		find_pw.setBounds(201, 323, 150, 40);
+		find_pw.setBounds(201, 303, 150, 40);
+		find_pw.setFont(new Font("DungGeunMo",Font.PLAIN,15));
 		getContentPane().add(find_pw);
-		id_label.setBounds(39, 173, 64, 40);
+		id_label.setBounds(39, 153, 64, 40);
+		id_label.setFont(new Font("DungGeunMo",Font.PLAIN,15));
 		getContentPane().add(id_label);
-		alter.setBounds(110, 130, 180, 40);
+		alter.setBounds(85, 110, 240, 40);
+		alter.setFont(new Font("DungGeunMo",Font.PLAIN,15));
 		getContentPane().add(alter);
 		
 		
@@ -128,8 +137,8 @@ public class login extends JFrame {
 
 						if (pw.equals(get.getResult())) {
 							if (get.getAdmin().equals("Y")) {
-//								new ManagerChoice();
-								dispose();
+								new ManagerChoice();
+//								dispose();
 							} else {
 								new Choice();
 								dispose();
