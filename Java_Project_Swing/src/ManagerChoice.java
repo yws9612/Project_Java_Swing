@@ -13,6 +13,13 @@ public class ManagerChoice extends JFrame{
 	JButton mw1 = new JButton("순우리말 관리");
 	JButton mw2 = new JButton("순화어 관리");
 	JButton log_out = new JButton("로그아웃");
+	JPanel background = new JPanel() {
+		Image back = new ImageIcon("image/background.png").getImage();
+
+		public void paint(Graphics g) {
+			g.drawImage(back, 0, 0, null);
+		}
+	};
 	
 	ManagerChoice(){
 		Container c = getContentPane();
@@ -25,21 +32,31 @@ public class ManagerChoice extends JFrame{
 		c.setLayout(null);
 		
 		m_page.setBounds(300, 30, 300, 50);
+		m_page.setFont(new Font("DungGeunMo",Font.PLAIN,15));
 		c.add(m_page);
 		
 		mem.setBounds(300, 140, 300, 70);
+		mem.setFont(new Font("DungGeunMo",Font.PLAIN,15));
 		c.add(mem);
 		
 		mw1.setBounds(300, 280, 300, 70);
+		mw1.setFont(new Font("DungGeunMo",Font.PLAIN,15));
 		c.add(mw1);
 		
 		mw2.setBounds(300, 420, 300, 70);
+		mw2.setFont(new Font("DungGeunMo",Font.PLAIN,15));
 		c.add(mw2);
 		
 		log_out.setBounds(710, 542, 150, 35);
+		log_out.setFont(new Font("DungGeunMo",Font.PLAIN,15));
 		c.add(log_out);
 		
-		setSize(900, 640);
+		setSize(900,640);
+		
+		background.setLayout(null);
+		background.setBounds(0, 0, 900, 640);
+		add(background);
+		
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false); //창크기 고정 하기

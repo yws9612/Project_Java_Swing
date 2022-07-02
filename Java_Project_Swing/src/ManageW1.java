@@ -5,19 +5,6 @@ import java.awt.event.*;
 import java.sql.*;
 import java.util.*;
 
-//class Gs {
-//	private int d_no;
-//
-//	public int getD_no() {
-//		return d_no;
-//	}
-//
-//	public void setD_no(int d_no) {
-//		this.d_no = d_no;
-//	}
-//
-//}
-
 
 public class ManageW1 extends JFrame {
 
@@ -37,6 +24,14 @@ public class ManageW1 extends JFrame {
 	Connection conne = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
+	JPanel background = new JPanel() {
+		Image back = new ImageIcon("image/background.png").getImage();
+
+		public void paint(Graphics g) {
+			g.drawImage(back, 0, 0, null);
+		}
+	};
+	JLabel jl_title = new JLabel("순우리말 관리");
 	
 	
 
@@ -60,6 +55,8 @@ public class ManageW1 extends JFrame {
 			jtb.getColumn("선택").setCellEditor(new DefaultCellEditor(c_box));
 			jtb.getColumn("선택").setPreferredWidth(40);
 			c_box.setHorizontalAlignment(JLabel.CENTER);
+			
+			
 
 			Gs gs = new Gs();
 
@@ -159,14 +156,21 @@ public class ManageW1 extends JFrame {
 				}
 			}
 		});
-		js.setBounds(100, 100, 700, 500);
-		jl_w1.setBounds(100,610,40,30);
-		jf_w1.setBounds(150,610,150,30);
-		jl_w1_h.setBounds(310,610,30,30);
-		jf_w1_h.setBounds(350,610,200,30);
-		addButton.setBounds(560, 610, 70, 30);
-		del.setBounds(640, 610, 70, 30);
-		close.setBounds(720,610,70,30);
+		js.setBounds(100, 100, 700, 400);
+		jl_w1.setBounds(100,510,50,30);
+		jf_w1.setBounds(150,510,150,30);
+		jl_w1_h.setBounds(310,510,40,30);
+		jf_w1_h.setBounds(340,510,220,30);
+		addButton.setBounds(570, 510, 70, 30);
+		del.setBounds(650, 510, 70, 30);
+		close.setBounds(730,510,70,30);
+		jl_w1.setFont(new Font("DungGeunMo",Font.PLAIN,12));
+		jf_w1.setFont(new Font("DungGeunMo",Font.PLAIN,12));
+		jl_w1_h.setFont(new Font("DungGeunMo",Font.PLAIN,12));
+		jf_w1_h.setFont(new Font("DungGeunMo",Font.PLAIN,12));
+		addButton.setFont(new Font("DungGeunMo",Font.PLAIN,12));
+		del.setFont(new Font("DungGeunMo",Font.PLAIN,12));
+		close.setFont(new Font("DungGeunMo",Font.PLAIN,12));
 		
 		
 
@@ -179,7 +183,13 @@ public class ManageW1 extends JFrame {
 		c.add(jl_w1_h);
 		c.add(jf_w1_h);
 		
-		setSize(900,800);
+		setSize(900,640);
+		
+		background.setLayout(null);
+		background.setBounds(0, 0, 900, 640);
+		add(background);
+
+		setLocationRelativeTo(null);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}

@@ -32,6 +32,14 @@ public class ManageMember extends JFrame {
 	JButton exit = new JButton("닫기");
 	JButton allsel = new JButton("전체 선택");
 	JButton alldis = new JButton("전체 해제");
+	JPanel background = new JPanel() {
+		Image background = new ImageIcon("image/background.png").getImage();
+
+		public void paint(Graphics g) {
+			g.drawImage(background, 0, 0, null);
+		}
+	};
+
 
 	Connection conne = null;
 	PreparedStatement pstmt = null;
@@ -138,17 +146,23 @@ public class ManageMember extends JFrame {
 				}
 			}
 		});
-		js.setBounds(60, 100, 700, 500);
-		del.setBounds(590, 620, 75, 45);
-		exit.setBounds(680, 620, 75, 45);
-		allsel.setBounds(60, 20, 75, 30);
-		alldis.setBounds(150, 20, 75, 30);
+		js.setBounds(100, 80, 700, 400);
+		del.setBounds(650, 510, 70, 30);
+		exit.setBounds(730,510,70,30);
+		allsel.setBounds(40, 10, 75, 30);
+		alldis.setBounds(130, 10, 75, 30);
 
-		setSize(850, 750);
+		setSize(900, 640);
+		setLocationRelativeTo(null);
 		
 		c.add(js);
 		c.add(del);
 		c.add(exit);
+		
+		background.setLayout(null);
+		background.setBounds(0, 0, 900,640);
+		getContentPane().add(background);
+		
 		
 
 		setResizable(false);
