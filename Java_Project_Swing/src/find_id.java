@@ -3,6 +3,7 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -11,6 +12,36 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Color;
 import java.awt.Container;
+
+class FindUser {
+	String id, name, email;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+}
+
 public class find_id extends JFrame {
 	Connection conn=null; 
 	PreparedStatement psmt=null;
@@ -87,40 +118,69 @@ public class find_id extends JFrame {
 		//찾기버튼
 		find.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				conn=Connect.get();
 				name=name_field.getText();
 				email=email_field.getText();
+				
+				ArrayList<FindUser> list = new ArrayList <> ();
+				
 				if(name.equals("")||email.equals("")) {
 					result.setText("이름과 이메일을 모두 입력해 주세요.");
 				}
 				else {
-					try {
-						String que
-							= "select id from member"+ 
-						" where name in (?) and email in (?)";
-						conn=Connect.get();
+					try { 
+//						String que
+//							= "select id from member"+ 
+//						" where name = ? and email = ?";
+//						conn=Connect.get();
+//						psmt=conn.prepareStatement(que);
+//						psmt.setString(1, name);
+//						psmt.setString(2, email);
+//						rs=psmt.executeQuery();
+//						boolean f=rs.next();
+						String que = "select id, name, email from member";
 						psmt=conn.prepareStatement(que);
-						psmt.setString(1, name);
-						psmt.setString(2, email);
-						rs=psmt.executeQuery();
-						boolean f=rs.next();
-						if(f) {
-							while(rs.next()) {
-								id=rs.getString(1);		
+						rs=psmt.executeQuery(que);
+						
+						while(rs.next()) {
+							FindUser finduser = new FindUser();
+							finduser.setId(rs.getString("id"));
+							finduser.setName(rs.getString("name"));
+							finduser.setEmail(rs.getString("email"));
+							list.add(finduser);
+						}
+						
+						for(int i=0;i<list.size();i++) {
+							String getname = list.get(i).getName();
+							String getemail = list.get(i).getEmail();
+							String getid = list.get(i).getId();
+							if(name.equals(getname) && email.equals(getemail)) {
+								System.out.println(getid);
+								result.setText("아이디 : "+getid);
+								break;
+							} else if(!name.equals(getname) || !email.equals(getemail)) {
+								result.setText("아이디가 존재하지 않습니다.");
 							}
 						}
-						else {
-							result.setText("아이디가 존재하지 않습니다.");							
-						}
+//						if(f) {
+//							while(rs.next()) {
+//								id=rs.getString("id");		
+//							}
+//						}
+//						else {
+//							result.setText("아이디가 존재하지 않습니다.");							
+//						}
 					} catch(Exception exe) {
+						System.out.println(exe);
 						exe.printStackTrace();
 					}
-					if(id.equals(null)) {
-						result.setText("아이디가 존재하지 않습니다.");
-					}
-					else {
-						result.setText("아이디 : "+id);
-					}
-				}				
+//					if(id.equals(null)) {
+//						result.setText("아이디가 존재하지 않습니다.");
+//					}
+//					else {
+//						result.setText("아이디 : "+id);
+//					}
+				}			
 			}
 		});
 		

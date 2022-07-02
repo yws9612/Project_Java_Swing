@@ -113,7 +113,7 @@ public class find_pw extends JFrame {
 								+"<br>"+alert2+"</body><html>");
 				}
 				else {
-					try {
+					try {	//NullPointerException 오류 뜸 확인 필요! 
 						String que
 							="select pw from member "
 								+"where name=? and email=? and id=?";
