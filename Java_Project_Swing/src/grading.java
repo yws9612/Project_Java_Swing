@@ -28,6 +28,9 @@ public class grading {
 		int i=0;
 		while(grading[i]) {
 			i++;
+			if(i>6) {
+				break;
+			}
 		}
 		if(word_length==i) {
 			return true;
