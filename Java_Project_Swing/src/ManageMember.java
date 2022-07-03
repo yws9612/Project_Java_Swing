@@ -62,7 +62,7 @@ public class ManageMember extends JFrame {
 
 		// sql
 		try {
-			String query1 = "select * from member natural join manager where enable ='Y' order by m_no";
+			String query1 = "select * from member natural join manager where enable ='Y' and admin = 'N' order by m_no";
 			pstmt = conne.prepareStatement(query1);
 			rs = pstmt.executeQuery();
 
