@@ -152,7 +152,7 @@ public class game2 extends JPanel {
 						input2[i] = input_field[i].getText().charAt(0);
 					}
 					// 채점+다음 시도로 넘기기
-					game_frame.ctl.interrupt();
+					game_frame.ctl2.interrupt();
 				}
 			}
 		});
@@ -164,7 +164,7 @@ public class game2 extends JPanel {
 					input2[i] = input_field[i].getText().charAt(0);
 				}
 				// 채점+다음 시도로 넘기기
-				game_frame.ctl.interrupt();
+				game_frame.ctl2.interrupt();
 			}
 		});
 
@@ -177,7 +177,7 @@ public class game2 extends JPanel {
 						input2[i] = input_field[i].getText().charAt(0);
 					}
 					// 채점+다음 시도로 넘기기
-					game_frame.ctl.interrupt();
+					game_frame.ctl2.interrupt();
 				}
 			}
 		});

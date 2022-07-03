@@ -36,7 +36,11 @@ public class game_frame extends JFrame {
 	game4 g4;
 	game5 g5;
 
-	static game_control ctl = new game_control();
+	static game_control ctl1 = new game_control();
+	static game_control ctl2 = new game_control();
+	static game_control ctl3 = new game_control();
+	static game_control ctl4 = new game_control();
+	static game_control ctl5 = new game_control();
 
 	void input_playlog(int scr) {
 		Connection conn = null;
@@ -164,9 +168,9 @@ public class game_frame extends JFrame {
 				}
 			}
 
-			ctl.start();
+			ctl1.start();
 			try {
-				ctl.join();
+				ctl1.join();
 				g1 = new game1(word_l);
 				g1.setBounds((d.width - g_x) / 2, 290, g_x, 340);
 				c.add(g1);
@@ -195,9 +199,9 @@ public class game_frame extends JFrame {
 				continue;
 				
 			} else {
-				ctl.start();
+				ctl2.start();
 				try {
-					ctl.join();
+					ctl2.join();
 					g2 = new game2(word_l, g1.input1, return_grade1);
 					g2.setBounds((d.width - g_x) / 2, 290, g_x, 340);
 					c.add(g2);
@@ -230,9 +234,9 @@ public class game_frame extends JFrame {
 					continue;
 					
 				} else {
-					ctl.start();
+					ctl3.start();
 					try {
-						ctl.join();
+						ctl3.join();
 						g3 = new game3(word_l, g1.input1, g2.input2, return_grade1, return_grade2);
 						g3.setBounds((d.width - g_x) / 2, 290, g_x, 340);
 						c.add(g3);
@@ -265,9 +269,9 @@ public class game_frame extends JFrame {
 						continue;
 						
 					} else {
-						ctl.start();
+						ctl4.start();
 						try {
-							ctl.join();
+							ctl4.join();
 							g4 = new game4(word_l, g1.input1, g2.input2, g3.input3, return_grade1, return_grade2,
 									return_grade3);
 							g4.setBounds((d.width - g_x) / 2, 290, g_x, 340);
@@ -301,9 +305,9 @@ public class game_frame extends JFrame {
 							continue;
 							
 						} else {
-							ctl.start();
+							ctl5.start();
 							try {
-								ctl.join();
+								ctl5.join();
 								g5 = new game5(word_l, g1.input1, g2.input2, g3.input3, g4.input4, return_grade1,
 										return_grade2, return_grade3, return_grade4);
 								g5.setBounds((d.width- g_x) / 2, 290, g_x, 340);
