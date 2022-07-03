@@ -21,15 +21,18 @@ class Gs {
 }
 
 public class ManageMember extends JFrame {
-
+	
+	ImageIcon buttonimg1 = new ImageIcon("image/70_30_button.png");
+	ImageIcon buttonimg2 = new ImageIcon("image/70_30_button_select.png");
+	
 	Connect conn = new Connect();
 	JTable jtb;
 	Object obj[][] = new Object[0][7];
 	DefaultTableModel model;
 	JScrollPane js;
 	String column[] = { "선택", "회원번호", "ID", "PW", "이름", "이메일", "가입일", "최근접속일" };
-	JButton del = new JButton("삭제");
-	JButton exit = new JButton("닫기");
+	JButton del = new JButton("삭제",buttonimg1);
+	JButton exit = new JButton("닫기",buttonimg1);
 	JButton allsel = new JButton("전체 선택");
 	JButton alldis = new JButton("전체 해제");
 	JPanel background = new JPanel() {
@@ -149,15 +152,52 @@ public class ManageMember extends JFrame {
 		});
 		js.setBounds(100, 100, 700, 400);
 		del.setBounds(650, 510, 70, 30);
+		del.setHorizontalTextPosition(JButton.CENTER);
+		del.setRolloverIcon(buttonimg2);
+		del.setBorderPainted(false);
+		del.setContentAreaFilled(false);
+		del.setFocusPainted(false);
+		del.setForeground(Color.black);
 		exit.setBounds(730,510,70,30);
+		exit.setHorizontalTextPosition(JButton.CENTER);
+		exit.setRolloverIcon(buttonimg2);
+		exit.setBorderPainted(false);
+		exit.setContentAreaFilled(false);
+		exit.setFocusPainted(false);
+		exit.setForeground(Color.black);
 		allsel.setBounds(40, 10, 75, 30);
 		alldis.setBounds(130, 10, 75, 30);
 		del.setFont(new Font("DungGeunMo",Font.PLAIN,12));
 		exit.setFont(new Font("DungGeunMo",Font.PLAIN,12));
 		title.setBounds(300,30,300,50);
 		title.setFont(new Font("DungGeunMo",Font.PLAIN,40));
+		title.setForeground(Color.white);
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		c.add(title);
+		
+		del.addMouseListener(new MouseAdapter() {
+			 @Override
+			    public void mouseEntered(MouseEvent e) {
+			del.setForeground(Color.white);
+			    }
+			 @Override
+			    public void mouseExited(MouseEvent e) {
+			del.setForeground(Color.black);
+			    }
+			});
+		
+		exit.addMouseListener(new MouseAdapter() {
+			 @Override
+			    public void mouseEntered(MouseEvent e) {
+			exit.setForeground(Color.white);
+			    }
+			 @Override
+			    public void mouseExited(MouseEvent e) {
+			exit.setForeground(Color.black);
+			    }
+			});
+
+
 
 		setSize(900, 640);
 		setLocationRelativeTo(null);

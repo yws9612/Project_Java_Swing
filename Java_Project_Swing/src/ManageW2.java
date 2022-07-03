@@ -7,16 +7,19 @@ import java.util.*;
 
 
 public class ManageW2 extends JFrame {
-
+	
+	ImageIcon buttonimg1 = new ImageIcon("image/70_30_button.png");
+	ImageIcon buttonimg2 = new ImageIcon("image/70_30_button_select.png");
+	
 	Connect conn = new Connect();
 	JTable jtb;
 	Object obj[][] = new Object[0][7];
 	DefaultTableModel model;
 	JScrollPane js;
 	String column[] = { "선택", "단어번호", "단어", "뜻"};
-	JButton addButton = new JButton("추가");
-	JButton del = new JButton("삭제");
-	JButton close = new JButton("닫기");
+	JButton addButton = new JButton("추가",buttonimg1);
+	JButton del = new JButton("삭제",buttonimg1);
+	JButton close = new JButton("닫기",buttonimg1);
 	JLabel jl_w2 = new JLabel("단어 : ");
 	JTextField jf_w2 = new JTextField(20);
 	JLabel jl_w2_h = new JLabel("뜻 : ");
@@ -163,8 +166,10 @@ public class ManageW2 extends JFrame {
 		});
 		js.setBounds(100, 100, 700, 400);
 		jl_w2.setBounds(100,510,50,30);
+		jl_w2.setForeground(Color.white);
 		jf_w2.setBounds(150,510,150,30);
 		jl_w2_h.setBounds(310,510,40,30);
+		jl_w2_h.setForeground(Color.white);
 		jf_w2_h.setBounds(340,510,220,30);
 		addButton.setBounds(570, 510, 70, 30);
 		del.setBounds(650, 510, 70, 30);
@@ -174,10 +179,29 @@ public class ManageW2 extends JFrame {
 		jl_w2_h.setFont(new Font("DungGeunMo",Font.PLAIN,12));
 		jf_w2_h.setFont(new Font("DungGeunMo",Font.PLAIN,12));
 		addButton.setFont(new Font("DungGeunMo",Font.PLAIN,12));
+		addButton.setHorizontalTextPosition(JButton.CENTER);
+		addButton.setRolloverIcon(buttonimg2);
+		addButton.setBorderPainted(false);
+		addButton.setContentAreaFilled(false);
+		addButton.setFocusPainted(false);
+		addButton.setForeground(Color.black);
 		del.setFont(new Font("DungGeunMo",Font.PLAIN,12));
+		del.setHorizontalTextPosition(JButton.CENTER);
+		del.setRolloverIcon(buttonimg2);
+		del.setBorderPainted(false);
+		del.setContentAreaFilled(false);
+		del.setFocusPainted(false);
+		del.setForeground(Color.black);
 		close.setFont(new Font("DungGeunMo",Font.PLAIN,12));
+		close.setHorizontalTextPosition(JButton.CENTER);
+		close.setRolloverIcon(buttonimg2);
+		close.setBorderPainted(false);
+		close.setContentAreaFilled(false);
+		close.setFocusPainted(false);
+		close.setForeground(Color.black);
 		title.setBounds(300,30,300,50);
 		title.setFont(new Font("DungGeunMo",Font.PLAIN,40));
+		title.setForeground(Color.white);
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		c.add(title);
 		
@@ -191,6 +215,39 @@ public class ManageW2 extends JFrame {
 		c.add(jf_w2);
 		c.add(jl_w2_h);
 		c.add(jf_w2_h);
+		
+		addButton.addMouseListener(new MouseAdapter() {
+			 @Override
+			    public void mouseEntered(MouseEvent e) {
+			addButton.setForeground(Color.white);
+			    }
+			 @Override
+			public void mouseExited(MouseEvent e) {
+			addButton.setForeground(Color.black);
+			    }
+			});
+		
+		del.addMouseListener(new MouseAdapter() {
+			 @Override
+			    public void mouseEntered(MouseEvent e) {
+			del.setForeground(Color.white);
+			    }
+			 @Override
+			    public void mouseExited(MouseEvent e) {
+			del.setForeground(Color.black);
+			    }
+			});
+		
+		close.addMouseListener(new MouseAdapter() {
+			 @Override
+			    public void mouseEntered(MouseEvent e) {
+			close.setForeground(Color.white);
+			    }
+			 @Override
+			    public void mouseExited(MouseEvent e) {
+			close.setForeground(Color.black);
+			    }
+			});
 		
 		setSize(900,640);
 		
