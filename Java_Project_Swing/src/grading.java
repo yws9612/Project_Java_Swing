@@ -25,19 +25,14 @@ public class grading {
 	}
 	
 	public boolean grade_case() {
-		int i=0;
-		while(true) {
-			if(grading[i]) {
-				i++;
-			}
-			else {
-				break;
-			}
-			if(i>6) {
+		int i = 0;
+		while (grading[i]) {
+			i++;
+			if (i >= word_length) {
 				break;
 			}
 		}
-		if(word_length==i) {
+		if (word_length==i) {
 			return true;
 		}
 		return false;
