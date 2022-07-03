@@ -57,6 +57,7 @@ public class game_frame extends JFrame {
 	game_frame() {
 		Container c = getContentPane();
 		c.setLayout(null);
+		Dimension d=c.getSize();
 
 		setSize(frame_w, frame_h);
 		setLocationRelativeTo(null);
@@ -95,7 +96,7 @@ public class game_frame extends JFrame {
 		hint.setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 		hint.setHorizontalAlignment(SwingConstants.CENTER);
 		hint.setText(hint_t);
-		hint.setBounds(100, 150, frame_w - 100, 100);
+		hint.setBounds(50, 150, d.width - 100, 100);
 		c.add(hint);
 
 		c.add(score_label);
@@ -164,7 +165,7 @@ public class game_frame extends JFrame {
 			try {
 				ctl.join();
 				g1 = new game1(word_l);
-				g1.setBounds((frame_w - g_x) / 2, 290, g_x, 340);
+				g1.setBounds((d.width - g_x) / 2, 290, g_x, 340);
 				c.add(g1);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -195,7 +196,7 @@ public class game_frame extends JFrame {
 				try {
 					ctl.join();
 					g2 = new game2(word_l, g1.input1, return_grade1);
-					g2.setBounds((frame_w - g_x) / 2, 290, g_x, 340);
+					g2.setBounds((d.width - g_x) / 2, 290, g_x, 340);
 					c.add(g2);
 					c.remove(g1);
 				} catch (Exception e) {
@@ -230,7 +231,7 @@ public class game_frame extends JFrame {
 					try {
 						ctl.join();
 						g3 = new game3(word_l, g1.input1, g2.input2, return_grade1, return_grade2);
-						g3.setBounds((frame_w - g_x) / 2, 290, g_x, 340);
+						g3.setBounds((d.width - g_x) / 2, 290, g_x, 340);
 						c.add(g3);
 						c.remove(g2);
 					} catch (Exception e) {
@@ -266,7 +267,7 @@ public class game_frame extends JFrame {
 							ctl.join();
 							g4 = new game4(word_l, g1.input1, g2.input2, g3.input3, return_grade1, return_grade2,
 									return_grade3);
-							g4.setBounds((frame_w - g_x) / 2, 290, g_x, 340);
+							g4.setBounds((d.width - g_x) / 2, 290, g_x, 340);
 							c.add(g4);
 							c.remove(g3);
 						} catch (Exception e) {
@@ -302,7 +303,7 @@ public class game_frame extends JFrame {
 								ctl.join();
 								g5 = new game5(word_l, g1.input1, g2.input2, g3.input3, g4.input4, return_grade1,
 										return_grade2, return_grade3, return_grade4);
-								g5.setBounds((frame_w - g_x) / 2, 290, g_x, 340);
+								g5.setBounds((d.width- g_x) / 2, 290, g_x, 340);
 								c.add(g5);
 								c.remove(g4);
 							} catch (Exception e) {
