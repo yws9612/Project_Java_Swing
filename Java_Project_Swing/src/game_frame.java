@@ -54,6 +54,7 @@ public class game_frame extends JFrame{
 	
 	game_frame() {
 		Container c = getContentPane();
+		c.setLayout(null);
 		
 		c.add(countdown);
 		c.add(countdown_image);
