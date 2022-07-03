@@ -245,10 +245,6 @@ public class RankingButton extends JFrame {
 				sett.setScores(rs.getInt(2));			
 				set.add(sett);
 			}
-			
-			
-			
-			
 			lb_rk11.setText(set.get(0).getID());
 			lb_rk12.setText(set.get(1).getID());
 			lb_rk13.setText(set.get(2).getID());

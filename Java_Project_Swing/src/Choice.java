@@ -86,7 +86,7 @@ public class Choice extends JFrame {
 		contentPane.add(bt_ch02);
 
 		
-		JButton bt_ch03 = new JButton("내 랭킹", buttonimg1);
+		JButton bt_ch03 = new JButton("랭킹 확인", buttonimg1);
 		bt_ch03.setBounds(300, 420, 300, 70);
 		bt_ch03.setHorizontalTextPosition(JButton.CENTER); // 텍스트 가운데
 		bt_ch03.setRolloverIcon(buttonimg2);
