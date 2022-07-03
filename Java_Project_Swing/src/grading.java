@@ -7,10 +7,10 @@ public class grading {
 	
 	grading(String a, char [] b) {
 		word=a;
-		word_arr=b;
 		word_length=word.length();
 		word_arr=new char[word_length];
 		grading=new boolean[word_length];
+		word_arr=b;
 	}
 	
 	public boolean[] grade_panel(char input[]) {
@@ -26,8 +26,13 @@ public class grading {
 	
 	public boolean grade_case() {
 		int i=0;
-		while(grading[i]) {
-			i++;
+		while(true) {
+			if(grading[i]) {
+				i++;
+			}
+			else {
+				break;
+			}
 			if(i>6) {
 				break;
 			}

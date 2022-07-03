@@ -76,7 +76,6 @@ public class game_frame extends JFrame {
 		countdown_image.setIcon(cd_image);
 		countdown.setVisible(false);
 		countdown_image.setVisible(false);
-		
 
 		new_word = new thread_word(countdown, countdown_image);
 		new_word.start();
@@ -86,9 +85,9 @@ public class game_frame extends JFrame {
 			System.out.println("생성자 시작부분");
 			e.printStackTrace();
 		}
-
 		c.remove(countdown);
 		c.remove(countdown_image);
+
 		word_string = new_word.getWord_string();
 		word_arr = new_word.getWord_arr();
 		word_l = word_string.length();
