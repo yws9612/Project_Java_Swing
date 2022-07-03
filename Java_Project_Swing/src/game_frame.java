@@ -36,11 +36,11 @@ public class game_frame extends JFrame {
 	game4 g4;
 	game5 g5;
 
-	static game_control ctl1 = new game_control();
-	static game_control ctl2 = new game_control();
-	static game_control ctl3 = new game_control();
-	static game_control ctl4 = new game_control();
-	static game_control ctl5 = new game_control();
+	static game_control1 ctl1 = new game_control1();
+	static game_control2 ctl2 = new game_control2();
+	static game_control3 ctl3 = new game_control3();
+	static game_control4 ctl4 = new game_control4();
+	static game_control5 ctl5 = new game_control5();
 
 	void input_playlog(int scr) {
 		Connection conn = null;
