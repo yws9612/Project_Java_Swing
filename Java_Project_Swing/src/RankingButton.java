@@ -17,12 +17,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.*;
+import java.util.ArrayList;
 
 import javax.swing.SwingConstants;
 
 class Setter{
+	
 	private String ID;
 	private int scores;
+	
 	public String getID() {
 		return ID;
 	}
@@ -69,7 +72,7 @@ public class RankingButton extends JFrame {
 	 * Create the frame.
 	 */
 	public RankingButton() {
-		select();
+
 
 		Link link = new Link();
 
@@ -218,16 +221,16 @@ public class RankingButton extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setVisible(true);
-	}
-	
-
-	public void select() {
+		
 		Connection conn=null; 
 
 		PreparedStatement psmt=null; 
 
         ResultSet rs=null; 
-        Setter set = new Setter();        
+        
+        ArrayList<Setter> set = new ArrayList<>();
+        
+        
         try {
 			String sql = "select id, scores from (select id, scores from member natural join score order by scores desc) where rownum <= 5";
 			
@@ -237,14 +240,37 @@ public class RankingButton extends JFrame {
 			
 			
 			while(rs.next()) {
-				String id = rs.getString(1);
-				int scores = rs.getInt(2);	
-				set.setID(id);
-				set.setScores(scores);
+				Setter sett = new Setter();
+				sett.setID(rs.getString(1));
+				sett.setScores(rs.getInt(2));			
+				set.add(sett);
 			}
 			
+			
+			
+			
+			lb_rk11.setText(set.get(0).getID());
+			lb_rk12.setText(set.get(1).getID());
+			lb_rk13.setText(set.get(2).getID());
+			lb_rk14.setText(set.get(3).getID());
+			lb_rk15.setText(set.get(4).getID());
+			
+			lb_rk21.setText(set.get(0).getScores()+"");
+			lb_rk22.setText(set.get(1).getScores()+"");
+			lb_rk23.setText(set.get(2).getScores()+"");
+			lb_rk24.setText(set.get(3).getScores()+"");
+			lb_rk25.setText(set.get(4).getScores()+"");
+			
+				
 		}catch(Exception e) {
 			System.out.println("select() : " + e);
 		}
+        
+		
+	}
+	
+
+	public void select() {
+		
 	}
 }
