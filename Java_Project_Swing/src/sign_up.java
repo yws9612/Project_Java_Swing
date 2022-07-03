@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.*;
 
 import javax.swing.*;
@@ -13,6 +15,11 @@ public class sign_up extends JFrame {
 	ResultSet rs = null;
 	CallableStatement cstmt = null;
 
+	ImageIcon buttonimg1 = new ImageIcon("image/125_30_button.png");
+	ImageIcon buttonimg2 = new ImageIcon("image/125_30_button_select.png");
+	ImageIcon buttonimg3 = new ImageIcon("image/65_30_button.png");
+	ImageIcon buttonimg4 = new ImageIcon("image/65_30_button_select.png");
+
 	String id, pw, pw2, name, email;
 
 	JTextField id_field = new JTextField();
@@ -21,10 +28,10 @@ public class sign_up extends JFrame {
 	JTextField name_field = new JTextField();
 	JTextField email_field = new JTextField();
 
-	JButton id_check = new JButton("아이디 확인");
-	JButton pw_check = new JButton("비밀번호 확인");
-	JButton email_check = new JButton("이메일 확인");
-	JButton complete = new JButton("가입");
+	JButton id_check = new JButton("아이디 확인", buttonimg1);
+	JButton pw_check = new JButton("비밀번호 확인", buttonimg1);
+	JButton email_check = new JButton("이메일 확인", buttonimg1);
+	JButton complete = new JButton("가입", buttonimg3);
 
 	JLabel title = new JLabel("회원가입");
 	JLabel id_label = new JLabel("아이디");
@@ -36,9 +43,9 @@ public class sign_up extends JFrame {
 	JLabel pw_checklabel = new JLabel();
 	JLabel email_checklabel = new JLabel();
 	JLabel last_checklabel = new JLabel();
-	
+
 	JPanel background = new JPanel() {
-		Image back = new ImageIcon("image/background.png").getImage();
+		Image back = new ImageIcon("image/sign_up_background.png").getImage();
 
 		public void paint(Graphics g) {
 			g.drawImage(back, 0, 0, null);
@@ -49,105 +56,133 @@ public class sign_up extends JFrame {
 		Container c = getContentPane();
 		c.setLayout(null);
 
-		title.setBackground(Color.ORANGE);
-		title.setOpaque(true);
-		title.setFont(new Font("DungGeunMo",Font.PLAIN,16));
-		title.setHorizontalAlignment(SwingConstants.CENTER);
-		title.setLocation(30, 25);
-		title.setSize(435, 40);
-		c.add(title);
+//		title.setOpaque(true);
+//		title.setFont(new Font("DungGeunMo",Font.PLAIN,16));
+//		title.setHorizontalAlignment(SwingConstants.CENTER);
+//		title.setLocation(30, 25);
+//		title.setSize(435, 40);
+//		c.add(title);
 
-		id_label.setFont(new Font("DungGeunMo",Font.PLAIN,13));
-		id_label.setLocation(30, 80);
+		id_label.setForeground(Color.white);
+		id_label.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
+		id_label.setLocation(50, 80);
 		id_label.setSize(100, 30);
 		c.add(id_label);
 
-		id_field.setFont(new Font("DungGeunMo",Font.PLAIN,13));
+		id_field.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
 		id_field.setLocation(140, 80);
 		id_field.setSize(180, 30);
 		c.add(id_field);
 
-		id_checklabel.setFont(new Font("DungGeunMo",Font.PLAIN,13));
+		id_checklabel.setForeground(Color.white);
+		id_checklabel.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
 		id_checklabel.setLocation(140, 110);
 		id_checklabel.setSize(250, 30);
 		c.add(id_checklabel);
 
-		id_check.setFont(new Font("DungGeunMo",Font.PLAIN,13));
+		id_check.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
 		id_check.setSize(125, 30);
 		id_check.setLocation(340, 80);
+		id_check.setHorizontalTextPosition(JButton.CENTER);
+		id_check.setRolloverIcon(buttonimg2);
+		id_check.setBorderPainted(false);
+		id_check.setContentAreaFilled(false);
+		id_check.setFocusPainted(false);
 		c.add(id_check);
 
-		pw_label.setFont(new Font("DungGeunMo",Font.PLAIN,13));
-		pw_label.setLocation(30, 150);
+		pw_label.setForeground(Color.white);
+		pw_label.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
+		pw_label.setLocation(50, 150);
 		pw_label.setSize(100, 30);
 		c.add(pw_label);
 
-		pw_field.setFont(new Font("DungGeunMo",Font.PLAIN,13));
+		pw_field.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
 		pw_field.setLocation(140, 150);
 		pw_field.setSize(180, 30);
 		c.add(pw_field);
 
-		pw2_label.setFont(new Font("DungGeunMo",Font.PLAIN,13));
-		pw2_label.setLocation(30, 185);
+		pw2_label.setForeground(Color.white);
+		pw2_label.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
+		pw2_label.setLocation(50, 185);
 		pw2_label.setSize(100, 30);
 		c.add(pw2_label);
 
-		pw2_field.setFont(new Font("DungGeunMo",Font.PLAIN,13));
+		pw2_field.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
 		pw2_field.setLocation(140, 185);
 		pw2_field.setSize(180, 30);
 		c.add(pw2_field);
 
-		pw_checklabel.setFont(new Font("DungGeunMo",Font.PLAIN,13));
+		pw_checklabel.setForeground(Color.white);
+		pw_checklabel.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
 		pw_checklabel.setLocation(140, 215);
 		pw_checklabel.setSize(250, 30);
 		c.add(pw_checklabel);
 
-		pw_check.setFont(new Font("DungGeunMo",Font.PLAIN,13));
+		pw_check.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
 		pw_check.setSize(125, 30);
 		pw_check.setLocation(340, 185);
+		pw_check.setHorizontalTextPosition(JButton.CENTER);
+		pw_check.setRolloverIcon(buttonimg2);
+		pw_check.setBorderPainted(false);
+		pw_check.setContentAreaFilled(false);
+		pw_check.setFocusPainted(false);
+
 		c.add(pw_check);
 
-		name_label.setFont(new Font("DungGeunMo",Font.PLAIN,13));
-		name_label.setLocation(30, 255);
+		name_label.setForeground(Color.white);
+		name_label.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
+		name_label.setLocation(50, 255);
 		name_label.setSize(100, 30);
 		c.add(name_label);
 
-		name_field.setFont(new Font("DungGeunMo",Font.PLAIN,13));
+		name_field.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
 		name_field.setLocation(140, 255);
 		name_field.setSize(180, 30);
 		c.add(name_field);
 
-		email_label.setFont(new Font("DungGeunMo",Font.PLAIN,13));
-		email_label.setLocation(30, 295);
+		email_label.setForeground(Color.white);
+		email_label.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
+		email_label.setLocation(50, 295);
 		email_label.setSize(100, 30);
 		c.add(email_label);
 
-		email_field.setFont(new Font("DungGeunMo",Font.PLAIN,13));
+		email_field.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
 		email_field.setLocation(140, 295);
 		email_field.setSize(180, 30);
 		c.add(email_field);
 
-		email_checklabel.setFont(new Font("DungGeunMo",Font.PLAIN,13));
+		email_checklabel.setForeground(Color.white);
+		email_checklabel.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
 		email_checklabel.setLocation(140, 325);
 		email_checklabel.setSize(250, 30);
 		c.add(email_checklabel);
 
-		email_check.setFont(new Font("DungGeunMo",Font.PLAIN,13));
+		email_check.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
 		email_check.setSize(125, 30);
 		email_check.setLocation(340, 295);
+		email_check.setHorizontalTextPosition(JButton.CENTER);
+		email_check.setRolloverIcon(buttonimg2);
+		email_check.setBorderPainted(false);
+		email_check.setContentAreaFilled(false);
+		email_check.setFocusPainted(false);
 		c.add(email_check);
 
-		complete.setFont(new Font("DungGeunMo",Font.PLAIN,13));
+		complete.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
 		complete.setSize(65, 30);
 		complete.setLocation(400, 365);
+		complete.setHorizontalTextPosition(JButton.CENTER);
+		complete.setRolloverIcon(buttonimg4);
+		complete.setBorderPainted(false);
+		complete.setContentAreaFilled(false);
+		complete.setFocusPainted(false);
+
 		c.add(complete);
 
-		last_checklabel.setFont(new Font("DungGeunMo",Font.PLAIN,13));
+		last_checklabel.setForeground(Color.white);
+		last_checklabel.setFont(new Font("DungGeunMo", Font.PLAIN, 13));
 		last_checklabel.setLocation(30, 365);
 		last_checklabel.setSize(350, 30);
 		c.add(last_checklabel);
-		
-		
 
 		// 비밀번호 확인 순서대로 확인 버튼, pw2_field에서 엔터, 탭
 		pw2_field.setFocusTraversalKeysEnabled(false);
@@ -266,12 +301,12 @@ public class sign_up extends JFrame {
 				} else {
 					last_checklabel.setText("");
 					try {
-						
-						id=id_field.getText();
-						pw=pw_field.getText();
-						name=name_field.getText();
-						email=email_field.getText();
-						conn=Connect.get(); 
+
+						id = id_field.getText();
+						pw = pw_field.getText();
+						name = name_field.getText();
+						email = email_field.getText();
+						conn = Connect.get();
 //						
 //
 //						
@@ -300,12 +335,60 @@ public class sign_up extends JFrame {
 			}
 		});
 
+		id_check.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				id_check.setForeground(Color.white);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				id_check.setForeground(Color.black);
+			}
+		});
+
+		pw_check.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				pw_check.setForeground(Color.white);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				pw_check.setForeground(Color.black);
+			}
+		});
+
+		email_check.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				email_check.setForeground(Color.white);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				email_check.setForeground(Color.black);
+			}
+		});
+
+		complete.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				complete.setForeground(Color.white);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				complete.setForeground(Color.black);
+			}
+		});
+
 		setSize(510, 460);
-		
+
 		background.setLayout(null);
 		background.setBounds(0, 0, 510, 460);
 		add(background);
-		
+
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
