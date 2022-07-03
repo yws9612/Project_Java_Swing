@@ -36,25 +36,25 @@ public class game1 extends JPanel {
 			}
 
 			for (int i = 0; i < w_length; i++) {
-				input_field[i].setFont(new Font("DungGeunMo", Font.PLAIN, 40));
+				input_field[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 				input_field[i].setHorizontalAlignment(SwingConstants.CENTER);
 				add(input_field[i]);
 			}
 			for (int i = 0; i < w_length; i++) {
 				b[i] = new JLabel();
-				b[i].setFont(new Font("DungGeunMo", Font.PLAIN, 40));
+				b[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 				b[i].setHorizontalAlignment(SwingConstants.CENTER);
 				add(b[i]);
 			}
 			for (int i = 0; i < w_length; i++) {
 				c[i] = new JLabel();
-				c[i].setFont(new Font("DungGeunMo", Font.PLAIN, 40));
+				c[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 				c[i].setHorizontalAlignment(SwingConstants.CENTER);
 				add(c[i]);
 			}
 			for (int i = 0; i < w_length; i++) {
 				d[i] = new JLabel();
-				d[i].setFont(new Font("DungGeunMo", Font.PLAIN, 40));
+				d[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 				d[i].setHorizontalAlignment(SwingConstants.CENTER);
 				add(d[i]);
 			}

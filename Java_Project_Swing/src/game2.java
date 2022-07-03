@@ -21,6 +21,7 @@ public class game2 extends JPanel {
 	}	
 	
 	public game2(int length, char g1[], boolean g1_b[]) {
+		
 		t.start();
 		try {
 			t.join();
@@ -37,7 +38,7 @@ public class game2 extends JPanel {
 
 			for (int i = 0; i < w_length; i++) {
 				a[i] = new JLabel();
-				a[i].setFont(new Font("DungGeunMo", Font.PLAIN, 40));
+				a[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 				a[i].setHorizontalAlignment(SwingConstants.CENTER);
 				a[i].setText(Character.toString(g1[i]));
 				if (g1_b[i]) {
@@ -48,25 +49,25 @@ public class game2 extends JPanel {
 				add(a[i]);
 			}
 			for (int i = 0; i < w_length; i++) {
-				add(input_field[i]);
-				input_field[i].setFont(new Font("DungGeunMo", Font.PLAIN, 40));
+				input_field[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 				input_field[i].setHorizontalAlignment(SwingConstants.CENTER);
+				add(input_field[i]);
 			}
 			for (int i = 0; i < w_length; i++) {
 				c[i] = new JLabel();
-				c[i].setFont(new Font("DungGeunMo", Font.PLAIN, 40));
+				c[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 				c[i].setHorizontalAlignment(SwingConstants.CENTER);
 				add(c[i]);
 			}
 			for (int i = 0; i < w_length; i++) {
 				d[i] = new JLabel();
-				d[i].setFont(new Font("DungGeunMo", Font.PLAIN, 40));
+				d[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 				d[i].setHorizontalAlignment(SwingConstants.CENTER);
 				add(d[i]);
 			}
 			for (int i = 0; i < w_length; i++) {
 				e[i] = new JLabel();
-				e[i].setFont(new Font("DungGeunMo", Font.PLAIN, 40));
+				e[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 				e[i].setHorizontalAlignment(SwingConstants.CENTER);
 				add(e[i]);
 			}

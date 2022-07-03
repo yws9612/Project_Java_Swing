@@ -5,12 +5,12 @@ import javax.swing.*;
 
 public class game_frame extends JFrame{
 	
-	int frame_w=600;
-	int frame_h=600;
+	int frame_w=900;
+	int frame_h=640;
 	
 	JLabel countdown=new JLabel();
 	JLabel countdown_image=new JLabel();
-	ImageIcon cd_image; //크기랑 색 확정해서 원 이미지 넣기
+	ImageIcon cd_image=new ImageIcon("image/thread_circle.png");
 	
 	JLabel hint=new JLabel();
 	String word_string, hint_t;
@@ -57,7 +57,11 @@ public class game_frame extends JFrame{
 		
 		c.add(countdown);
 		c.add(countdown_image);
-		//크기 설정, 폰트설정(countdown)
+		countdown.setBounds(300, 170, 300, 300);
+		countdown_image.setBounds(300, 170, 300, 300);
+		countdown.setFont(new Font("DungGeunMo", Font.PLAIN, 20));
+		countdown.setForeground(Color.white);
+		countdown.setHorizontalAlignment(SwingConstants.CENTER);
 		countdown_image.setIcon(cd_image);
 		countdown.setVisible(false);
 		countdown_image.setVisible(false);
@@ -77,14 +81,25 @@ public class game_frame extends JFrame{
 		grade=new grading(word_string, word_arr);
 		
 		hint_t=new_word.getHint();
+		hint.setFont(new Font("DungGeunMo", Font.PLAIN, 20));
+		hint.setHorizontalAlignment(SwingConstants.CENTER);
 		hint.setText(hint_t);
+		hint.setBounds(100, 150, frame_w-100, 100);
 		c.add(hint);
 		
-		//g1~g5 크기, 위치 설정(add는 아래 있음)
+		//g1~g5 크기, 위치 설정(add는 아래 있음
+		int g_x=(word_l*60)+((word_l-1)*10);
+		g1.setBounds((frame_w-g_x)/2, 290, g_x, 340);
+		g2.setBounds((frame_w-g_x)/2, 290, g_x, 340);
+		g3.setBounds((frame_w-g_x)/2, 290, g_x, 340);
+		g4.setBounds((frame_w-g_x)/2, 290, g_x, 340);
+		g5.setBounds((frame_w-g_x)/2, 290, g_x, 340);
 		
 		c.add(score_label);
+		score_label.setBounds(750, 20, 100, 20);
 		
 		c.add(life_label);
+		life_label.setBounds(20, 600, 100, 20);
 		
 		c.add(pause);
 		pause.addActionListener(new ActionListener() {
@@ -120,8 +135,10 @@ public class game_frame extends JFrame{
 		});
 
 		setSize(frame_w, frame_h);
-		setVisible(true);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setResizable(false);
+		setVisible(true);
 
 		while (true) {
 
