@@ -57,13 +57,14 @@ public class game_frame extends JFrame {
 	game_frame() {
 		Container c = getContentPane();
 		c.setLayout(null);
-		Dimension d=c.getSize();
 
 		setSize(frame_w, frame_h);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setResizable(false);
-		setVisible(true);
+		setVisible(true);		
+
+		Dimension d=c.getSize();
 
 		c.add(countdown);
 		c.add(countdown_image);
@@ -75,6 +76,8 @@ public class game_frame extends JFrame {
 		countdown_image.setIcon(cd_image);
 		countdown.setVisible(false);
 		countdown_image.setVisible(false);
+		c.remove(countdown);
+		c.remove(countdown_image);
 
 		new_word = new thread_word(countdown, countdown_image);
 		new_word.start();
