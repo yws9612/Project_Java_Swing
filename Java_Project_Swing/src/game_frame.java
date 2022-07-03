@@ -5,9 +5,6 @@ import javax.swing.*;
 
 public class game_frame extends JFrame {
 
-	int frame_w = 900;
-	int frame_h = 640;
-
 	JLabel countdown = new JLabel();
 	JLabel countdown_image = new JLabel();
 	ImageIcon cd_image = new ImageIcon("image/thread_circle.png");
@@ -62,13 +59,13 @@ public class game_frame extends JFrame {
 		Container c = getContentPane();
 		c.setLayout(null);
 
-		setSize(frame_w, frame_h);
+		setSize(900, 640);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setResizable(false);
 		setVisible(true);		
 
-		Dimension d=c.getSize();
+		//Dimension d=c.getSize();
 
 		c.add(countdown);
 		c.add(countdown_image);
@@ -97,13 +94,13 @@ public class game_frame extends JFrame {
 		word_l = word_string.length();
 		grade = new grading(word_string, word_arr);
 
-		int g_x = (word_l * 60) + ((word_l - 1) * 10);
+		//int g_x = (word_l * 60) + ((word_l - 1) * 10);
 
 		hint_t = new_word.getHint();
 		hint.setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 		hint.setHorizontalAlignment(SwingConstants.CENTER);
 		hint.setText(hint_t);
-		hint.setBounds(50, 150, d.width - 100, 100);
+		hint.setBounds(50, 150, 784, 100);
 		c.add(hint);
 
 		c.add(score_label);
@@ -172,7 +169,7 @@ public class game_frame extends JFrame {
 			try {
 				ctl1.join();
 				g1 = new game1(word_l);
-				g1.setBounds((d.width - g_x) / 2, 290, g_x, 340);
+				g1.setBounds(100, 290, 684, 340);
 				c.add(g1);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -203,7 +200,7 @@ public class game_frame extends JFrame {
 				try {
 					ctl2.join();
 					g2 = new game2(word_l, g1.input1, return_grade1);
-					g2.setBounds((d.width - g_x) / 2, 290, g_x, 340);
+					g2.setBounds(100, 290, 684, 340);
 					c.add(g2);
 					c.remove(g1);
 				} catch (Exception e) {
@@ -238,7 +235,7 @@ public class game_frame extends JFrame {
 					try {
 						ctl3.join();
 						g3 = new game3(word_l, g1.input1, g2.input2, return_grade1, return_grade2);
-						g3.setBounds((d.width - g_x) / 2, 290, g_x, 340);
+						g3.setBounds(100, 290, 684, 340);
 						c.add(g3);
 						c.remove(g2);
 					} catch (Exception e) {
@@ -274,7 +271,7 @@ public class game_frame extends JFrame {
 							ctl4.join();
 							g4 = new game4(word_l, g1.input1, g2.input2, g3.input3, return_grade1, return_grade2,
 									return_grade3);
-							g4.setBounds((d.width - g_x) / 2, 290, g_x, 340);
+							g4.setBounds(100, 290, 684, 340);
 							c.add(g4);
 							c.remove(g3);
 						} catch (Exception e) {
@@ -310,7 +307,7 @@ public class game_frame extends JFrame {
 								ctl5.join();
 								g5 = new game5(word_l, g1.input1, g2.input2, g3.input3, g4.input4, return_grade1,
 										return_grade2, return_grade3, return_grade4);
-								g5.setBounds((d.width- g_x) / 2, 290, g_x, 340);
+								g5.setBounds(100, 290, 684, 340);
 								c.add(g5);
 								c.remove(g4);
 							} catch (Exception e) {
