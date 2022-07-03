@@ -59,7 +59,7 @@ public class Choice extends JFrame {
 		
 		ImageIcon buttonimg1 = new ImageIcon("image/big_button.png");
 		ImageIcon buttonimg2 = new ImageIcon("image/big_button_select.png");
-		ImageIcon buttonimg3 = new ImageIcon("image/medium_button.png");
+		ImageIcon buttonimg3 = new ImageIcon("image/medium_button_.png");
 		ImageIcon buttonimg4 = new ImageIcon("image/medium_button_select.png");
 
 		
@@ -164,7 +164,7 @@ public class Choice extends JFrame {
 			    }
 			 @Override
 			    public void mouseExited(MouseEvent e) {
-				 bt_ch04.setForeground(Color.black);
+				 	bt_ch04.setForeground(Color.black);
 			    }
 		});
 		
