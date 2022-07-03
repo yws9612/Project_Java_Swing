@@ -54,7 +54,13 @@ public class game_frame extends JFrame{
 	
 	game_frame() {
 		Container c = getContentPane();
-		c.setLayout(null);
+		c.setLayout(null);		
+
+		setSize(frame_w, frame_h);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setResizable(false);
+		setVisible(true);
 		
 		c.add(countdown);
 		c.add(countdown_image);
@@ -135,11 +141,6 @@ public class game_frame extends JFrame{
 			}
 		});
 
-		setSize(frame_w, frame_h);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setResizable(false);
-		setVisible(true);
 
 		while (true) {
 
@@ -298,6 +299,7 @@ public class game_frame extends JFrame{
 				}
 			}
 		} // while문 끝
+		
 
 	}// 생성자 끝
 
