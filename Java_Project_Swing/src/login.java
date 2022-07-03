@@ -155,7 +155,7 @@ public class login extends JFrame {
 					alter.setText("id 혹은 비밀번호를 확인하세요.");
 				} else {
 					try {
-						String que = "select pw, admin from member where id=?";
+						String que = "select pw, admin from member where id=? and enable = 'Y'";
 						conn = Connect.get();
 						psmt = conn.prepareStatement(que);
 						psmt.setString(1, id);

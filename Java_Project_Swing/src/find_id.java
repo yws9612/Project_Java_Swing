@@ -149,7 +149,7 @@ public class find_id extends JFrame {
 				}
 				else {
 					try { 
-						String que = "select id, name, email from member";
+						String que = "select id, name, email from member where enable = 'Y'";
 						psmt=conn.prepareStatement(que);
 						rs=psmt.executeQuery(que);
 						

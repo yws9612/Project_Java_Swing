@@ -125,7 +125,7 @@ public class find_pw extends JFrame {
 					result.setText("<html><body><center>" + alert1 + "<br>" + alert2 + "</body><html>");
 				} else {
 					try {
-						String que = "select id, pw, name, email from member";
+						String que = "select id, pw, name, email from member where enable = 'Y'";
 						psmt = conn.prepareStatement(que);
 						rs = psmt.executeQuery();
 
