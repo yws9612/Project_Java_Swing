@@ -88,9 +88,7 @@ public class game_frame extends JFrame {
 		life_img.setOpaque(true);
 		life_img.setBounds(5, 540, 280, 50);
 		c.add(life_img);
-		life_img.setVisible(false);
-
-		
+		life_img.setVisible(false);		
 		
 		//패널위치잡기
 		JPanel tmp2=new JPanel();
@@ -98,9 +96,7 @@ public class game_frame extends JFrame {
 		tmp2.setOpaque(true);
 		tmp2.setBounds(237, 185, 410, 340);
 		c.add(tmp2);
-		tmp2.setVisible(false);
-		
-		
+		tmp2.setVisible(false);		
 		
 		//힌트위치잡기
 		hint.setBackground(Color.yellow);
@@ -167,6 +163,7 @@ public class game_frame extends JFrame {
 			g_1.setBounds(237, 250, 410, 50);
 			break;			
 		}
+		g_1.setBackground(Color.white);
 		g_1.setOpaque(true);
 		g_1.setVisible(true);
 		c.add(g_1);
@@ -202,7 +199,7 @@ public class game_frame extends JFrame {
 		next.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				life--;
-				new game_frame(life, score);				
+				new game_frame();				
 				dispose();				
 			}
 		});
@@ -211,7 +208,7 @@ public class game_frame extends JFrame {
 	
 	
 	
-
+/*
 	//생성자2 시작
 	public game_frame(int life_new, int score_new) {
 		Container c = getContentPane();
@@ -368,6 +365,7 @@ public class game_frame extends JFrame {
 		});
 
 	}// 생성자2 끝
+	*/
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

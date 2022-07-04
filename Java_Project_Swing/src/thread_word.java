@@ -59,12 +59,13 @@ public class thread_word extends Thread {
 				e.printStackTrace();
 			}
 			
-			countdown.setFont(new Font("DungGeunMo", Font.PLAIN, 40));
+			countdown.setFont(new Font("DungGeunMo", Font.PLAIN, 60));
 			
 			for (int i = 3; i > 0; i--) {
 				countdown.setText(Integer.toString(i));
 				sleep(1000); // 1초
 			}
+			countdown.setFont(new Font("DungGeunMo", Font.PLAIN, 40));
 			countdown.setText("게임 시작!");
 			sleep(1000);
 			countdown.setVisible(false);
