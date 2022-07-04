@@ -104,7 +104,26 @@ public class ManageMember extends JFrame {
 								pstmt.setInt(1, mem_no);
 								int n = pstmt.executeUpdate();
 								System.out.println(n > 0 ? "성공" : "실패");
+								//테이블 리셋하기
+								model.setNumRows(0);
+								//다시 테이블 조회
+								String query1 = "select * from member natural join manager where enable ='Y' and admin = 'N' order by m_no";
+								pstmt = conne.prepareStatement(query1);
+								rs = pstmt.executeQuery();
+								while (rs.next()) {
+									int s_no = rs.getInt(1);
+									String s_id = rs.getString(2); // s_id = sql_id
+									String s_pw = rs.getString(3);
+									String s_name = rs.getString(4);
+									String s_email = rs.getString(5);
+									java.sql.Date r_date = rs.getDate(8);
+									java.sql.Date l_date = rs.getDate(9);
 
+									Object data[] = { false, s_no, s_id, s_pw, s_name, s_email, r_date, l_date };
+									model.addRow(data);
+									System.out.println(s_no + " " + s_id + " " + s_pw + " " + s_name + " " + s_email + " " + r_date + " " + l_date);
+								}
+								
 							} catch (Exception e) {
 								e.printStackTrace();
 							}

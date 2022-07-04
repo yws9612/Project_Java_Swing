@@ -92,6 +92,23 @@ public class ManageW1 extends JFrame {
 								pstmt.setInt(1,  w1_no);
 								int n = pstmt.executeUpdate();
 								System.out.println(n > 0 ? "성공" : "실패");
+								//테이블 리셋하기
+								model.setNumRows(0);
+								//다시 테이블 조회
+								String que = "select * from w1_table order by w1_no";
+								pstmt = conne.prepareStatement(que);
+								rs = pstmt.executeQuery();
+								while (rs.next()) {
+									int s_w1_no = rs.getInt(1);
+									String s_w1 = rs.getString(2);
+									String s_w1_h = rs.getString(3);
+
+									Object data[] = { false, s_w1_no, s_w1, s_w1_h };
+									model.addRow(data);
+									System.out.println(
+											s_w1_no + " " + s_w1 + " " + s_w1_h);
+								}
+								
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
@@ -127,6 +144,23 @@ public class ManageW1 extends JFrame {
 								pstmt = conne.prepareStatement(quer);
 								int a = pstmt.executeUpdate();
 								System.out.println("성공"+a);
+								//테이블 리셋하기
+								model.setNumRows(0);
+								//다시 테이블 조회
+								String que = "select * from w1_table order by w1_no";
+								pstmt = conne.prepareStatement(que);
+								rs = pstmt.executeQuery();
+								while (rs.next()) {
+									int s_w1_no = rs.getInt(1);
+									String s_w1 = rs.getString(2);
+									String s_w1_h = rs.getString(3);
+
+									Object data[] = { false, s_w1_no, s_w1, s_w1_h };
+									model.addRow(data);
+									System.out.println(
+											s_w1_no + " " + s_w1 + " " + s_w1_h);
+
+								}
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
