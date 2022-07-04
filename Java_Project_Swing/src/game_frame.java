@@ -10,7 +10,7 @@ public class game_frame extends JFrame {
 	ImageIcon cd_image = new ImageIcon("image/thread_circle.png");
 
 	JLabel hint = new JLabel();
-	String word_string, hint_t;
+	String hint_t;
 	char[] word_arr;
 	int word_l;
 	thread_word new_word;
@@ -23,7 +23,7 @@ public class game_frame extends JFrame {
 	JLabel score_label = new JLabel(String.format("%06d", score));
 
 	JButton pause = new JButton("일시정지");
-	JButton next = new JButton("다음 문제");
+	JButton next = new JButton("건너뛰기");
 
 	grading grade;
 
@@ -65,13 +65,50 @@ public class game_frame extends JFrame {
 		setResizable(false);
 		setVisible(true);		
 
-		//Dimension d=c.getSize();
+		//Dimension d=c.getSize(); (884*601)
 
+		next.setBounds(770, 200, 100, 200);
+		next.setFont(new Font("DungGeunMo", Font.PLAIN, 15));
+		c.add(next);
+		pause.setBounds(770, 560, 100, 30);
+		pause.setFont(new Font("DungGeunMo", Font.PLAIN, 15));
+		c.add(pause);
+		
+		//하트위치잡기
+		JLabel tmp=new JLabel("aaaaaaa");
+		tmp.setBackground(Color.green);
+		tmp.setOpaque(true);
+		tmp.setBounds(20, 530, 280, 50);
+		c.add(tmp);
+		//패널위치잡기
+		JLabel tmp2=new JLabel("aaaaaaa");
+		tmp2.setBackground(Color.pink);
+		tmp2.setOpaque(true);
+		tmp2.setBounds(237, 185, 410, 340);
+		c.add(tmp2);
+		//힌트위치잡기
+		JLabel tmp3=new JLabel();
+		tmp3.setBackground(Color.yellow);
+		tmp3.setOpaque(true);
+		tmp3.setBounds(50, 75, 784, 100);
+		c.add(tmp3);
+
+		score_label.setBounds(700, 20, 150, 50);
+		score_label.setOpaque(true);
+		score_label.setHorizontalAlignment(SwingConstants.RIGHT);
+		score_label.setFont(new Font("DungGeunMo", Font.PLAIN, 40));
+		c.add(score_label);
+
+		life_img=new life_image(life);
+		life_label=life_img.setLifeimg();
+		life_label.setBounds(20, 530, 280, 50);
+		c.add(life_label);
+				
 		c.add(countdown);
 		c.add(countdown_image);
-		countdown.setBounds(300, 170, 300, 300);
-		countdown_image.setBounds(300, 170, 300, 300);
-		countdown.setFont(new Font("DungGeunMo", Font.PLAIN, 20));
+		countdown.setBounds(300, 150, 300, 300);
+		countdown_image.setBounds(300, 150, 300, 300);
+		countdown.setFont(new Font("DungGeunMo", Font.PLAIN, 50));
 		countdown.setForeground(Color.white);
 		countdown.setHorizontalAlignment(SwingConstants.CENTER);
 		countdown_image.setIcon(cd_image);
@@ -89,10 +126,11 @@ public class game_frame extends JFrame {
 		c.remove(countdown);
 		c.remove(countdown_image);
 
-		word_string = new_word.getWord_string();
 		word_arr = new_word.getWord_arr();
-		word_l = word_string.length();
-		grade = new grading(word_string, word_arr);
+		word_l = word_arr.length;
+		grade = new grading(word_arr);
+		
+
 
 		//int g_x = (word_l * 60) + ((word_l - 1) * 10);
 
@@ -100,18 +138,10 @@ public class game_frame extends JFrame {
 		hint.setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 		hint.setHorizontalAlignment(SwingConstants.CENTER);
 		hint.setText(hint_t);
-		hint.setBounds(50, 150, 784, 100);
+		hint.setBounds(50, 75, 784, 100);
 		c.add(hint);
 
-		c.add(score_label);
-		score_label.setBounds(750, 20, 100, 20);
-
-		life_img=new life_image(life);
-		life_label=life_img.setLifeimg();
-		c.add(life_label);
-		life_label.setBounds(20, 600, 100, 20);
-
-		c.add(pause);
+		
 		pause.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Thread t = new Thread();
@@ -135,7 +165,6 @@ public class game_frame extends JFrame {
 			}
 		});
 
-		c.add(next);
 		next.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				life--;
@@ -144,6 +173,7 @@ public class game_frame extends JFrame {
 			}
 		});
 
+		
 		while (true) {
 
 			life_img=new life_image(life);
@@ -169,7 +199,7 @@ public class game_frame extends JFrame {
 			try {
 				ctl1.join();
 				g1 = new game1(word_l);
-				g1.setBounds(100, 290, 684, 340);
+				g1.setBounds(237, 185, 410, 340);
 				c.add(g1);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -184,11 +214,10 @@ public class game_frame extends JFrame {
 				new_word = new thread_word(countdown, countdown_image);
 				new_word.start();
 
-				word_string = new_word.getWord_string();
 				word_arr = new_word.getWord_arr();
-				word_l = word_string.length();
+				word_l = word_arr.length;
 
-				grade = new grading(word_string, word_arr);
+				grade = new grading(word_arr);
 
 				hint_t = new_word.getHint();
 				hint.setText(hint_t);
@@ -200,7 +229,7 @@ public class game_frame extends JFrame {
 				try {
 					ctl2.join();
 					g2 = new game2(word_l, g1.input1, return_grade1);
-					g2.setBounds(100, 290, 684, 340);
+					g2.setBounds(237, 185, 410, 340);
 					c.add(g2);
 					c.remove(g1);
 				} catch (Exception e) {
@@ -217,11 +246,10 @@ public class game_frame extends JFrame {
 					new_word = new thread_word(countdown, countdown_image);
 					new_word.start();
 
-					word_string = new_word.getWord_string();
 					word_arr = new_word.getWord_arr();
-					word_l = word_string.length();
+					word_l = word_arr .length;
 
-					grade = new grading(word_string, word_arr);
+					grade = new grading(word_arr);
 
 					hint_t = new_word.getHint();
 					hint.setText(hint_t);
@@ -235,7 +263,7 @@ public class game_frame extends JFrame {
 					try {
 						ctl3.join();
 						g3 = new game3(word_l, g1.input1, g2.input2, return_grade1, return_grade2);
-						g3.setBounds(100, 290, 684, 340);
+						g3.setBounds(237, 185, 410, 340);
 						c.add(g3);
 						c.remove(g2);
 					} catch (Exception e) {
@@ -252,11 +280,10 @@ public class game_frame extends JFrame {
 						new_word = new thread_word(countdown, countdown_image);
 						new_word.start();
 
-						word_string = new_word.getWord_string();
 						word_arr = new_word.getWord_arr();
-						word_l = word_string.length();
+						word_l = word_arr.length;
 
-						grade = new grading(word_string, word_arr);
+						grade = new grading(word_arr);
 
 						hint_t = new_word.getHint();
 						hint.setText(hint_t);
@@ -271,7 +298,7 @@ public class game_frame extends JFrame {
 							ctl4.join();
 							g4 = new game4(word_l, g1.input1, g2.input2, g3.input3, return_grade1, return_grade2,
 									return_grade3);
-							g4.setBounds(100, 290, 684, 340);
+							g4.setBounds(237, 185, 410, 340);
 							c.add(g4);
 							c.remove(g3);
 						} catch (Exception e) {
@@ -288,11 +315,10 @@ public class game_frame extends JFrame {
 							new_word = new thread_word(countdown, countdown_image);
 							new_word.start();
 
-							word_string = new_word.getWord_string();
 							word_arr = new_word.getWord_arr();
-							word_l = word_string.length();
+							word_l = word_arr.length;
 
-							grade = new grading(word_string, word_arr);
+							grade = new grading(word_arr);
 
 							hint_t = new_word.getHint();
 							hint.setText(hint_t);
@@ -307,7 +333,7 @@ public class game_frame extends JFrame {
 								ctl5.join();
 								g5 = new game5(word_l, g1.input1, g2.input2, g3.input3, g4.input4, return_grade1,
 										return_grade2, return_grade3, return_grade4);
-								g5.setBounds(100, 290, 684, 340);
+								g5.setBounds(237, 185, 410, 340);
 								c.add(g5);
 								c.remove(g4);
 							} catch (Exception e) {
@@ -324,11 +350,10 @@ public class game_frame extends JFrame {
 								new_word = new thread_word(countdown, countdown_image);
 								new_word.start();
 
-								word_string = new_word.getWord_string();
 								word_arr = new_word.getWord_arr();
-								word_l = word_string.length();
+								word_l = word_arr.length;
 
-								grade = new grading(word_string, word_arr);
+								grade = new grading(word_arr);
 
 								hint_t = new_word.getHint();
 								hint.setText(hint_t);

@@ -1,16 +1,14 @@
 
 public class grading {
-	String word;
 	int word_length;
 	char word_arr[];
 	boolean grading[];
 	
-	grading(String a, char [] b) {
-		word=a;
-		word_length=word.length();
+	grading(char [] a) {
+		word_length=a.length;
 		word_arr=new char[word_length];
 		grading=new boolean[word_length];
-		word_arr=b;
+		word_arr=a;
 	}
 	
 	public boolean[] grade_panel(char input[]) {
