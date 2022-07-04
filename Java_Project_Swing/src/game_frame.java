@@ -23,6 +23,7 @@ public class game_frame extends JFrame {
 
 	JButton pause = new JButton("일시정지");
 	JButton next = new JButton("건너뛰기");
+	JButton check = new JButton("입력완료");
 
 	grading grade;
 
@@ -74,6 +75,9 @@ public class game_frame extends JFrame {
 		pause.setBounds(770, 560, 100, 30);
 		pause.setFont(new Font("DungGeunMo", Font.PLAIN, 15));
 		c.add(pause);
+		check.setBounds(470, 460, 100, 50);
+		check.setFont(new Font("DungGeunMo", Font.PLAIN, 15));
+		c.add(check);
 
 		score_label.setBounds(700, 10, 150, 50);
 		//score_label.setBackground(Color.cyan);
@@ -199,7 +203,7 @@ public class game_frame extends JFrame {
 		next.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				life--;
-				new game_frame();				
+				new game_frame(life, score);				
 				dispose();				
 			}
 		});
@@ -208,7 +212,6 @@ public class game_frame extends JFrame {
 	
 	
 	
-/*
 	//생성자2 시작
 	public game_frame(int life_new, int score_new) {
 		Container c = getContentPane();
@@ -365,7 +368,6 @@ public class game_frame extends JFrame {
 		});
 
 	}// 생성자2 끝
-	*/
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

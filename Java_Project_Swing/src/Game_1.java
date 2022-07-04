@@ -97,48 +97,7 @@ public class Game_1 extends JPanel {
 			}
 		});
 
-		// 단어 끝칸_글자수제한
-		input_field[length - 1].addKeyListener(new KeyAdapter() {
-			public void keyTyped(KeyEvent ke) {
-				JTextField src = (JTextField) ke.getSource();
-				if (src.getText().length() >= 2) {
-					ke.consume();
-					for (int i = 0; i < 6; i++) {
-						input1[i] = input_field[i].getText();
-					}
-					// 채점+다음 시도로 넘기기
-					//game_frame.ctl1.interrupt();
-					//game_frame.ctl1.notify();
-				}
-			}
-		});
 
-		// 단어 끝칸_엔터
-		input_field[length - 1].addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				for (int i = 0; i < length; i++) {
-					input1[i] = input_field[i].getText();
-				}
-				// 채점+다음 시도로 넘기기
-				//game_frame.ctl1.interrupt();
-				//game_frame.ctl1.notify();
-			}
-		});
-
-		// 단어 끝칸_탭
-		input_field[length - 1].setFocusTraversalKeysEnabled(false);
-		input_field[length - 1].addKeyListener(new KeyAdapter() {
-			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_TAB) {
-					for (int i = 0; i < 6; i++) {
-						input1[i] = input_field[i].getText();
-					}
-					// 채점+다음 시도로 넘기기
-					//game_frame.ctl1.interrupt();
-					//game_frame.ctl1.notify();
-				}
-			}
-		});
 		setVisible(true);
 	}
 	
