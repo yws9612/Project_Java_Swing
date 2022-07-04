@@ -116,9 +116,11 @@ public class Game_1 extends JPanel {
 		for(int i=0; i<length; i++) {
 			if(grade[i]) {
 				input_field[i].setBackground(Color.green);
+				input_field[i].setText("O");
 			}
 			else {
 				input_field[i].setBackground(Color.red);
+				input_field[i].setText("X");
 			}
 		}
 	}
