@@ -20,10 +20,22 @@ public class game_frame1 extends JFrame {
 
 	int score = 0;
 	JLabel score_label = new JLabel(String.format("%06d", score));
+	
+	ImageIcon buttonimg1 = new ImageIcon("image/next_button.png");
+	ImageIcon buttonimg2 = new ImageIcon("image/100_50_button.png");
+	ImageIcon buttonimg3 = new ImageIcon("image/100_30_button.png");
 
 	JButton pause = new JButton("일시정지");
 	JButton next = new JButton("건너뛰기");
 	JButton check = new JButton("입력완료");
+	
+	JPanel background = new JPanel() {
+		Image back = new ImageIcon("image/game_background.png").getImage();
+
+		public void paint(Graphics g) {
+			g.drawImage(back, 0, 0, null);
+		}
+	};
 
 	grading grade;
 
@@ -70,18 +82,33 @@ public class game_frame1 extends JFrame {
 		//Dimension d=c.getSize(); (884*601)
 
 		next.setBounds(770, 200, 100, 200);
+		next.setHorizontalTextPosition(JButton.CENTER);
+		next.setBorderPainted(false);
+		next.setContentAreaFilled(false);
+		next.setFocusPainted(false);
 		next.setFont(new Font("DungGeunMo", Font.PLAIN, 15));
 		c.add(next);
 		pause.setBounds(770, 560, 100, 30);
+		pause.setHorizontalTextPosition(JButton.CENTER);
+		pause.setBorderPainted(false);
+		pause.setContentAreaFilled(false);
+		pause.setFocusPainted(false);
+		pause.setForeground(Color.black);
 		pause.setFont(new Font("DungGeunMo", Font.PLAIN, 15));
 		c.add(pause);
-		check.setBounds(470, 460, 100, 50);
+		check.setBounds(410, 460, 100, 50);
+		check.setHorizontalTextPosition(JButton.CENTER);
+		check.setBorderPainted(false);
+		check.setContentAreaFilled(false);
+		check.setFocusPainted(false);
+		check.setForeground(Color.black);
 		check.setFont(new Font("DungGeunMo", Font.PLAIN, 15));
 		c.add(check);
 
+
 		score_label.setBounds(700, 10, 150, 50);
 		//score_label.setBackground(Color.cyan);
-		score_label.setOpaque(true);
+//		score_label.setOpaque(true);
 		score_label.setHorizontalAlignment(SwingConstants.RIGHT);
 		score_label.setFont(new Font("DungGeunMo", Font.PLAIN, 40));
 		c.add(score_label);		
@@ -89,7 +116,7 @@ public class game_frame1 extends JFrame {
 		
 		//하트
 		life_img=new life_image(life);
-		life_img.setOpaque(true);
+//		life_img.setOpaque(true);
 		life_img.setBounds(5, 540, 280, 50);
 		c.add(life_img);
 		life_img.setVisible(false);		
@@ -122,6 +149,10 @@ public class game_frame1 extends JFrame {
 		countdown_image.setIcon(cd_image);
 		countdown.setVisible(false);
 		countdown_image.setVisible(false);
+		
+		background.setLayout(null);
+		background.setBounds(0, 0, 900, 640);
+		c.add(background);
 		
 		new_word = new thread_word1(countdown, countdown_image);
 		new_word.start();
@@ -283,6 +314,9 @@ public class game_frame1 extends JFrame {
 		score_label.setText(String.format("%06d", score));
 
 		setSize(900, 640);
+		background.setLayout(null);
+		background.setBounds(0, 0, 900, 640);
+		c.add(background);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
@@ -291,18 +325,33 @@ public class game_frame1 extends JFrame {
 		//Dimension d=c.getSize(); (884*601)
 
 		next.setBounds(770, 200, 100, 200);
+		next.setHorizontalTextPosition(JButton.CENTER);
+		next.setBorderPainted(false);
+		next.setContentAreaFilled(false);
+		next.setFocusPainted(false);
 		next.setFont(new Font("DungGeunMo", Font.PLAIN, 15));
 		c.add(next);
 		pause.setBounds(770, 560, 100, 30);
+		pause.setHorizontalTextPosition(JButton.CENTER);
+		pause.setBorderPainted(false);
+		pause.setContentAreaFilled(false);
+		pause.setFocusPainted(false);
+		pause.setForeground(Color.black);
 		pause.setFont(new Font("DungGeunMo", Font.PLAIN, 15));
 		c.add(pause);
-		check.setBounds(470, 460, 100, 50);
+		check.setBounds(410, 460, 100, 50);
+		check.setHorizontalTextPosition(JButton.CENTER);
+		check.setBorderPainted(false);
+		check.setContentAreaFilled(false);
+		check.setFocusPainted(false);
+		check.setForeground(Color.black);
 		check.setFont(new Font("DungGeunMo", Font.PLAIN, 15));
 		c.add(check);
 
+
 		score_label.setBounds(700, 10, 150, 50);
 		//score_label.setBackground(Color.cyan);
-		score_label.setOpaque(true);
+//		score_label.setOpaque(true);
 		score_label.setHorizontalAlignment(SwingConstants.RIGHT);
 		score_label.setFont(new Font("DungGeunMo", Font.PLAIN, 40));
 		c.add(score_label);		
@@ -310,7 +359,7 @@ public class game_frame1 extends JFrame {
 		
 		//하트
 		life_img=new life_image(life);
-		life_img.setOpaque(true);
+//		life_img.setOpaque(true);
 		life_img.setBounds(5, 540, 280, 50);
 		c.add(life_img);
 		life_img.setVisible(false);
