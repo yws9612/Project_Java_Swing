@@ -169,10 +169,7 @@ public class game_frame extends JFrame {
 		g_1.setOpaque(true);
 		g_1.setVisible(true);
 		c.add(g_1);
-		
-		
-		
-		grade = new grading(word_arr);
+
 		hint_t = new_word.getHint();
 
 		hint.setText(hint_t);
@@ -213,12 +210,12 @@ public class game_frame extends JFrame {
 		});
 		
 		check.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-				if(asdf.equals()) {
+				//텍스트필드에서 입력한 값 가져오기+채점하기
+				grade = new grading(word_arr);
+				boolean [] grade2=new boolean[word_l];
+				grade2=grade.grade_panel(g_1.getinput());
+				if(grade.grade_case()) {
 					new game_frame(life, score);				
 					dispose();
 				}else {
@@ -233,11 +230,9 @@ public class game_frame extends JFrame {
 							new Choice();
 							dispose();	
 						}
-					}
-					
+					}					
 				}
-			}
-			
+			}			
 		});
 
 	}// 생성자1 끝
@@ -266,6 +261,9 @@ public class game_frame extends JFrame {
 		pause.setBounds(770, 560, 100, 30);
 		pause.setFont(new Font("DungGeunMo", Font.PLAIN, 15));
 		c.add(pause);
+		check.setBounds(470, 460, 100, 50);
+		check.setFont(new Font("DungGeunMo", Font.PLAIN, 15));
+		c.add(check);
 
 		score_label.setBounds(700, 10, 150, 50);
 		//score_label.setBackground(Color.cyan);
@@ -398,6 +396,31 @@ public class game_frame extends JFrame {
 			}
 		});
 
+		check.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//텍스트필드에서 입력한 값 가져오기+채점하기
+				grade = new grading(word_arr);
+				boolean [] grade2=new boolean[word_l];
+				grade2=grade.grade_panel(g_1.getinput());
+				if(grade.grade_case()) {
+					new game_frame(life, score);				
+					dispose();
+				}else {
+					life--;
+					if(life == 0) {
+						int gameOver_i = JOptionPane.showConfirmDialog(null, "다시 도전하시겠습니까?", "GAMEOVER",
+								JOptionPane.YES_NO_OPTION);
+						if (gameOver_i == JOptionPane.YES_OPTION) {
+							new game_frame(5, 0);				
+							dispose();
+						}else {
+							new Choice();
+							dispose();	
+						}
+					}					
+				}
+			}			
+		});
 	}// 생성자2 끝
 	
 

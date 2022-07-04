@@ -10,8 +10,11 @@ public class Game_1 extends JPanel {
 	JTextField[] input_field = new JTextField[6];
 	public String[] input1=new String[6];
 	boolean[] grading=new boolean[6];
+	int length;
 	
 	public Game_1(int length) {
+		this.length=length;
+		
 		setLayout(new GridLayout(1, length, 10, 10));
 		
 		for (int i = 0; i < 6; i++) {
@@ -101,6 +104,12 @@ public class Game_1 extends JPanel {
 		setVisible(true);
 	}
 	
+	public String[] getinput() {
+		for (int i = 0; i < length; i++) {
+			input1[i]=input_field[i].getText();
+		}
+		return input1;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
