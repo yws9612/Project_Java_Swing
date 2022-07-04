@@ -175,6 +175,17 @@ public class Choice extends JFrame {
 			}
 		});
 		
+		bt_ch02.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new game_frame1();
+				dispose();
+			}
+			
+		});
+		
 		bt_ch03.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

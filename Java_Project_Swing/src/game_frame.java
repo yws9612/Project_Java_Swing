@@ -204,8 +204,25 @@ public class game_frame extends JFrame {
 		next.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				life--;
-				new game_frame(life, score);				
-				dispose();				
+				if (life == 0) {
+					input_playlog(score);
+					
+					int gameOver_i = JOptionPane.showConfirmDialog(null, "다시 도전하시겠습니까?", "GAMEOVER",
+							JOptionPane.YES_NO_OPTION);
+					if (gameOver_i == JOptionPane.YES_OPTION) {
+						new game_frame(5, 0);
+						dispose();
+					} else {
+						new Choice();
+						dispose();
+					}
+				} else {
+					new game_frame(life, score);
+					dispose();
+				}
+//				new game_frame(life, score);				
+//				dispose();		
+				
 			}
 		});
 		
@@ -227,7 +244,7 @@ public class game_frame extends JFrame {
 				}
 				
 				if (grade.grade_case()) {
-					score += 10;
+					score += 100;
 					new game_frame(life, score);
 					dispose();
 				} else {
@@ -409,8 +426,24 @@ public class game_frame extends JFrame {
 		next.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				life--;
-				new game_frame(life, score);				
-				dispose();				
+				if (life == 0) {
+					input_playlog(score);
+					
+					int gameOver_i = JOptionPane.showConfirmDialog(null, "다시 도전하시겠습니까?", "GAMEOVER",
+							JOptionPane.YES_NO_OPTION);
+					if (gameOver_i == JOptionPane.YES_OPTION) {
+						new game_frame(5, 0);
+						dispose();
+					} else {
+						new Choice();
+						dispose();
+					}
+				} else {
+					new game_frame(life, score);
+					dispose();
+				}
+//				new game_frame(life, score);				
+//				dispose();				
 			}
 		});
 
@@ -432,7 +465,7 @@ public class game_frame extends JFrame {
 				}
 				
 				if (grade.grade_case()) {
-					score += 10;
+					score += 100;
 					new game_frame(life, score);
 					dispose();
 				} else {

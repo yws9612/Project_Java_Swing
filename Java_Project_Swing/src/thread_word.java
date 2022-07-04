@@ -41,7 +41,7 @@ public class thread_word extends Thread {
 			try {
 				conn = Connect.get();
 				String que2 = "select w1_no, w1, w1_h from w1_table where w1_no = "
-						+ "(select trunc(dbms_random.value(1,150)) from dual)";
+						+ "(select trunc(dbms_random.value(1,50)) from dual)";
 				psmt = conn.prepareStatement(que2);
 				rs = psmt.executeQuery();
 				while (rs.next()) {
@@ -52,7 +52,7 @@ public class thread_word extends Thread {
 				word1_arr = new String [word1_string.length()];
 				for (int i = 0; i < word1_string.length(); i++) {
 					word1_arr[i] = Character.toString(word1_string.charAt(i));
-					// System.out.print(word1_arr[i]);
+					 System.out.print(word1_arr[i]);
 				}
 
 			} catch (Exception e) {

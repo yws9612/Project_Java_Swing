@@ -33,7 +33,7 @@ public class game_control extends Thread {
 	
 	public void run() {
 		System.out.println(1);
-		for(int i=2; i<6; i++) {
+		for(int i=2; i<11; i++) {
 			try{
 				sleep(1000);
 			} catch(Exception e) {
