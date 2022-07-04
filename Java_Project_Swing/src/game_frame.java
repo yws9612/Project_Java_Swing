@@ -427,7 +427,10 @@ public class game_frame extends JFrame {
 							new Choice();
 							dispose();	
 						}
-					}					
+					}else {
+						new game_frame(life, score);				
+						dispose();
+					}
 				}
 			}			
 		});
