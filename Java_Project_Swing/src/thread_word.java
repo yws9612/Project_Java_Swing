@@ -10,7 +10,7 @@ public class thread_word extends Thread {
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
 		
-	char[] word1_arr;
+	String[] word1_arr;
 	
 	String word1_string, hint1;
 
@@ -19,7 +19,7 @@ public class thread_word extends Thread {
 		circle_label = l2;
 	}
 	
-	public char[] getWord_arr() {
+	public String[] getWord_arr() {
 		return word1_arr;
 	}
 	public String getHint() {
@@ -49,9 +49,9 @@ public class thread_word extends Thread {
 					hint1 = rs.getString(3);
 				}
 
-				word1_arr = new char[word1_string.length()];
+				word1_arr = new String [word1_string.length()];
 				for (int i = 0; i < word1_string.length(); i++) {
-					word1_arr[i] = word1_string.charAt(i);
+					word1_arr[i] = Character.toString(word1_string.charAt(i));
 					// System.out.print(word1_arr[i]);
 				}
 

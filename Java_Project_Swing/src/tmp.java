@@ -85,7 +85,7 @@ public void setHint1(String hint1) {
 	this.hint1 = hint1;
 }*/
 	
-}
+//}
 
 public class tmp {
 
@@ -97,26 +97,26 @@ public class tmp {
 		//게임 부분 구체적인 구현 전 생각나는 코드를 모두 작성합니다.(송이)
 		
 		//랜덤으로 단어 가져와서 정답 비교를 위해 배열로 쪼개기
-		char [] word1;
-		Getters get = new Getters();
-		try {
-			conn = Connect.get();		
-			String que2="select w1_no, w1, w1_h from w1_table where w1_no = "+"(select trunc(dbms_random.value(1,150)) from dual)";
-			psmt=conn.prepareStatement(que2);
-			rs=psmt.executeQuery();
-			while(rs.next()) {
-				get.setWord1(rs.getString(2));
-				get.setHint1(rs.getString(3));				
-			}
-			
-			word1=new char[get.getWord1().length()];
-			for(int i=0; i<get.getWord1().length(); i++) {
-				word1[i]=get.getWord1().charAt(i);
-				System.out.print(word1[i]);
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+//		char [] word1;
+//		Getters get = new Getters();
+//		try {
+//			conn = Connect.get();		
+//			String que2="select w1_no, w1, w1_h from w1_table where w1_no = "+"(select trunc(dbms_random.value(1,150)) from dual)";
+//			psmt=conn.prepareStatement(que2);
+//			rs=psmt.executeQuery();
+//			while(rs.next()) {
+//				get.setWord1(rs.getString(2));
+//				get.setHint1(rs.getString(3));				
+//			}
+//			
+//			word1=new char[get.getWord1().length()];
+//			for(int i=0; i<get.getWord1().length(); i++) {
+//				word1[i]=get.getWord1().charAt(i);
+//				System.out.print(word1[i]);
+//			}
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//		}
 		
 		//게임부분 라벨/인풋칸 생성
 //		int w_length=get.getWord1().length();
@@ -149,46 +149,46 @@ public class tmp {
 //		}//포문으로 하면 안됨;; 
 		//필드마다 따로 설정 넣어야 하고 키어뎁터를 클래스로 빼서 각각 깔끔하게 짜기
 		
-		input_field[w_length].addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//마지막 칸 엔터쳤을 때 이벤트 > 채점+다음 시도로 넘기기				
-			}
-		});
-		
-		//게임시작 시 배치
-		for(int i=0; i<w_length; i++) {
-			tmp.add(input_field[i]);
-			tmp.add(b[i]);
-			tmp.add(c[i]);
-			tmp.add(d[i]);
-			tmp.add(e[i]);
-		}
-		input_field[0].requestFocus();
-		
-		//채점 -클래스로 빼는게 나을 듯
-		for(int i=0; i<w_length; i++) {
-			input[i]=input_field[i].getText().charAt(0);
-			if(input[i]==word1[i]) {
-				grading[i]=true;
-			}
-			else {
-				grading[i]=false;
-			}
-		}
-		
-		
-		//1~4 줄 오답시 배치
-		for(int i=0; i<w_length; i++) {
-			input_field[i].setText("");
-			if(grading[i]) {
-				a[i].setBackground(Color.green);
-			} //이걸 먼저하고 재배치를 해야하나?
-			tmp.add(a[i]);
-			tmp.add(input_field[i]);
-			tmp.add(c[i]);
-			tmp.add(d[i]);
-			tmp.add(e[i]);
-		} //이걸 c~d도 반복
+//		input_field[w_length].addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				//마지막 칸 엔터쳤을 때 이벤트 > 채점+다음 시도로 넘기기				
+//			}
+//		});
+//		
+//		//게임시작 시 배치
+//		for(int i=0; i<w_length; i++) {
+//			tmp.add(input_field[i]);
+//			tmp.add(b[i]);
+//			tmp.add(c[i]);
+//			tmp.add(d[i]);
+//			tmp.add(e[i]);
+//		}
+//		input_field[0].requestFocus();
+//		
+//		//채점 -클래스로 빼는게 나을 듯
+//		for(int i=0; i<w_length; i++) {
+//			input[i]=input_field[i].getText().charAt(0);
+//			if(input[i]==word1[i]) {
+//				grading[i]=true;
+//			}
+//			else {
+//				grading[i]=false;
+//			}
+//		}
+//		
+//		
+//		//1~4 줄 오답시 배치
+//		for(int i=0; i<w_length; i++) {
+//			input_field[i].setText("");
+//			if(grading[i]) {
+//				a[i].setBackground(Color.green);
+//			} //이걸 먼저하고 재배치를 해야하나?
+//			tmp.add(a[i]);
+//			tmp.add(input_field[i]);
+//			tmp.add(c[i]);
+//			tmp.add(d[i]);
+//			tmp.add(e[i]);
+//		} //이걸 c~d도 반복
 		
 
 	}

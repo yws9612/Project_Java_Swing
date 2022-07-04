@@ -11,7 +11,7 @@ public class game_frame extends JFrame {
 
 	JLabel hint = new JLabel();
 	String hint_t;
-	char[] word_arr;
+	String[] word_arr;
 	int word_l;
 	thread_word new_word;
 
@@ -190,10 +190,9 @@ public class game_frame extends JFrame {
 					int pause_i = JOptionPane.showConfirmDialog(null, "정말 종료하시나요ㅠㅠ?", "일시정지",
 							JOptionPane.YES_NO_OPTION);
 					if (pause_i == JOptionPane.YES_OPTION) {
-						t.interrupt();
-						JFrame frame = (JFrame) e.getSource();
 						new Choice();
-						frame.dispose();
+						dispose();
+						t.interrupt();
 					} else {
 						t.interrupt();
 					}
@@ -350,9 +349,8 @@ public class game_frame extends JFrame {
 							JOptionPane.YES_NO_OPTION);
 					if (pause_i == JOptionPane.YES_OPTION) {
 						t.interrupt();
-						JFrame frame = (JFrame) e.getSource();
 						new Choice();
-						frame.dispose();
+						dispose();
 					} else {
 						t.interrupt();
 					}
