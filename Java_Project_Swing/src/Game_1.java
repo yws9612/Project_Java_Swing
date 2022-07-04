@@ -1,74 +1,29 @@
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import javax.swing.*;
 
-public class game2 extends JPanel {
-	JLabel[] a = new JLabel[6];
-	JLabel[] b = new JLabel[6];
-	JLabel[] c = new JLabel[6];
-	JLabel[] d = new JLabel[6];
-	JLabel[] e = new JLabel[6];;
+public class Game_1 extends JPanel {
 	JTextField[] input_field = new JTextField[6];
-	public String[] input2;
-	boolean[] grading;
-	int w_length;
+	public String[] input1=new String[6];
+	boolean[] grading=new boolean[6];
 	
-
-	public void set_grading(boolean[] boo) {
-		for (int i = 0; i < w_length; i++) {
-			grading[i] = boo[i];
-		}
-	}
-
-	public game2(int length, String g1[], boolean g1_b[]) {
-
-		this.w_length = length;
-		setLayout(new GridLayout(5, w_length, 10, 10));
-
-		input2 = new String[w_length];
-		grading = new boolean[w_length];
-
+	public Game_1(int length) {
+		setLayout(new GridLayout(1, length, 10, 10));
+		
 		for (int i = 0; i < 6; i++) {
 			input_field[i] = new JTextField();
 		}
 
-		for (int i = 0; i < w_length; i++) {
-			a[i] = new JLabel();
-			a[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
-			a[i].setHorizontalAlignment(SwingConstants.CENTER);
-			a[i].setText(g1[i]);
-			if (g1_b[i]) {
-				a[i].setBackground(Color.green);
-			} else {
-				a[i].setBackground(Color.pink);
-			}
-			add(a[i]);
-		}
-		for (int i = 0; i < w_length; i++) {
+		for (int i = 0; i < length; i++) {
 			input_field[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 			input_field[i].setHorizontalAlignment(SwingConstants.CENTER);
 			add(input_field[i]);
 		}
-		for (int i = 0; i < w_length; i++) {
-			c[i] = new JLabel();
-			c[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
-			c[i].setHorizontalAlignment(SwingConstants.CENTER);
-			add(c[i]);
-		}
-		for (int i = 0; i < w_length; i++) {
-			d[i] = new JLabel();
-			d[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
-			d[i].setHorizontalAlignment(SwingConstants.CENTER);
-			add(d[i]);
-		}
-		for (int i = 0; i < w_length; i++) {
-			e[i] = new JLabel();
-			e[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
-			e[i].setHorizontalAlignment(SwingConstants.CENTER);
-			add(e[i]);
-		}
-
-		// textfield 글자수 제한+자동포커스 이동
+		
 		input_field[0].addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent ke) {
 				JTextField src = (JTextField) ke.getSource();
@@ -143,50 +98,53 @@ public class game2 extends JPanel {
 		});
 
 		// 단어 끝칸_글자수제한
-		input_field[w_length - 1].addKeyListener(new KeyAdapter() {
+		input_field[length - 1].addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent ke) {
 				JTextField src = (JTextField) ke.getSource();
-				if (src.getText().length() >= 1) {
+				if (src.getText().length() >= 2) {
 					ke.consume();
 					for (int i = 0; i < 6; i++) {
-						input2[i] = input_field[i].getText();
+						input1[i] = input_field[i].getText();
 					}
 					// 채점+다음 시도로 넘기기
-					game_frame.ctl2.interrupt();
+					//game_frame.ctl1.interrupt();
+					//game_frame.ctl1.notify();
 				}
 			}
 		});
 
 		// 단어 끝칸_엔터
-		input_field[w_length - 1].addActionListener(new ActionListener() {
+		input_field[length - 1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for (int i = 0; i < w_length; i++) {
-					input2[i] = input_field[i].getText();
+				for (int i = 0; i < length; i++) {
+					input1[i] = input_field[i].getText();
 				}
 				// 채점+다음 시도로 넘기기
-				game_frame.ctl2.interrupt();
+				//game_frame.ctl1.interrupt();
+				//game_frame.ctl1.notify();
 			}
 		});
 
 		// 단어 끝칸_탭
-		input_field[w_length - 1].setFocusTraversalKeysEnabled(false);
-		input_field[w_length - 1].addKeyListener(new KeyAdapter() {
+		input_field[length - 1].setFocusTraversalKeysEnabled(false);
+		input_field[length - 1].addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_TAB) {
 					for (int i = 0; i < 6; i++) {
-						input2[i] = input_field[i].getText();
+						input1[i] = input_field[i].getText();
 					}
 					// 채점+다음 시도로 넘기기
-					game_frame.ctl2.interrupt();
+					//game_frame.ctl1.interrupt();
+					//game_frame.ctl1.notify();
 				}
 			}
 		});
-
 		setVisible(true);
-
 	}
+	
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 
 	}
 

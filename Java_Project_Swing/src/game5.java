@@ -10,7 +10,7 @@ public class game5 extends JPanel {
 	JLabel[] d = new JLabel[6];
 	JLabel[] e = new JLabel[6];;
 	JTextField[] input_field = new JTextField[6];
-	public char[] input5;
+	public String[] input5;
 	boolean[] grading;
 	int w_length;
 	
@@ -21,13 +21,13 @@ public class game5 extends JPanel {
 		}
 	}
 
-	public game5(int length, char g1[], char g2[], char g3[], char g4[], boolean[] g1_b, boolean[] g2_b, boolean[] g3_b,
+	public game5(int length, String g1[], String g2[], String g3[], String g4[], boolean[] g1_b, boolean[] g2_b, boolean[] g3_b,
 			boolean[] g4_b) {
 
 		this.w_length = length;
 		setLayout(new GridLayout(5, w_length, 10, 10));
 
-		input5 = new char[w_length];
+		input5 = new String[w_length];
 		grading = new boolean[w_length];
 
 		for (int i = 0; i < 6; i++) {
@@ -38,7 +38,7 @@ public class game5 extends JPanel {
 			a[i] = new JLabel();
 			a[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 			a[i].setHorizontalAlignment(SwingConstants.CENTER);
-			a[i].setText(Character.toString(g1[i]));
+			a[i].setText(g1[i]);
 			if (g1_b[i]) {
 				a[i].setBackground(Color.green);
 			} else {
@@ -50,7 +50,7 @@ public class game5 extends JPanel {
 			b[i] = new JLabel();
 			b[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 			b[i].setHorizontalAlignment(SwingConstants.CENTER);
-			b[i].setText(Character.toString(g2[i]));
+			b[i].setText(g2[i]);
 			if (g2_b[i]) {
 				b[i].setBackground(Color.green);
 			} else {
@@ -62,7 +62,7 @@ public class game5 extends JPanel {
 			c[i] = new JLabel();
 			c[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 			c[i].setHorizontalAlignment(SwingConstants.CENTER);
-			c[i].setText(Character.toString(g3[i]));
+			c[i].setText(g3[i]);
 			if (g3_b[i]) {
 				c[i].setBackground(Color.green);
 			} else {
@@ -74,7 +74,7 @@ public class game5 extends JPanel {
 			d[i] = new JLabel();
 			d[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 			d[i].setHorizontalAlignment(SwingConstants.CENTER);
-			d[i].setText(Character.toString(g4[i]));
+			d[i].setText(g4[i]);
 			if (g4_b[i]) {
 				d[i].setBackground(Color.green);
 			} else {
@@ -169,7 +169,7 @@ public class game5 extends JPanel {
 				if (src.getText().length() >= 1) {
 					ke.consume();
 					for (int i = 0; i < 6; i++) {
-						input5[i] = input_field[i].getText().charAt(0);
+						input5[i] = input_field[i].getText();
 					}
 					// 채점+다음 시도로 넘기기
 					game_frame.ctl5.interrupt();
@@ -181,7 +181,7 @@ public class game5 extends JPanel {
 		input_field[w_length - 1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (int i = 0; i < w_length; i++) {
-					input5[i] = input_field[i].getText().charAt(0);
+					input5[i] = input_field[i].getText();
 				}
 				// 채점+다음 시도로 넘기기
 				game_frame.ctl5.interrupt();
@@ -194,7 +194,7 @@ public class game5 extends JPanel {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_TAB) {
 					for (int i = 0; i < 6; i++) {
-						input5[i] = input_field[i].getText().charAt(0);
+						input5[i] = input_field[i].getText();
 					}
 					// 채점+다음 시도로 넘기기
 					game_frame.ctl5.interrupt();

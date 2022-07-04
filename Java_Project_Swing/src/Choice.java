@@ -168,6 +168,13 @@ public class Choice extends JFrame {
 			    }
 		});
 		
+		bt_ch01.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new game_frame();
+				dispose();
+			}
+		});
+		
 		bt_ch03.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

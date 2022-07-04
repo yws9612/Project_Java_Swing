@@ -10,7 +10,7 @@ public class game4 extends JPanel {
 	JLabel[] d = new JLabel[6];
 	JLabel[] e = new JLabel[6];;
 	JTextField[] input_field = new JTextField[6];
-	public char[] input4;
+	public String[] input4;
 	boolean[] grading;
 	int w_length;
 	
@@ -21,12 +21,12 @@ public class game4 extends JPanel {
 		}
 	}
 
-	public game4(int length, char g1[], char g2[], char g3[], boolean[] g1_b, boolean[] g2_b, boolean[] g3_b) {
+	public game4(int length, String g1[], String g2[], String g3[], boolean[] g1_b, boolean[] g2_b, boolean[] g3_b) {
 
 		this.w_length = length;
 		setLayout(new GridLayout(5, w_length, 10, 10));
 
-		input4 = new char[w_length];
+		input4 = new String[w_length];
 		grading = new boolean[w_length];
 
 		for (int i = 0; i < 6; i++) {
@@ -35,7 +35,7 @@ public class game4 extends JPanel {
 
 		for (int i = 0; i < w_length; i++) {
 			a[i] = new JLabel();
-			a[i].setText(Character.toString(g1[i]));
+			a[i].setText(g1[i]);
 			a[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 			a[i].setHorizontalAlignment(SwingConstants.CENTER);
 			if (g1_b[i]) {
@@ -47,7 +47,7 @@ public class game4 extends JPanel {
 		}
 		for (int i = 0; i < w_length; i++) {
 			b[i] = new JLabel();
-			b[i].setText(Character.toString(g2[i]));
+			b[i].setText(g2[i]);
 			b[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 			b[i].setHorizontalAlignment(SwingConstants.CENTER);
 			if (g2_b[i]) {
@@ -59,7 +59,7 @@ public class game4 extends JPanel {
 		}
 		for (int i = 0; i < w_length; i++) {
 			c[i] = new JLabel();
-			c[i].setText(Character.toString(g3[i]));
+			c[i].setText(g3[i]);
 			c[i].setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 			c[i].setHorizontalAlignment(SwingConstants.CENTER);
 			if (g3_b[i]) {
@@ -162,7 +162,7 @@ public class game4 extends JPanel {
 				if (src.getText().length() >= 1) {
 					ke.consume();
 					for (int i = 0; i < 6; i++) {
-						input4[i] = input_field[i].getText().charAt(0);
+						input4[i] = input_field[i].getText();
 					}
 					// 채점+다음 시도로 넘기기
 					game_frame.ctl4.interrupt();
@@ -174,7 +174,7 @@ public class game4 extends JPanel {
 		input_field[w_length - 1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (int i = 0; i < w_length; i++) {
-					input4[i] = input_field[i].getText().charAt(0);
+					input4[i] = input_field[i].getText();
 				}
 				// 채점+다음 시도로 넘기기
 				game_frame.ctl4.interrupt();
@@ -187,7 +187,7 @@ public class game4 extends JPanel {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_TAB) {
 					for (int i = 0; i < 6; i++) {
-						input4[i] = input_field[i].getText().charAt(0);
+						input4[i] = input_field[i].getText();
 					}
 					// 채점+다음 시도로 넘기기
 					game_frame.ctl4.interrupt();

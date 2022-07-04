@@ -11,9 +11,9 @@ public class grading {
 		word_arr=a;
 	}
 	
-	public boolean[] grade_panel(char input[]) {
+	public boolean[] grade_panel(String input[]) {
 		for (int i = 0; i < word_length; i++) {
-			if (input[i] == word_arr[i]) {
+			if (input[i].equals(Character.toString(word_arr[i]))) {
 				grading[i] = true;
 			} else {
 				grading[i] = false;

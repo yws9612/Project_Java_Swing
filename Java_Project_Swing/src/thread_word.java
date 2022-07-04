@@ -1,3 +1,4 @@
+import java.awt.Font;
 import java.sql.*;
 import javax.swing.*;
 
@@ -35,6 +36,7 @@ public class thread_word extends Thread {
 			countdown.setVisible(true);
 			circle_label.setVisible(true);
 			countdown.setText("단어를 가져오는 중이에요!");
+			countdown.setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 
 			try {
 				conn = Connect.get();
@@ -56,6 +58,8 @@ public class thread_word extends Thread {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+			countdown.setFont(new Font("DungGeunMo", Font.PLAIN, 40));
 			
 			for (int i = 3; i > 0; i--) {
 				countdown.setText(Integer.toString(i));

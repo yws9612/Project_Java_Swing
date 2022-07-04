@@ -7,9 +7,9 @@ public class game1 extends JPanel {
 	JLabel[] b = new JLabel[6];
 	JLabel[] c = new JLabel[6];
 	JLabel[] d = new JLabel[6];
-	JLabel[] e = new JLabel[6];;
+	JLabel[] e = new JLabel[6];
 	JTextField[] input_field = new JTextField[6];
-	public char[] input1;
+	public String[] input1;
 	boolean[] grading;
 	int w_length;	
 
@@ -25,7 +25,7 @@ public class game1 extends JPanel {
 		w_length = a;
 		setLayout(new GridLayout(5, w_length, 10, 10));
 
-		input1 = new char[w_length];
+		input1 = new String[6];
 		grading = new boolean[w_length];
 
 		for (int i = 0; i < 6; i++) {
@@ -140,13 +140,14 @@ public class game1 extends JPanel {
 		input_field[w_length - 1].addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent ke) {
 				JTextField src = (JTextField) ke.getSource();
-				if (src.getText().length() >= 1) {
+				if (src.getText().length() >= 2) {
 					ke.consume();
 					for (int i = 0; i < 6; i++) {
-						input1[i] = input_field[i].getText().charAt(0);
+						input1[i] = input_field[i].getText();
 					}
 					// 채점+다음 시도로 넘기기
 					game_frame.ctl1.interrupt();
+					//game_frame.ctl1.notify();
 				}
 			}
 		});
@@ -155,10 +156,11 @@ public class game1 extends JPanel {
 		input_field[w_length - 1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (int i = 0; i < w_length; i++) {
-					input1[i] = input_field[i].getText().charAt(0);
+					input1[i] = input_field[i].getText();
 				}
 				// 채점+다음 시도로 넘기기
 				game_frame.ctl1.interrupt();
+				//game_frame.ctl1.notify();
 			}
 		});
 
@@ -168,20 +170,20 @@ public class game1 extends JPanel {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_TAB) {
 					for (int i = 0; i < 6; i++) {
-						input1[i] = input_field[i].getText().charAt(0);
+						input1[i] = input_field[i].getText();
 					}
 					// 채점+다음 시도로 넘기기
 					game_frame.ctl1.interrupt();
+					//game_frame.ctl1.notify();
 				}
 			}
 		});
-
 		setVisible(true);
 	}
 
 	public static void main(String[] args) {
 
-		game1 g1 = new game1(4);
+		game1 g1 = new game1(3);
 		// JPanel tmp2=g1;
 
 		JFrame tmp = new JFrame();
