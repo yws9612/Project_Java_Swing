@@ -215,34 +215,38 @@ public class game_frame extends JFrame {
 				grade = new grading(word_arr);
 				boolean [] grade2=new boolean[word_l];
 				grade2=grade.grade_panel(g_1.getinput());
-				g_1.setTFcolor(grade2);
+				g_1.setTFcolor(grade2); //textfield 색 설정
 				
 				Thread t=new Thread();
 				try {
-					t.sleep(5000);
-				} catch(Exception ex) {
+					t.sleep(5000); //5초간 정지
+					
+					if (grade.grade_case()) {
+						score+=10;
+						new game_frame(life, score);
+						dispose();
+					} else {
+						life--;
+						if (life == 0) {
+							int gameOver_i = JOptionPane.showConfirmDialog(null, "다시 도전하시겠습니까?", "GAMEOVER",
+									JOptionPane.YES_NO_OPTION);
+							if (gameOver_i == JOptionPane.YES_OPTION) {
+								new game_frame(5, 0);
+								dispose();
+							} else {
+								new Choice();
+								dispose();
+							}
+						} else {
+							new game_frame(life, score);
+							dispose();
+						}
+					}
+				} catch (Exception ex) {
 					ex.printStackTrace();
 					System.out.println("after background color setting");
-				}				
-				
-				if(grade.grade_case()) {
-					new game_frame(life, score);				
-					dispose();
-				}else {
-					life--;
-					if(life == 0) {
-						int gameOver_i = JOptionPane.showConfirmDialog(null, "다시 도전하시겠습니까?", "GAMEOVER",
-								JOptionPane.YES_NO_OPTION);
-						if (gameOver_i == JOptionPane.YES_OPTION) {
-							new game_frame(5, 0);				
-							dispose();
-						}else {
-							new Choice();
-							dispose();	
-						}
-					}					
 				}
-			}			
+			}
 		});
 
 	}// 생성자1 끝
@@ -256,6 +260,7 @@ public class game_frame extends JFrame {
 		
 		life=life_new;
 		score=score_new;
+		score_label.setText(String.format("%06d", score));
 
 		setSize(900, 640);
 		setLocationRelativeTo(null);
@@ -415,7 +420,7 @@ public class game_frame extends JFrame {
 				if(grade.grade_case()) {
 					new game_frame(life, score);				
 					dispose();
-				}else {
+				} else {
 					life--;
 					if(life == 0) {
 						int gameOver_i = JOptionPane.showConfirmDialog(null, "다시 도전하시겠습니까?", "GAMEOVER",
@@ -427,7 +432,7 @@ public class game_frame extends JFrame {
 							new Choice();
 							dispose();	
 						}
-					}else {
+					} else {
 						new game_frame(life, score);				
 						dispose();
 					}
