@@ -75,15 +75,11 @@ public class game_frame extends JFrame {
 		c.add(pause);
 		
 		//하트위치잡기
-		JLabel tmp=new JLabel();
-		life_image tmp1=new life_image(life);
-		tmp.setIcon(tmp1);
-		//JLabel tmp=life_img.setLifeimg();
-		//tmp.setBackground(Color.green);
+		life_image tmp=new life_image(life);
 		tmp.setOpaque(true);
 		tmp.setBounds(20, 530, 280, 50);
 		c.add(tmp);
-		//tmp.setVisible(false);
+		tmp.setVisible(false);
 		//패널위치잡기
 		JPanel tmp2=new JPanel();
 		tmp2.setBackground(Color.pink);
