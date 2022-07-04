@@ -211,6 +211,34 @@ public class game_frame extends JFrame {
 				dispose();				
 			}
 		});
+		
+		check.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				if(asdf.equals()) {
+					new game_frame(life, score);				
+					dispose();
+				}else {
+					life--;
+					if(life == 0) {
+						int gameOver_i = JOptionPane.showConfirmDialog(null, "다시 도전하시겠습니까?", "GAMEOVER",
+								JOptionPane.YES_NO_OPTION);
+						if (gameOver_i == JOptionPane.YES_OPTION) {
+							new game_frame(5, 0);				
+							dispose();
+						}else {
+							new Choice();
+							dispose();	
+						}
+					}
+					
+				}
+			}
+			
+		});
 
 	}// 생성자1 끝
 	
@@ -371,6 +399,7 @@ public class game_frame extends JFrame {
 		});
 
 	}// 생성자2 끝
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
