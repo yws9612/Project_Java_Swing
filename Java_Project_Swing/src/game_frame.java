@@ -215,6 +215,16 @@ public class game_frame extends JFrame {
 				grade = new grading(word_arr);
 				boolean [] grade2=new boolean[word_l];
 				grade2=grade.grade_panel(g_1.getinput());
+				g_1.setTFcolor(grade2);
+				
+				Thread t=new Thread();
+				try {
+					t.sleep(5000);
+				} catch(Exception ex) {
+					ex.printStackTrace();
+					System.out.println("after background color setting");
+				}				
+				
 				if(grade.grade_case()) {
 					new game_frame(life, score);				
 					dispose();

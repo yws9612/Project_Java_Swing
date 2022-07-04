@@ -19,6 +19,7 @@ public class Game_1 extends JPanel {
 		
 		for (int i = 0; i < 6; i++) {
 			input_field[i] = new JTextField();
+			input_field[i].setOpaque(true);
 		}
 
 		for (int i = 0; i < length; i++) {
@@ -109,6 +110,17 @@ public class Game_1 extends JPanel {
 			input1[i]=input_field[i].getText();
 		}
 		return input1;
+	}
+	
+	public void setTFcolor(boolean [] grade) {
+		for(int i=0; i<length; i++) {
+			if(grade[i]) {
+				input_field[i].setBackground(Color.green);
+			}
+			else {
+				input_field[i].setBackground(Color.red);
+			}
+		}
 	}
 
 	public static void main(String[] args) {
