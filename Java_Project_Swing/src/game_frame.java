@@ -141,10 +141,8 @@ public class game_frame extends JFrame {
 
 		word_arr = new_word.getWord_arr();
 		word_l = word_arr.length;
-		grade = new grading(word_arr);
-		hint_t = new_word.getHint();
+		
 
-		hint.setText(hint_t);
 		
 		g_1=new Game_1(word_l);
 		switch (word_l) {
@@ -171,6 +169,13 @@ public class game_frame extends JFrame {
 		g_1.setOpaque(true);
 		g_1.setVisible(true);
 		c.add(g_1);
+		
+		
+		
+		grade = new grading(word_arr);
+		hint_t = new_word.getHint();
+
+		hint.setText(hint_t);
 		
 
 		//int g_x = (word_l * 60) + ((word_l - 1) * 10);
