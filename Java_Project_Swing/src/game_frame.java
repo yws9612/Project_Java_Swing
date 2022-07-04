@@ -62,8 +62,8 @@ public class game_frame extends JFrame {
 		setSize(900, 640);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setResizable(false);
-		setVisible(true);		
+		setVisible(true);
+		setResizable(false);	
 
 		//Dimension d=c.getSize(); (884*601)
 
@@ -75,23 +75,29 @@ public class game_frame extends JFrame {
 		c.add(pause);
 		
 		//하트위치잡기
-		JLabel tmp=new JLabel("aaaaaaa");
-		tmp.setBackground(Color.green);
+		JLabel tmp=new JLabel();
+		life_image tmp1=new life_image(life);
+		tmp.setIcon(tmp1);
+		//JLabel tmp=life_img.setLifeimg();
+		//tmp.setBackground(Color.green);
 		tmp.setOpaque(true);
 		tmp.setBounds(20, 530, 280, 50);
 		c.add(tmp);
+		//tmp.setVisible(false);
 		//패널위치잡기
-		JLabel tmp2=new JLabel("aaaaaaa");
+		JPanel tmp2=new JPanel();
 		tmp2.setBackground(Color.pink);
 		tmp2.setOpaque(true);
 		tmp2.setBounds(237, 185, 410, 340);
 		c.add(tmp2);
+		tmp2.setVisible(false);
 		//힌트위치잡기
 		JLabel tmp3=new JLabel();
 		tmp3.setBackground(Color.yellow);
 		tmp3.setOpaque(true);
 		tmp3.setBounds(50, 75, 784, 100);
 		c.add(tmp3);
+		tmp3.setVisible(false);
 
 		score_label.setBounds(700, 20, 150, 50);
 		score_label.setOpaque(true);
@@ -99,22 +105,22 @@ public class game_frame extends JFrame {
 		score_label.setFont(new Font("DungGeunMo", Font.PLAIN, 40));
 		c.add(score_label);
 
-		life_img=new life_image(life);
-		life_label=life_img.setLifeimg();
-		life_label.setBounds(20, 530, 280, 50);
-		c.add(life_label);
+		//life_img=new life_image(life);
+		//life_label=life_img.setLifeimg();
+		//life_label.setBounds(20, 530, 280, 50);
+		//c.add(life_label);
 				
 		c.add(countdown);
 		c.add(countdown_image);
 		countdown.setBounds(300, 150, 300, 300);
 		countdown_image.setBounds(300, 150, 300, 300);
-		countdown.setFont(new Font("DungGeunMo", Font.PLAIN, 50));
+		countdown.setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 		countdown.setForeground(Color.white);
 		countdown.setHorizontalAlignment(SwingConstants.CENTER);
 		countdown_image.setIcon(cd_image);
 		countdown.setVisible(false);
 		countdown_image.setVisible(false);
-
+		
 		new_word = new thread_word(countdown, countdown_image);
 		new_word.start();
 		try {
@@ -124,7 +130,11 @@ public class game_frame extends JFrame {
 			e.printStackTrace();
 		}
 		c.remove(countdown);
-		c.remove(countdown_image);
+		c.remove(countdown_image);		
+
+		tmp.setVisible(true);
+		tmp2.setVisible(true);
+		tmp3.setVisible(true);
 
 		word_arr = new_word.getWord_arr();
 		word_l = word_arr.length;
@@ -133,13 +143,15 @@ public class game_frame extends JFrame {
 
 
 		//int g_x = (word_l * 60) + ((word_l - 1) * 10);
-
+		/*
 		hint_t = new_word.getHint();
 		hint.setFont(new Font("DungGeunMo", Font.PLAIN, 20));
 		hint.setHorizontalAlignment(SwingConstants.CENTER);
 		hint.setText(hint_t);
 		hint.setBounds(50, 75, 784, 100);
 		c.add(hint);
+		*/
+		tmp3.setText(hint_t);
 
 		
 		pause.addActionListener(new ActionListener() {
@@ -177,7 +189,7 @@ public class game_frame extends JFrame {
 		while (true) {
 
 			life_img=new life_image(life);
-			life_label=life_img.setLifeimg();
+			//life_label=life_img.setLifeimg();
 
 			if (life == 0) {
 				this.input_playlog(score);

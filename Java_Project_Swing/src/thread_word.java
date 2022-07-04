@@ -68,6 +68,7 @@ public class thread_word extends Thread {
 		} catch (Exception e) {
 			System.out.println("thread_word fail");
 		}
+		interrupt();
 	}
 
 	public static void main(String[] args) {
