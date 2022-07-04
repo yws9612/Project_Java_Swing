@@ -29,10 +29,22 @@ class game_control5 extends Thread {
 }
 
 
-public class game_control {
+public class game_control extends Thread {
+	
+	public void run() {
+		System.out.println(1);
+		for(int i=2; i<6; i++) {
+			try{
+				sleep(1000);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println(i);
+		}
+	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
 	}
 

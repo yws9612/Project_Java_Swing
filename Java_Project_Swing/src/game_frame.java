@@ -217,34 +217,37 @@ public class game_frame extends JFrame {
 				grade2=grade.grade_panel(g_1.getinput());
 				g_1.setTFcolor(grade2); //textfield 색 설정
 				
-				Thread t=new Thread();
+				game_control t = new game_control();
+				t.start();
 				try {
-					t.sleep(5000); //5초간 정지
-					
-					if (grade.grade_case()) {
-						score+=10;
-						new game_frame(life, score);
-						dispose();
-					} else {
-						life--;
-						if (life == 0) {
-							int gameOver_i = JOptionPane.showConfirmDialog(null, "다시 도전하시겠습니까?", "GAMEOVER",
-									JOptionPane.YES_NO_OPTION);
-							if (gameOver_i == JOptionPane.YES_OPTION) {
-								new game_frame(5, 0);
-								dispose();
-							} else {
-								new Choice();
-								dispose();
-							}
+					t.join();
+				} catch(Exception ex) {
+					ex.printStackTrace();
+					System.out.println("thread_5sec");
+				}
+				
+				if (grade.grade_case()) {
+					score += 10;
+					new game_frame(life, score);
+					dispose();
+				} else {
+					life--;
+					if (life == 0) {
+						input_playlog(score);
+						
+						int gameOver_i = JOptionPane.showConfirmDialog(null, "다시 도전하시겠습니까?", "GAMEOVER",
+								JOptionPane.YES_NO_OPTION);
+						if (gameOver_i == JOptionPane.YES_OPTION) {
+							new game_frame(5, 0);
+							dispose();
 						} else {
-							new game_frame(life, score);
+							new Choice();
 							dispose();
 						}
+					} else {
+						new game_frame(life, score);
+						dispose();
 					}
-				} catch (Exception ex) {
-					ex.printStackTrace();
-					System.out.println("after background color setting");
 				}
 			}
 		});
@@ -417,27 +420,41 @@ public class game_frame extends JFrame {
 				grade = new grading(word_arr);
 				boolean [] grade2=new boolean[word_l];
 				grade2=grade.grade_panel(g_1.getinput());
-				if(grade.grade_case()) {
-					new game_frame(life, score);				
+				g_1.setTFcolor(grade2); //textfield 색 설정
+				
+				game_control t = new game_control();
+				t.start();
+				try {
+					t.join();
+				} catch(Exception ex) {
+					ex.printStackTrace();
+					System.out.println("thread_5sec");
+				}
+				
+				if (grade.grade_case()) {
+					score += 10;
+					new game_frame(life, score);
 					dispose();
 				} else {
 					life--;
-					if(life == 0) {
+					if (life == 0) {
+						input_playlog(score);
+						
 						int gameOver_i = JOptionPane.showConfirmDialog(null, "다시 도전하시겠습니까?", "GAMEOVER",
 								JOptionPane.YES_NO_OPTION);
 						if (gameOver_i == JOptionPane.YES_OPTION) {
-							new game_frame(5, 0);				
+							new game_frame(5, 0);
 							dispose();
-						}else {
+						} else {
 							new Choice();
-							dispose();	
+							dispose();
 						}
 					} else {
-						new game_frame(life, score);				
+						new game_frame(life, score);
 						dispose();
 					}
 				}
-			}			
+			}
 		});
 	}// 생성자2 끝
 	
